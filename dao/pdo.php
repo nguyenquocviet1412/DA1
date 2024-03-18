@@ -3,10 +3,10 @@ session_start();
 
 function pdo_connection()
 {
-    $host = "127.0.0.1";
+    $host = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "db_shop";
+    $dbname = "du-an-1";
 
     try {
         // Chuỗi kết nối
