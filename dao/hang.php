@@ -1,35 +1,35 @@
 <?php
 // Truy vấn loại đã nhập mới lên trước
 
-function loai_selectall()
+function hang_selectall()
 {
-    $sql = "SELECT * FROM loaihang ORDER BY maloai ASC";
+    $sql = "SELECT * FROM hang ORDER BY mahang ASC";
     pdo_query($sql);
     return pdo_query($sql);
 }
 
-function loai_insert($maloai,$tenloai)
+function hang_insert($tenhang)
 {
-    $sql = "INSERT INTO loaihang(maloai, tenloai) VALUES(?,?)";
-    pdo_execute($sql,$maloai, $tenloai);
+    $sql = "INSERT INTO hang(tenhang) VALUES(?)";
+    pdo_execute($sql, $tenhang);
 }
 
-function loai_delete($maloai)
+function hang_delete($mahang)
 {
-    $sql = "DELETE FROM loaihang WHERE maloai=?";
-    pdo_execute($sql, $maloai);
+    $sql = "DELETE FROM hang WHERE mahang=?";
+    pdo_execute($sql, $mahang);
 }
 
-function loai_getinfo($maloai)
+function hang_getinfo($mahang)
 {
-    $sql = "SELECT*FROM loaihang WHERE maloai=?";
-    return pdo_query_one($sql, $maloai);
+    $sql = "SELECT*FROM hang WHERE mahang=?";
+    return pdo_query_one($sql, $mahang);
 }
 
-function loai_update($maloai, $tenloai)
+function hang_update($mahang, $tenhang)
 {
-    $sql = "UPDATE loaihang SET maloai=?, tenloai=? WHERE maloai=?";
-    pdo_execute($sql, $maloai, $tenloai, $maloai);
+    $sql = "UPDATE hang SET mahang=?, tenhang=? WHERE mahang=?";
+    pdo_execute($sql, $mahang, $tenhang, $mahang);
 }
-$dsloai=loai_selectall();
+$dshang=hang_selectall();
 ?>

@@ -1,17 +1,15 @@
-<h1>CHỈNH SỬA LOẠI HÀNG</h1>
+<h1>CHỈNH SỬA HÃNG</h1>
 <form action="index.php" method="post" enctype="multipart/form-data">
-    <div class="row">
-        <div class="col-6 my-2">
-            <label class="fw-bold">MÃ HÃNG</label>
-            <input type="text" name="math" id="" class="form-control" value="<?= $mahang ?>">
-        </div>
-        <div class="col-6 my-2">
-            <label class="fw-bold">TÊN HÃNG</label>
-            <input type="text" name="tenth" id="" class="form-control" value="<?= $tenhang ?>">
-        </div>
+    <div class="mb-3 mt-3">
+        <label for="text" class="form-label">Mã hãng:</label>
+        <input type="text" class="form-control disabled" id="" name="mahang" disabled value="<?=$mahang?>">
     </div>
-    <button class="btn btn-outline-success" name="btn_update">Cập nhật</button>
-    <button type="reset" class="btn btn-outline-success">Nhập lại</button>
-    <a class="btn btn-outline-success" href="index.php" role="button">Thêm mới</a>
-    <a class="btn btn-outline-success" href="index.php?btn_list" role="button">Danh sách</a>
+    <div class="mb-3">
+        <label for="text" class="form-label">Tên hãng:</label>
+        <input type="text" class="form-control" id="" name="tenhang" value="<?=$tenhang?>">
+    </div>
+    <button class="btn btn-primary" name="btn_update">Cập nhật</button>
+    <button type="reset" class="btn btn-primary">Nhập lại</button>
+    <a class="btn btn-primary" href="index.php" role="button">Thêm mới</a>
+    <a class="btn btn-primary" href="index.php?btn_list" role="button">Danh sách</a>
 </form>

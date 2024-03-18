@@ -18,10 +18,9 @@
 <body>
     <div class=" col-12 container">
 
-        <div class="title bg-dark text-light p-2">
+        <div class="title bg-dark text-light p-2 mb-2">
             <h1>Admin</h1>
         </div>
-        <h1>Danh mục sản phẩm</h1>
         <?php require "../menu.php" ?>
         <?php include $VIEW_NAME ?>
         <div class="col-12 bg-dark p-2 mt-2">

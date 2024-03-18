@@ -7,10 +7,10 @@
                         <a class="nav-link active" href="/DA1/">Quay về web</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Danh mục</a>
+                        <a class="nav-link active" href="/DA1/admin/danhmuc/">Danh mục</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">san pham</a>
+                        <a class="nav-link" href="/DA1/admin/sanpham.html">san pham</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">tai khoan</a>

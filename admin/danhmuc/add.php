@@ -1,3 +1,4 @@
+
 <h1>Thêm hãng</h1>
 <form action="index.php" method="post">
     <div class="mb-3 mt-3">

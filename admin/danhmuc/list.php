@@ -22,15 +22,15 @@
                         <?= $tenloai ?>
                     </td>
                     <td>
-                        <a class="btn btn-outline-success" href="index.php?btn_edit&maloai=<?= $maloai ?>" role="button">Sửa</a>
-                        <a class="btn btn-outline-success" href="index.php?btn_delete&maloai=<?= $maloai ?>"
+                        <a class="btn btn-primary" href="index.php?btn_edit&maloai=<?= $maloai ?>" role="button">Sửa</a>
+                        <a class="btn btn-primary" href="index.php?btn_delete&maloai=<?= $maloai ?>"
                             role="button">Xoá</a>
                     </td>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
-    <a class="btn btn-outline-success" href="index.php" role="button">Thêm mới</a>
+    <a class="btn btn btn-primary" href="index.php" role="button">Thêm mới</a>
 
 
 
