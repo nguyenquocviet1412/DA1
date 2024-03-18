@@ -1,12 +1,12 @@
-<h1>THÊM MỚI HÀNG HOÁ</h1>
+<h1>THÊM MỚI SẢN PHẨM</h1>
 <form action="index.php" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-4 my-2">
-            <label class="fw-bold">MÃ HÀNG HOÁ</label>
+            <label class="fw-bold">MÃ SẢN PHẨM</label>
             <input type="text" name="mahh" id="" class="form-control">
         </div>
         <div class="col-4 my-2">
-            <label class="fw-bold">TÊN HÀNG HOÁ</label>
+            <label class="fw-bold">TÊN SẢN PHẨM</label>
             <input type="text" name="tenhh" id="" class="form-control">
         </div>
         <div class="col-4 my-2">

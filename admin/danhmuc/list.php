@@ -14,16 +14,16 @@
                 extract($value);
                 ?>
                 <tr>
-                    <td><input type="checkbox" name="maloai[]" id="" value="<?= $maloai ?>"></td>
+                    <td><input type="checkbox" name="id[]" id="" value="<?= $id_danhmuc ?>"></td>
                     <td>
-                        <?= $maloai ?>
+                        <?= $id_danhmuc ?>
                     </td>
                     <td>
-                        <?= $tenloai ?>
+                        <?= $name ?>
                     </td>
                     <td>
-                        <a class="btn btn-primary" href="index.php?btn_edit&maloai=<?= $maloai ?>" role="button">Sửa</a>
-                        <a class="btn btn-primary" href="index.php?btn_delete&maloai=<?= $maloai ?>"
+                        <a class="btn btn-primary" href="index.php?btn_edit&id=<?= $id_danhmuc ?>" role="button">Sửa</a>
+                        <a class="btn btn-primary" href="index.php?btn_delete&id=<?= $id_danhmuc ?>"
                             role="button">Xoá</a>
                     </td>
                 </tr>

@@ -1,32 +1,31 @@
 <?php
 require_once "../../dao/pdo.php";
-// require_once "../../dao/hang.php";
+require_once "../../dao/danhmuc.php";
 extract($_REQUEST);
 if (exist_param("btn_list")) {
-    $items = hang_selectall();
+    $items = danhmuc_selectall();
     $VIEW_NAME = "list.php";
 } else if (exist_param("btn_insert")) {
-    $tenhang = $_POST['tenhang'];
-    hang_insert($tenhang);
-    $items = hang_selectall();
-    $HEADER="header.php";
+    $name = $_POST['name'];
+    danhmuc_insert($name);
+    $items = danhmuc_selectall();
     $VIEW_NAME = "add.php";
 } else if (exist_param("btn_edit")) {
-    $mahang = $_REQUEST['mahang'];
-    $hanginfo = hang_getinfo($mahang);
-    extract($hanginfo);
-    $items = hang_selectall();
+    $id = $_REQUEST['id'];
+    $danhmucinfo = danhmuc_getinfo($id);
+    extract($danhmucinfo);
+    $items = danhmuc_selectall();
     $VIEW_NAME = "edit.php";
 } elseif (exist_param("btn_delete")) {
-    $mahang = $_REQUEST['mahang'];
-    hang_delete($mahang);
-    $items = hang_selectall();
+    $id = $_REQUEST['id'];
+    danhmuc_delete($id);
+    $items = danhmuc_selectall();
     $VIEW_NAME = "list.php";
 } elseif (exist_param("btn_update")) {
-    $mahang = $_POST['mahang'];
-    $tenhang = $_POST['tenhang'];
-    hang_update($mahang, $tenhang);
-    $items = hang_selectall();
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    danhmuc_update($id, $name);
+    $items = danhmuc_selectall();
     $VIEW_NAME = "list.php";
 } else {
     $VIEW_NAME = "add.php";
