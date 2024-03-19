@@ -20,7 +20,7 @@ session_start();
                     $id=$_GET['idsp'];
                     $onesp=sanpham_getinfo($id);
                     extract($onesp);
-
+                    
                     $sp_cung_loai=sanpham_selectby_loai($id_danhmuc);
                     include "view/chitietsanpham.php";
                 }else{
