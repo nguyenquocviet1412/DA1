@@ -36,11 +36,11 @@ function sanpham_selectby_loai($id_danhmuc)
     $sql = "SELECT*FROM sanpham WHERE id_danhmuc=?";
     return pdo_query($sql, $id_danhmuc);
 }
-// function sanpham_select_keyword($keyword)
-// {
-//     $sql = "SELECT*FROM sanpham sp JOIN danhmuc dm ON dm.id_danhmuc=sp.id_danhmuc WHERE tenhang LIKE ? OR tenloai LIKE ? ";
-//     return pdo_query($sql, '%' . $keyword . '%', '%' . $keyword . '%');
-// }
+function sanpham_select_keyword($keyword)
+{
+    $sql = "SELECT*FROM sanpham sp JOIN danhmuc dm ON dm.id=sp.id_danhmuc WHERE dm.name LIKE ? OR sp.name LIKE ? ";
+    return pdo_query($sql, '%' . $keyword . '%', '%' . $keyword . '%');
+}
 function sanpham_update($id, $name, $price, $img, $mota, $price_chiet, $sale, $luotxem, $id_danhmuc)
 {
     $sql = "UPDATE sanpham SET id_sanpham=?,name=?,price=?,img=?,mota=?,price_chiet=?,sale=?,luotxem=?,id_danhmuc=? WHERE id_sanpham=?";
