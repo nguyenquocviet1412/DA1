@@ -5,48 +5,50 @@ require_once "../../dao/danhmuc.php";
 extract($_REQUEST);
 if (exist_param("btn_list")) {
     $items = sanpham_selectall();
+    $danhmuc_sanpham = danhmuc_selectall();
     $VIEW_NAME = "list.php";
 } else if (exist_param("btn_insert")) {
-    $mahh = $_POST['mahh'];
-    $tenhh = $_POST['tenhh'];
-    $giatien = $_POST['giatien'];
-    $giamgia = $_POST['giamgia'];
-    $hinh = savefile('hinh', '../../upload/');
-    $trangthai = $_POST['trangthai'];
-    $ngaynhap = $_POST['ngaynhap'];
+    $iddm = $_POST['iddm'];
+    $name = $_POST['name'];
+    $price = $_POST['price'];
+    $price_chiet = $_POST['price_chiet'];
+    $sale = $_POST['sale'];
+    $img = savefile('img', '../../upload/');
     $mota = $_POST['mota'];
-    $madanhmuc = $_POST['madanhmuc'];
     $danhmuc_sanpham = danhmuc_selectall();
-    sanpham_insert($mahh, $tenhh, $giatien, $giamgia, $hinh, $madanhmuc, $trangthai, $ngaynhap, $mota);
+    sanpham_insert($name, $price, $img, $mota, $price_chiet, $sale, $iddm);
     $items = sanpham_selectall();
     $VIEW_NAME = "add.php";
 } else if (exist_param("btn_edit")) {
-    $mahh = $_REQUEST['mahh'];
-    $sanphaminfo = sanpham_getinfo($mahh);
+    $id = $_REQUEST['id'];
+    $sanphaminfo = sanpham_getinfo($id);
     extract($sanphaminfo);
     $items = sanpham_selectall();
     $danhmuc_sanpham = danhmuc_selectall();
     $VIEW_NAME = "edit.php";
 } else if (exist_param("btn_delete")) {
-    $mahh = $_REQUEST['mahh'];
-    sanpham_delete($mahh);
+    $id = $_REQUEST['id'];
+    sanpham_delete($id);
     $items = sanpham_selectall();
     $VIEW_NAME = "list.php";
 } else if (exist_param("btn_update")) {
-    $mahh = $_POST['mahh'];
-    $tenhh = $_POST['tenhh'];
-    $giatien = $_POST['giatien'];
-    $giamgia=$_POST['giamgia'];
+    $iddm = $_POST['iddm'];
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    $price = $_POST['price'];
+    $price_chiet = $_POST['price_chiet'];
+    $sale = $_POST['sale'];
+    $img = savefile('img', '../../upload/');
     $mota = $_POST['mota'];
-    $madanhmuc = $_POST['madanhmuc'];
-    if ($_FILES['hinh']['error'] === UPLOAD_ERR_OK) {
+    if ($_FILES['img']['error'] === UPLOAD_ERR_OK) {
         // Nếu có chọn file mới, lưu và sử dụng tên file mới
-        $hinh = savefile('hinh', '../../upload/');
+        $img = savefile('img', '../../upload/');
     } else {
         // Nếu không có chọn file mới, sử dụng lại tên file ảnh cũ
-        $hinh = $_POST['hinhcu'];
+        $img = $_POST['oldimg'];
     }
-    sanpham_update($mahh, $tenhh, $giatien, $giamgia, $hinh, $madanhmuc, $trangthai, $ngaynhap, $mota);
+    sanpham_update($id, $name, $price, $img, $mota, $price_chiet, $sale, $iddm);
+    $danhmuc_sanpham = danhmuc_selectall();
     $items = sanpham_selectall();
     $VIEW_NAME = "list.php";
 } else {

@@ -4,14 +4,14 @@
         <thead>
             <tr>
                 <th></th>
-                <th>MÃ LOẠI</th>
                 <th>MÃ HÀNG</th>
+                <th>HÃNG</th>
                 <th>TÊN HÀNG</th>
-                <th>GIÁ TIỀN</th>
+                <th>GIÁ FULL</th>
+                <th>GIÁ CHIẾT</th>
                 <th>GIẢM GIÁ</th>
                 <th>HÌNH ẢNH</th>
-                <th>TRẠNG THÁI</th>
-                <th>SỐ LƯỢT XEM</th>
+                <th>MÔ TẢ</th>
                 <th></th>
             </tr>
         </thead>
@@ -21,41 +21,46 @@
                 extract($value);
                 ?>
                 <tr>
-                    <td><input type="checkbox" name="mahh[]" id="" value="<?= $mahang ?>"></td>
+                    <td><input type="checkbox" name="id[]" id="" value="<?= $id ?>"></td>
                     <td>
-                        <?= $maloaihang ?>
+                        <?= $id_sanpham ?>
                     </td>
                     <td>
-                        <?= $mahang ?>
+                        <?php foreach ($danhmuc_sanpham as $key => $value) {
+                            if ($id_danhmuc == $value['id']) {
+                                echo $value['name'];
+                            }
+                        }
+                        ?>
                     </td>
                     <td>
-                        <?= $tenhang ?>
+                        <?= $name ?>
                     </td>
                     <td>
-                        <?= $giatien ?>
+                        <?= $price ?>
                     </td>
                     <td>
-                        <?= $giamgia ?>
+                        <?= $price_chiet ?>
                     </td>
                     <td>
-                        <img src="/shop/upload/<?= $hinhanh ?>" alt="" width="200" height="100">
+                        <?= $sale ?>
                     </td>
                     <td>
-                        <?= ($trangthai == 0) ? "Bình thường" : "Đặc biệt" ?>
+                        <img src="/DA1/upload/<?= $img ?>" alt="" width="200" height="100">
                     </td>
                     <td>
-                        <?= $soluotxem ?>
+                        <?= $mota ?>
                     </td>
-
                     <td>
-                        <a class="btn btn-outline-success my-2" href="index.php?btn_edit&mahh=<?= $mahang ?>" role="button">Sửa</a>
-                        <a class="btn btn-outline-success" href="index.php?btn_delete&mahh=<?= $mahang ?>" role="button"
+                        <a class="btn btn btn-primary my-2" href="index.php?btn_edit&id=<?= $id_sanpham ?>"
+                            role="button">Sửa</a>
+                        <a class="btn btn btn-primary" href="index.php?btn_delete&id=<?= $id_sanpham ?>" role="button"
                             onclick="return confirm('Xoá?')">Xoá</a>
                     </td>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
-    <a class="btn btn-outline-success" href="index.php" role="button">Thêm mới</a>
+    <a class="btn btn btn-primary" href="index.php" role="button">Thêm mới</a>
 
 </form>
