@@ -6,157 +6,25 @@
             $i=0;
             foreach ($spnew as $sp) {
                 extract($sp);
-                $linksp="index.php?act=sanphamct&idsp=".$id;
+                $linksp="index.php?act=sanphamct&idsp=".$id_sanpham;
                 $hinh=$img_path.$img;
-                if(($i==2)||($i==5)||($i==8)){
-                    $mr="";
-                }else{
-                    $mr="mr";
-                }
-                echo '<div class="boxsp '.$mr.'">
-                        <div class="row img"><a href="'.$linksp.'"><img src="'.$hinh.'" alt=""></a></div>
-                        <p>$'.$price.'</p>
-                        <a href="'.$linksp.'">'.$name.'</a>
-                    </div>';
+                echo '
+            <div class="col-2">
+                <div class="product justify-content-center">
+                    <img src="'.$hinh.'" alt="Product Image">
+                    <div class="product-details p-2">
+                        <h3 class="product-title">'.$name.'</h3>
+                        <p class="product-price">$'.$price.'</p>
+                        <p>Đã bán:5</p>
+                        <a href="'.$linksp.'"><button class="btn btn-dark">Xem chi tiet</button></a>
+                    </div>
+                </div>
+            </div>
+            ';
                     $i+=1;
             }
         ?>
-            <div class="col-2">
-                <div class="product justify-content-center">
-                    <img src="img/nuochoa.jpg" alt="Product Image">
-                    <div class="product-details p-2">
-                        <h3 class="product-title">Product Name</h3>
-                        <p class="product-price">$19.99</p>
-                        <p>Đã bán:5</p>
-                        <a href="#"><button class="btn btn-dark">Xem chi tiet</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="product">
-                    <img src="img/nuochoa.jpg" alt="Product Image">
-                    <div class="product-details p-2">
-                        <h3 class="product-title">Product Name</h3>
-                        <p class="product-price">$19.99</p>
-                        <p>Đã bán:5</p>
-                        <a href="#"><button class="btn btn-dark">Xem chi tiet</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="product">
-                    <img src="img/nuochoa.jpg" alt="Product Image">
-                    <div class="product-details p-2">
-                        <h3 class="product-title">Product Name</h3>
-                        <p class="product-price">$19.99</p>
-                        <p>Đã bán:5</p>
-                        <a href="#"><button class="btn btn-dark">Xem chi tiet</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="product">
-                    <img src="img/nuochoa.jpg" alt="Product Image" class="">
-                    <div class="product-details p-2">
-                        <h3 class="product-title">Product Name</h3>
-                        <p class="product-price">$19.99</p>
-                        <p>Đã bán:5</p>
-                        <a href="#"><button class="btn btn-dark">Xem chi tiet</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="product">
-                    <img src="img/nuochoa.jpg" alt="Product Image">
-                    <div class="product-details p-2">
-                        <h3 class="product-title">Product Name</h3>
-                        <p class="product-price">$19.99</p>
-                        <p>Đã bán:5</p>
-                        <a href="#"><button class="btn btn-dark">Xem chi tiet</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="product">
-                    <img src="img/nuochoa.jpg" alt="Product Image">
-                    <div class="product-details p-2">
-                        <h3 class="product-title">Product Name</h3>
-                        <p class="product-price">$19.99</p>
-                        <p>Đã bán:5</p>
-                        <a href="#"><button class="btn btn-dark">Xem chi tiet</button></a>
-                    </div>
-                </div>
-            </div>
-        <!-- </div> -->
-        <!-- dong 2 -->
-        <!-- <div class="row"> -->
-            <div class="col-2">
-                <div class="product">
-                    <img src="img/nuochoa.jpg" alt="Product Image">
-                    <div class="product-details p-2">
-                        <h3 class="product-title">Product Name</h3>
-                        <p class="product-price">$19.99</p>
-                        <p>Đã bán:5</p>
-                        <a href="#"><button class="btn btn-dark">Xem chi tiet</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="product">
-                    <img src="img/nuochoa.jpg" alt="Product Image">
-                    <div class="product-details p-2">
-                        <h3 class="product-title">Product Name</h3>
-                        <p class="product-price">$19.99</p>
-                        <p>Đã bán:5</p>
-                        <a href="#"><button class="btn btn-dark">Xem chi tiet</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="product">
-                    <img src="img/nuochoa.jpg" alt="Product Image">
-                    <div class="product-details p-2">
-                        <h3 class="product-title">Product Name</h3>
-                        <p class="product-price">$19.99</p>
-                        <p>Đã bán:5</p>
-                        <a href="#"><button class="btn btn-dark">Xem chi tiet</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="product">
-                    <img src="img/nuochoa.jpg" alt="Product Image">
-                    <div class="product-details p-2">
-                        <h3 class="product-title">Product Name</h3>
-                        <p class="product-price">$19.99</p>
-                        <p>Đã bán:5</p>
-                        <a href="#"><button class="btn btn-dark">Xem chi tiet</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="product">
-                    <img src="img/nuochoa.jpg" alt="Product Image">
-                    <div class="product-details p-2">
-                        <h3 class="product-title">Product Name</h3>
-                        <p class="product-price">$19.99</p>
-                        <p>Đã bán:5</p>
-                        <a href="#"><button class="btn btn-dark">Xem chi tiet</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="product">
-                    <img src="img/nuochoa.jpg" alt="Product Image">
-                    <div class="product-details p-2">
-                        <h3 class="product-title">Product Name</h3>
-                        <p class="product-price">$19.99</p>
-                        <p>Đã bán:5</p>
-                        <a href="#"><button class="btn btn-dark">Xem chi tiet</button></a>
-                    </div>
-                </div>
-            </div>
-        <!-- </div> -->
+            
 
     </div>
 

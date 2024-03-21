@@ -58,7 +58,7 @@ function sanpham_tangsoluotxem($id)
 }
 function sanpham_selecttop10()
 {
-    $sql = "SELECT *FROM sanpham WHERE luotxem>0 ORDER BY luotxem DESC(0,10)";
+    $sql = "SELECT *FROM sanpham WHERE luotxem>0 ORDER BY luotxem DESC limit 0,10";
     return pdo_query($sql);
 }
 // function sanpham_selectdacbiet()

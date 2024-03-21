@@ -3,7 +3,7 @@
 
 function danhmuc_selectall()
 {
-    $sql = "SELECT * FROM danhmuc ORDER BY id_danhmuc ASC";
+    $sql = "SELECT * FROM danhmuc ORDER BY id ASC";
     pdo_query($sql);
     return pdo_query($sql);
 }
