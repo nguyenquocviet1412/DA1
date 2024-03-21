@@ -8,10 +8,10 @@ function sanpham_selectall()
     return pdo_query($sql);
 }
 
-function sanpham_insert($id, $name, $price, $img, $mota, $price_chiet, $sale, $luotxem, $id_danhmuc)
+function sanpham_insert($name, $price, $img, $mota, $price_chiet, $sale, $id_danhmuc)
 {
-    $sql = "INSERT INTO sanpham(id_sanpham, name, price, img, mota, price_chiet, sale, luotxem, id_danhmuc) VALUES(?,?,?,?,?,?,?,?,?)";
-    pdo_execute($sql, $id, $name, $price, $img, $mota, $price_chiet, $sale, $luotxem, $id_danhmuc);
+    $sql = "INSERT INTO sanpham(name, price, img, mota, price_chiet, sale, id_danhmuc) VALUES(?,?,?,?,?,?,?)";
+    pdo_execute($sql, $name, $price, $img, $mota, $price_chiet, $sale, $id_danhmuc);
 }
 
 function sanpham_delete($id)
@@ -36,15 +36,15 @@ function sanpham_selectby_loai($id_danhmuc)
     $sql = "SELECT*FROM sanpham WHERE id_danhmuc=?";
     return pdo_query($sql, $id_danhmuc);
 }
-// function sanpham_select_keyword($keyword)
-// {
-//     $sql = "SELECT*FROM sanpham sp JOIN danhmuc dm ON dm.id_danhmuc=sp.id_danhmuc WHERE tenhang LIKE ? OR tenloai LIKE ? ";
-//     return pdo_query($sql, '%' . $keyword . '%', '%' . $keyword . '%');
-// }
-function sanpham_update($id, $name, $price, $img, $mota, $price_chiet, $sale, $luotxem, $id_danhmuc)
+function sanpham_select_keyword($keyword)
 {
-    $sql = "UPDATE sanpham SET id_sanpham=?,name=?,price=?,img=?,mota=?,price_chiet=?,sale=?,luotxem=?,id_danhmuc=? WHERE id_sanpham=?";
-    pdo_execute($sql, $id, $name, $price, $img, $mota, $price_chiet, $sale, $luotxem, $id_danhmuc, $id);
+    $sql = "SELECT*FROM sanpham sp JOIN danhmuc dm ON dm.id=sp.id_danhmuc WHERE dm.name LIKE ? OR sp.name LIKE ? ";
+    return pdo_query($sql, '%' . $keyword . '%', '%' . $keyword . '%');
+}
+function sanpham_update($id, $name, $price, $img, $mota, $price_chiet, $sale, $id_danhmuc)
+{
+    $sql = "UPDATE sanpham SET id_sanpham=?,name=?,price=?,img=?,mota=?,price_chiet=?,sale=?,id_danhmuc=? WHERE id_sanpham=?";
+    pdo_execute($sql, $id, $name, $price, $img, $mota, $price_chiet, $sale, $id_danhmuc, $id);
 }
 function sanpham_exist($id)
 {

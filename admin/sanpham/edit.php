@@ -1,73 +1,52 @@
-<h1>CHỈNH SỬA HÀNG HOÁ</h1>
 <form action="index.php" method="post" enctype="multipart/form-data">
-    <div class="row">
-        <div class="col-4 my-2">
-            <label class="fw-bold">MÃ HÀNG HOÁ</label>
-            <input type="text" name="mahh" id="" class="form-control" value="<?= $mahang ?>" readonly>
-        </div>
-        <div class="col-4 my-2">
-            <label class="fw-bold">TÊN HÀNG HOÁ</label>
-            <input type="text" name="tenhh" id="" class="form-control" value="<?= $tenhang ?>">
-        </div>
-        <div class="col-4 my-2">
-            <label class="fw-bold">GIÁ TIỀN</label>
-            <input type="number" name="giatien" id="" class="form-control" value="<?= $giatien ?>">
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-4 my-2">
-            <label class="fw-bold">GIẢM GIÁ</label>
-            <input type="number" name="giamgia" id="" class="form-control" min="0" max="100" value="<?= $giamgia ?>">
-        </div>
-        <div class="col-4 my-2">
-            <label class="fw-bold">HÌNH ẢNH</label>
-            <input type="file" name="hinh" id="" class="form-control">
-            <input type="hidden" name="hinhcu" value="<?= $hinhanh ?>">
-            <?= $hinhanh ?>
-        </div>
-        <div class="col-4 my-2">
-            <label class="fw-bold">LOẠI HÀNG</label>
-            <div class="input-group mb-3">
-                <select name="maloai" class="form-select" id="inputGroupSelect01">
-                    <?php foreach ($loai_hanghoa as $key => $value) {
-                        extract($value);
-                        $s = ($maloai == $maloaihang) ? "selected" : "";
-                        echo "<option value='$maloai' $s >$tenloai</option>";
-                    } ?>
-                </select>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-4 my-2">
-            <label class="fw-bold">TRẠNG THÁI</label>
-            <div class="radio">
-                <input type="radio" name="trangthai" id="normal" <?= !$trangthai ? 'checked' : '' ?>>
-                <label for="no_activate">Bình thường</label>
-                <input type="radio" name="trangthai" id="special" <?= $trangthai ? 'checked' : '' ?>>
-                <label for="activate">Đặc biệt</label>
-            </div>
-        </div>
-        <div class="col-4 my-2">
-            <label class="fw-bold">NGÀY NHẬP</label><br>
-            <input type="date" name="ngaynhap" id="" class="form-control" value="<?= $ngaynhap ?>" readonly>
-        </div>
-        <div class="col-4 my-2">
-            <label class="fw-bold">SỐ LƯỢT XEM</label><br>
-            <input type="number" name="view" id="" class="form-control" value="<?= $soluotxem ?>" readonly>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 my-2">
-            <label class="fw-bold">MÔ TẢ</label>
-            <textarea name="mota" class="form-control" id="floatingTextarea"><?= $mota ?></textarea>
-        </div>
+    <div class="mb-3 mt-3">
+        <label for="text" class="form-label">ID danh mục:</label>
+        <select name="iddm" id="">
+            <?php foreach ($danhmuc_sanpham as $key => $value) {
+                $s = ($id_danhmuc == $value['id']) ? "selected" : "";
+                echo "<option value='{$value['id']}' $s > {$value['name']} </option>";
+            } ?>
+        </select>
 
     </div>
-
-    <button class="btn btn-outline-success" name="btn_update">Cập nhật</button>
-    <button type="reset" class="btn btn-outline-success">Nhập lại</button>
-    <a class="btn btn-outline-success" href="index.php" role="button">Thêm mới</a>
-    <a class="btn btn-outline-success" href="index.php?btn_list" role="button">Danh sách</a>
+    <div class="mb-3">
+        <label for="text" class="form-label">ID sản phẩm:</label>
+        <input type="text" class="form-control" id="" name="id" value="<?= $id ?>" readonly>
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="text" class="form-label">Tên sản phẩm:</label>
+        <input type="text" class="form-control" id="" name="name" value="<?= $name ?>">
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="text" class="form-label">Giá:</label>
+        <input type="text" class="form-control" id="" name="price" value="<?= $price ?>">
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="text" class="form-label">Giá chiết:</label>
+        <input type="text" class="form-control" id="" name="price_chiet" value="<?= $price_chiet ?>">
+    </div>
+    <div class="mb-3">
+        <label for="file" class="form-label">Ảnh:</label>
+        <input type="file" class="form-control" id="" name="img">
+        <?= $img ?>
+        <input type="hidden" name="oldimg" value="<?= $img ?>">
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="text" class="form-label">Mô tả:</label> <br>
+        <textarea name="mota" class="form-control" style="resize: none; height: 130px"> <?= $mota ?></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="text" class="form-label">Giảm giá:</label>
+        <input type="text" class="form-control" id="" name="sale" value="<?= $sale ?>">
+    </div>
+    <div class="mb-3">
+        <label for="text" class="form-label">Lượt xem:</label>
+        <input type="text" class="form-control" id="" name="luotxem" value="<?= $luotxem ?>" readonly>
+    </div>
+    <div class="sub p-2">
+        <button class="btn btn-primary" name="btn_update">Cập nhật</button>
+        <button type="reset" class="btn btn-primary">Nhập lại</button>
+        <a class="btn btn-primary" href="index.php" role="button">Thêm mới</a>
+        <a class="btn btn-primary" href="index.php?btn_list" role="button">Danh sách</a>
+    </div>
 </form>
