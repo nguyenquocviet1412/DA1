@@ -31,11 +31,13 @@
             border-radius: 5px;
             margin-bottom: 20px;
             padding: 15px;
+            overflow: hidden;
         }
 
         .product img {
-            max-width: 150px;
+            width: 100%;
             height: auto;
+
         }
 
         .product-title {
