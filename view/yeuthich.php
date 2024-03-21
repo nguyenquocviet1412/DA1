@@ -9,78 +9,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-1 m-2">
-            <div class="product_top10">
-                <img src="img/tải xuống.jpg" alt="Product Image">
-                <div class="product-details">
-                    <p>Product Name</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-1 m-2">
-            <div class="product_top10">
-                <img src="img/images.jpg" alt="Product Image">
-                <div class="product-details">
-                    <p>Product Name</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-1 m-2">
-            <div class="product_top10">
-                <img src="img/images.jpg" alt="Product Image">
-                <div class="product-details">
-                    <p>Product Name</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-1 m-2">
-            <div class="product_top10">
-                <img src="img/nuochoa.jpg" alt="Product Image">
-                <div class="product-details">
-                    <p>Product Name</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-1 m-2">
-            <div class="product_top10">
-                <img src="img/tải xuống.jpg" alt="Product Image">
-                <div class="product-details">
-                    <p>Product Name</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-1 m-2">
-            <div class="product_top10">
-                <img src="img/images.jpg" alt="Product Image">
-                <div class="product-details">
-                    <p>Product Name</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-1 m-2">
-            <div class="product_top10">
-                <img src="img/images.jpg" alt="Product Image">
-                <div class="product-details">
-                    <p>Product Name</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-1 m-2">
-            <div class="product_top10">
-                <img src="img/nuochoa.jpg" alt="Product Image">
-                <div class="product-details">
-                    <p>Product Name</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-1 m-2">
-            <div class="product_top10">
-                <img src="img/tải xuống.jpg" alt="Product Image">
-                <div class="product-details">
-                    <p>Product Name</p>
-                </div>
-            </div>
-        </div>
+        
 
     </div>
 </aside>
