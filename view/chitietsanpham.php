@@ -1,21 +1,97 @@
+<style>
+        .container {
+            background-color: rgb(255, 255, 255);
+            width: 100%;
+        }
+
+        .baner {
+            background-image: url("img/bn\ 4.jpg");
+            height: 400px;
+            width: 100%;
+        }
+
+        /* showsp*/
+        .showsp{
+             border: 1px solid #000000;
+             border-radius: 5px;
+             margin-bottom: 20px;
+             padding: 10px;
+ 
+        }
+        .binhluan{
+             border: 1px solid #000000;
+             border-radius: 5px;
+             margin-bottom: 20px;
+             padding: 10px;
+             height: 300px;
+        }
+        .thanhbl{
+            margin-top: 20px;
+        }
+        .listbl{
+             border: 1px solid #000000;
+             height: 200px;
+             border-radius: 5px;
+        }
+        .spcungloai{
+             border: 1px solid #000000;
+             border-radius: 5px;
+             margin-bottom: 20px;
+             padding: 10px;
+             height: 200px;
+        }
+
+        .item{
+            display: flex;
+            padding: 10px;;
+        }
+        .product-price {
+            font-size: 1.1rem;
+            color: #ef0606;
+            margin-top: 5px;
+            font-size: 40px;
+        }
+
+
+        /* top 10 */
+        .product_top10 img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .content{
+            margin-left:600px ;
+        }
+
+        .user{
+            margin-top: -82px;
+        }
+
+        .buy{
+            margin-top: -82px;
+        }
+        .video{
+            display: flex;
+        }
+    </style>
+    
 <main class="justify-content-center">
                 <h3>Chi tiet san pham</h3>
                 <div class="showsp">
+                <?php 
+                  extract($onesp);
+                  sanpham_tangsoluotxem($id) ;
+                  $img=$img_path.$img;
+                  echo '
                     <div class="item">
                       <div class="item-image flex col-6">
-                        <img src="img/images.jpg" alt="" class="item-img" width="400px" height="400px">
+                        <img src="'.$img.'" alt="" class="item-img" width="400px" height="400px">
                       </div>
                       <div class="item-content col-6">
-                        <h3 class="item-title">san pham 1</h3>
-                        <p class=" h1 product-price">19$</p>
+                        <h3 class="item-title">'.$tensp.'</h3>
+                        <p class=" h1 product-price">'.$price.'$</p>
                         <p class="item-text">
-                            <pre>
-                        CO thể hiện nghệ thuật tương phản của Mademoiselle: cô là người đã tạo nên cuộc
-                        cách mạng thời trang cho nữ giới, bằng ý niệm về sự giản dị và tinh tế, nhưng cũng
-                        đồng thời yêu thích phong cách hoa mỹ kiểu Baroque. Hương nước hoa ẩn mình dưới nét
-                        sang trọng khác biệt hiện có phiên bản EAU DE PARFUM, EAU DE TOILETTE và các sản phẩm
-                        chăm sóc cơ thể.
-                            </pre>
+                            <pre>'.$mota.'</pre>
                         </p>
                         <div class="sub p-2">
                             <button type="submit" class="btn btn-danger">them vao gio hang</button>
@@ -24,6 +100,10 @@
 
                     </div>
                 </div>
+                ';
+                ?>
+
+
                 <h3>Binh Luan</h3>
                 <div class="binhluan">
                     <div class="listbl">
@@ -34,9 +114,15 @@
                         <button type="submit" class="btn btn-danger">Gửi</button>
                     </div>
                 </div>
-                <h3>San pham cung loai</h3>
+                <h3>Sản phẩm cùng hãng <?php extract($sp_cung_loai); echo $tendm; ?></h3>
                 <div class="spcungloai">
-                    fefefef
+                <?php 
+                    foreach ($sp_cung_loai as $sp_cung_loai) {
+                        extract($sp_cung_loai);
+                        $linksp="index.php?act=sanphamct&idsp=".$id;
+                        echo '<li><a href="'.$linksp.'">'.$name.'</a></li>';
+                    }
+                ?>
                 </div>
             </main>
             <div class="video justify-content-center">

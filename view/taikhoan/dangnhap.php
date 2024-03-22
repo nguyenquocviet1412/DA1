@@ -21,6 +21,7 @@
     }
 
     .container {
+<<<<<<< HEAD
       width: 100%;
       background-image: url("img/thiet-ke-poster-nuoc-hoa-thu-hut-khach-hang1.jpg");
       padding: 10px;
@@ -45,10 +46,33 @@
       padding: 20px;
       margin-left: 170px;
     }
+=======
+         background-image: url("img/thiet-ke-poster-nuoc-hoa-thu-hut-khach-hang1.jpg");
+          padding: 10px;
+          height: 840px;
+      }
+      .card{
+        margin-left: 350px;
+        margin-top: 30px;
+        height: 650px;
+      }
+      .card h1{
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .card img{
+        width: 250px;
+        height: 300px;
+        padding: 20px;
+        margin-left: 170px;
+      }
+>>>>>>> 2c4eb25011f0ef077640c8fdf7935e0e504087e3
   </style>
 </head>
 
 <body>
+<<<<<<< HEAD
   <div class="container">
     <div class="card" style="width:600px">
       <h1>DANG NHAP</h1>
@@ -57,6 +81,28 @@
         <div class="mb-3 mt-3 m-3">
           <label for="text" class="form-label">User:</label>
           <input type="text" class="form-control" id="user" name="user">
+=======
+    <div class="container1">
+        <div class="card" style="width:600px">
+            <h1>DANG NHAP</h1>
+            <img class="card-img-top rounded-circle" src="img/images.jpg" alt="Card image">
+            <form action="">
+                <div class="mb-3 mt-3 m-3">
+                  <label for="text" class="form-label">User:</label>
+                  <input type="text" class="form-control" id="user" name="user">
+                </div>
+                <div class="mb-3 m-3">
+                  <label for="pwd" class="form-label">Password:</label>
+                  <input type="password" class="form-control" id="pwd" name="pswd">
+                </div>
+                <div class="form-check mb-3 m-3">
+                  <a href="#" class="text-decoration-none">dang ki tai khoan</a><br>
+                  <a href="#" class="text-decoration-none">quen mat khau</a><br>
+                  <a href="#" class="text-decoration-none">vai tro admin</a>
+                </div>
+                <button type="submit" class="btn btn-primary m-3">Submit</button><button type="home" class="btn btn-primary m-3">Home</button>
+              </form>
+>>>>>>> 2c4eb25011f0ef077640c8fdf7935e0e504087e3
         </div>
         <div class="mb-3 m-3">
           <label for="pwd" class="form-label">Password:</label>
@@ -71,7 +117,11 @@
           class="btn btn-primary m-3">Home</button>
       </form>
     </div>
+<<<<<<< HEAD
   </div>
+=======
+    <br>
+>>>>>>> 2c4eb25011f0ef077640c8fdf7935e0e504087e3
 </body>
 
 </html>

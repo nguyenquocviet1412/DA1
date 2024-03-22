@@ -28,7 +28,7 @@ function sanpham_delete($id)
 
 function sanpham_getinfo($id)
 {
-    $sql = "SELECT*FROM sanpham WHERE id_sanpham=?";
+    $sql = "SELECT *,sanpham.name as tensp, danhmuc.name as tendm FROM sanpham join danhmuc on sanpham.id_danhmuc=danhmuc.id  WHERE id_sanpham=?";
     return pdo_query_one($sql, $id);
 }
 function sanpham_selectby_loai($id_danhmuc)
@@ -77,4 +77,30 @@ function sanpham_home()
 //     $giasau = $giatien - $giatien * $giamgia / 100;
 //     return $giasau;
 // }
+
+
+
+function loadall_sanpham($kyw="",$iddm=0){
+    $sql="select * from sanpham where 1";
+    if($kyw!=""){
+        $sql.=" and name like '%".$kyw."%'";
+    }
+    if($iddm>0){
+        $sql.=" and id_danhmuc ='".$iddm."'";
+    }
+    $sql.=" order by id_sanpham desc";
+    $listsanpham=pdo_query($sql);
+    return $listsanpham;
+}
+
+function load_ten_dm($iddm){
+    if($iddm>0){
+        $sql = "select * from danhmuc where id=".$iddm;
+        $dm=pdo_query_one($sql);
+        extract($dm);
+        return $name;
+    }else{
+        return "";
+    }  
+}
 ?>
