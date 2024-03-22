@@ -10,7 +10,7 @@
                         <a class="nav-link active" href="/DA1/admin/danhmuc/">Danh mục</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/DA1/admin/sanpham/">Sản phẩm</a>
+                        <a class="nav-link active" href="/DA1/admin/sanpham/">Sản phẩm</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">tai khoan</a>

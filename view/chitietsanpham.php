@@ -88,7 +88,7 @@
                         <img src="'.$img.'" alt="" class="item-img" width="400px" height="400px">
                       </div>
                       <div class="item-content col-6">
-                        <h3 class="item-title">'.$name.'</h3>
+                        <h3 class="item-title">'.$tensp.'</h3>
                         <p class=" h1 product-price">'.$price.'$</p>
                         <p class="item-text">
                             <pre>'.$mota.'</pre>
@@ -114,9 +114,15 @@
                         <button type="submit" class="btn btn-danger">Gửi</button>
                     </div>
                 </div>
-                <h3>San pham cung loai</h3>
+                <h3>Sản phẩm cùng hãng <?php extract($sp_cung_loai); echo $tendm; ?></h3>
                 <div class="spcungloai">
-                    fefefef
+                <?php 
+                    foreach ($sp_cung_loai as $sp_cung_loai) {
+                        extract($sp_cung_loai);
+                        $linksp="index.php?act=sanphamct&idsp=".$id;
+                        echo '<li><a href="'.$linksp.'">'.$name.'</a></li>';
+                    }
+                ?>
                 </div>
             </main>
             <div class="video justify-content-center">

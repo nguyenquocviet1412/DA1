@@ -28,7 +28,7 @@ function sanpham_delete($id)
 
 function sanpham_getinfo($id)
 {
-    $sql = "SELECT*FROM sanpham WHERE id_sanpham=?";
+    $sql = "SELECT *,sanpham.name as tensp, danhmuc.name as tendm FROM sanpham join danhmuc on sanpham.id_danhmuc=danhmuc.id  WHERE id_sanpham=?";
     return pdo_query_one($sql, $id);
 }
 function sanpham_selectby_loai($id_danhmuc)
