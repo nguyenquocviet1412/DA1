@@ -98,7 +98,39 @@
             <header>
                 <h1 class="name text-danger">Shop</h1>
                 <nav>
+                <?php
+                    if (isset($_SESSION['user'])) {
+                    extract($_SESSION['user']);
+                ?>
                     <div class="menu">
+                        <ul class="col-12 navbar navbar-expand-sm bg-dark navbar-dark">
+                            <div class="container-fluid">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="index.php">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">News</a>
+                                    </li>
+                                    <?php if($role==1){ ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="admin/danhmuc/">Admin</a>
+                                    </li>
+                                    <?php } ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" href="#">Disabled</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" href="#">Disabled</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </ul>
+                    </div>
+                <?php
+                    } else {
+                ?>
+                <div class="menu">
                         <ul class="col-12 navbar navbar-expand-sm bg-dark navbar-dark">
                             <div class="container-fluid">
                                 <ul class="navbar-nav">
@@ -121,5 +153,5 @@
                             </div>
                         </ul>
                     </div>
-                    
+                    <?php } ?>
                         

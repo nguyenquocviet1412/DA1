@@ -1,14 +1,21 @@
 <div class="row justify-content-center">
                         <div class="col-6 p-3">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
-                                <select name="" id="" class="btn btn-outline-secondary">
-                                    <option value="1">List</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                            <form action="index.php?act=sanpham" method="post">
+                                <input type="text" name="kyw" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                                <select name="iddm" id="" class="btn btn-outline-secondary">
+                                    <option value="0">Danh mục</option>
+                                    <?php 
+                                        foreach ($dsdm as $dm) {
+                                            extract($dm);
+                                            echo '
+                                                <option value="' . $id . '" >' . $name . '</option>
+                                            ';
+                                        }
+                                    ?>
                                 </select>
-                                <button class="btn btn-outline-secondary" type="button">Search</button>
+                                <input class="btn btn-outline-secondary" type="submit" name="timkiem" value="Tìm kiếm">
+                                </form>
                             </div>
                         </div>
                     </div>

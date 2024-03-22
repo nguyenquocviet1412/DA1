@@ -13,6 +13,22 @@ session_start();
     if((isset($_GET['act']))&&($_GET['act'])&&($_GET['act']!="")){
         $act=$_GET['act'];
         switch ($act) {
+            case 'sanpham':
+                if(isset($_POST['kyw'])&&($_POST['kyw']!="")){
+                    $kyw=$_POST['kyw'];
+                }else{
+                    $kyw="";
+                }
+                if(isset($_POST['iddm'])&&($_POST['iddm']>0)){
+                    $iddm=$_POST['iddm'];
+                    
+                }else{
+                    $iddm=0;
+                }
+                $dssp=loadall_sanpham($kyw,$iddm);
+                    $tendm=load_ten_dm($iddm);
+                    include "view/sanpham.php";
+                break;
             case 'sanphamct':
                 
                 if(isset($_GET['idsp'])&&($_GET['idsp']>0)){
