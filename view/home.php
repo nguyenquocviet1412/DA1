@@ -1,8 +1,13 @@
+<style>
+    .flex{
+        display: flex;
+    }
+</style>
 <div class="row justify-content-center">
                         <div class="col-6 p-3">
                             <div class="input-group">
-                            <form action="index.php?act=sanpham" method="post">
-                                <input type="text" name="kyw" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                            <form action="index.php?act=sanpham" method="post" class="flex">
+                                <input type="text" name="kyw" class="form-control col-6" placeholder="Search for..." aria-label="Search for...">
                                 <select name="iddm" id="" class="btn btn-outline-secondary">
                                     <option value="0">Danh mục</option>
                                     <?php 

@@ -84,13 +84,13 @@
                   $img=$img_path.$img;
                   echo '
                     <div class="item">
-                      <div class="item-image flex col-6">
+                      <div class="item-image flex col-5">
                         <img src="'.$img.'" alt="" class="item-img" width="400px" height="400px">
                       </div>
                       <div class="item-content col-6">
                         <h3 class="item-title">'.$tensp.'</h3>
                         <p class=" h1 product-price">'.$price.'$</p>
-                        <p class="item-text">
+                        <p class="item-text ">
                             <pre>'.$mota.'</pre>
                         </p>
                         <div class="sub p-2">

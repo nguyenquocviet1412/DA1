@@ -4,13 +4,13 @@
             <div class="container-fluid">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/DA1/">Quay về web</a>
+                        <a class="nav-link active" href="/DA1/DuAn/">Quay về web</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/DA1/admin/danhmuc/">Danh mục</a>
+                        <a class="nav-link active" href="/DA1/DuAn/admin/danhmuc/">Danh mục</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/DA1/admin/sanpham/">Sản phẩm</a>
+                        <a class="nav-link active" href="/DA1/DuAn/admin/sanpham/">Sản phẩm</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">tai khoan</a>

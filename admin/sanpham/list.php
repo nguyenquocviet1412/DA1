@@ -46,7 +46,7 @@
                         <?= $sale ?>
                     </td>
                     <td>
-                        <img src="/DA1/upload/<?= $img ?>" alt="" width="200" height="100">
+                        <img src="/DA1/DuAn/upload/<?= $img ?>" alt="" width="200" height="100">
                     </td>
                     <td>
                         <?= $mota ?>
