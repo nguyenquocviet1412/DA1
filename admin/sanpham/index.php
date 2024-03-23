@@ -30,6 +30,7 @@ if (exist_param("btn_list")) {
     $id = $_REQUEST['id'];
     sanpham_delete($id);
     $items = sanpham_selectall();
+    $danhmuc_sanpham = danhmuc_selectall();
     $VIEW_NAME = "list.php";
 } else if (exist_param("btn_update")) {
     $iddm = $_POST['iddm'];
