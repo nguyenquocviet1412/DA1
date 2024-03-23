@@ -1,10 +1,10 @@
 <aside class="justify-content-center">
-    <p class="h2 m-3">top sp ban chay</p>
+    <p class="h2 m-3">Top sản phẩm được yêu thích</p>
     <div class="row">
     <?php
         foreach ($dstop10 as $sp) {
             extract($sp);
-            $linksp = "index.php?act=sanphamct&idsp=" . $id;
+            $linksp = "index.php?act=sanphamct&idsp=" . $id_sanpham;
             $img = $img_path . $img;
             echo '
             <div class="col-1 m-2">

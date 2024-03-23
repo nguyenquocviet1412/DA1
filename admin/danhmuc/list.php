@@ -12,6 +12,7 @@
         <tbody>
             <?php foreach ($items as $key => $value) {
                 extract($value);
+                $thongbaoxoa="'"."Bạn có chắc chắn muốn xóa sản phẩm:".$name."'";
                 ?>
                 <tr>
                     <td><input type="checkbox" name="id[]" id="" value="<?= $id ?>"></td>
@@ -22,8 +23,8 @@
                         <?= $name ?>
                     </td>
                     <td>
-                        <a class="btn btn-primary" href="index.php?btn_edit&id=<?= $id ?>" role="button">Sửa</a>
-                        <a class="btn btn-primary" href="index.php?btn_delete&id=<?= $id ?>"
+                        <a  class="btn btn-primary" href="index.php?btn_edit&id=<?= $id ?>" role="button">Sửa</a>
+                        <a  onclick="return confirm('.$thongbaoxoa.')" class="btn btn-primary" href="index.php?btn_delete&id=<?= $id ?>"
                             role="button">Xoá</a>
                     </td>
                 </tr>

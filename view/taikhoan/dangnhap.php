@@ -24,7 +24,7 @@
       width: 100%;
       background-image: url("img/thiet-ke-poster-nuoc-hoa-thu-hut-khach-hang1.jpg");
       padding: 10px;
-      height: 750px;
+      height: 850px;
     }
 
     .card {
@@ -49,7 +49,7 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container1">
     <div class="card" style="width:600px">
       <h1>DANG NHAP</h1>
       <img class="card-img-top rounded-circle" src="img/images.jpg" alt="Card image">
@@ -72,6 +72,7 @@
       </form>
     </div>
   </div>
+  <br>
 </body>
 
 </html>

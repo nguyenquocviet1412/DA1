@@ -112,7 +112,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">News</a>
                                     </li>
-                                    <?php if($role==1){ ?>
+                                    <?php if($role==0){ ?>
                                     <li class="nav-item">
                                         <a class="nav-link" href="admin/danhmuc/">Admin</a>
                                     </li>

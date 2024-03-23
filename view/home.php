@@ -4,7 +4,6 @@
     }
 </style>
 <div class="row justify-content-center">
-<<<<<<< HEAD
                         <div class="col-6 p-3">
                             <div class="input-group">
                             <form action="index.php?act=sanpham" method="post" class="flex">
@@ -25,27 +24,6 @@
                             </div>
                         </div>
                     </div>
-=======
-    <div class="col-6 p-3">
-        <div class="input-group">
-            <form action="index.php?act=sanpham" method="post">
-                <input type="text" name="kyw" class="form-control" placeholder="Search for..."
-                    aria-label="Search for..." size="80">
-                <select name="iddm" id="" class="btn btn-outline-secondary">
-                    <option value="0">Danh mục</option>
-                    <?php
-                    foreach ($dsdm as $dm) {
-                        extract($dm);
-                        echo ' <option value="' . $id . '" >' . $name . '</option> ';
-                    }
-                    ?>
-                </select>
-                <input class="btn btn-outline-secondary" type="submit" name="timkiem" value="Tìm kiếm">
-            </form>
-        </div>
-    </div>
-</div>
->>>>>>> 779b26ef81b580353d72486ab30043c768f0ce37
 
 <div class="baner img-thumbnail p-3">
     <div class="icon">

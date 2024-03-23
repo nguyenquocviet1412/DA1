@@ -80,7 +80,7 @@
                 <div class="showsp">
                 <?php 
                   extract($onesp);
-                  sanpham_tangsoluotxem($id) ;
+                  sanpham_tangsoluotxem($id_sanpham) ;
                   $img=$img_path.$img;
                   echo '
                     <div class="item">
