@@ -91,7 +91,7 @@
                         <h3 class="item-title">'.$tensp.'</h3>
                         <p class=" h1 product-price">'.$price.'$</p>
                         <p class="item-text ">
-                            <pre>'.$mota.'</pre>
+                            '.$mota.'
                         </p>
                         <div class="sub p-2">
                             <button type="submit" class="btn btn-danger">them vao gio hang</button>
