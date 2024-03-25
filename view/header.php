@@ -88,12 +88,15 @@
             transform: scale(1.2);
 
         }
+        .thongbao{
+            color: red;
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="container" style="height: auto;">
         <div class="row">
             <header>
                 <h1 class="name text-danger">Shop</h1>
@@ -112,13 +115,13 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">News</a>
                                     </li>
-                                    <?php if($role==0){ ?>
+                                    <?php if(isset($role)&& $role==1){ ?>
                                     <li class="nav-item">
                                         <a class="nav-link" href="admin/danhmuc/">Admin</a>
                                     </li>
                                     <?php } ?>
                                     <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">Disabled</a>
+                                        <a class="nav-link " href="index.php?act=thoat">Thoát</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link disabled" href="#">Disabled</a>
@@ -140,12 +143,12 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">News</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a class="nav-link" href="admin/danhmuc/">Admin</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">Disabled</a>
-                                    </li>
+                                        <a class="nav-link " href="index.php?act=thoat">Thoát</a>
+                                    </li> -->
                                     <li class="nav-item">
                                         <a class="nav-link disabled" href="#">Disabled</a>
                                     </li>

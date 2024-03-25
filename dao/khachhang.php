@@ -7,10 +7,10 @@ function khachhang_selectall()
     return pdo_query($sql);
 }
 
-function khachhang_insert($makh, $matkhau, $hoten, $email, $hinh, $kichhoat, $vaitro)
+function khachhang_insert($user,$pass,$email,$address,$tel,$avatar,$gender)
 {
-    $sql = "INSERT INTO khachhang(makhachhang,matkhau,hoten,email,hinh,kichhoat,vaitro) VALUES(?,?,?,?,?,?,?)";
-    pdo_execute($sql, $makh, $matkhau, $hoten, $email, $hinh, $kichhoat, $vaitro);
+    $sql = "INSERT INTO taikhoan (user,pass,email,address,tel,avatar,gender) VALUES(?,?,?,?,?,?,?)";
+    pdo_execute($sql, $user,$pass,$email,$address,$tel,$avatar,$gender);
 }
 
 function khachhang_delete($makh)
@@ -50,5 +50,10 @@ function khachhang_change_matkhau($matkhau, $makh)
 {
     $sql = "UPDATE khachhang SET matkhau=? WHERE makhachhang=?";
     pdo_execute($sql, $matkhau, $makh);
+}
+function checkuser($user,$pass){
+    $sql = "SELECT * from taikhoan where user='".$user."' AND pass='".$pass."'";
+    $sp=pdo_query_one($sql);
+    return $sp;
 }
 ?>
