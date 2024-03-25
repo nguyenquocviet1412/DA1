@@ -4,16 +4,16 @@
             <div class="container-fluid">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/DA1/DuAn/">Quay về web</a>
+                        <a class="nav-link active" href="../../">Quay về web</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/DA1/DuAn/admin/danhmuc/">Danh mục</a>
+                        <a class="nav-link active" href="../../admin/danhmuc/">Danh mục</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/DA1/DuAn/admin/sanpham/">Sản phẩm</a>
+                        <a class="nav-link active" href="../../admin/sanpham/">Sản phẩm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">tai khoan</a>
+                        <a class="nav-link" href="../../admin/taikhoan/">Tài khoản</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">thong ke</a>

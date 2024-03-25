@@ -4,7 +4,7 @@ include "dao/pdo.php";
 require_once "dao/pdo.php";
 include "dao/sanpham.php";
 include "dao/danhmuc.php";
-include "dao/khachhang.php";
+include "dao/taikhoan.php";
 include "view/header.php";
 include "global.php";
 
@@ -74,11 +74,11 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $address=$_POST['address'];
                 $tel=$_POST['tel'];
                 $gender=$_POST['gender'];
-                $avatar = savefile('avatar', '../upload/');
+                $avatar = savefile('avatar', 'upload/');
                
 
-                khachhang_insert($user,$pass,$email,$address,$tel,$avatar,$gender);
-                $thongbao="Đã đăng kí thành công.Vui lòng dăng nhập để thực hiện chức năng bình luận hoặc đặt hàng!";
+                taikhoan_insert($user,$pass,$email,$address,$tel,$avatar,$gender);
+                $thongbao="Đã đăng kí thành công!!";
             }
             include "view/taikhoan/dangky.php";
             break;
