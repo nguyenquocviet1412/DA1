@@ -51,14 +51,13 @@
 <body>
   <div class="container1">
     <div class="card" style="width:600px">
-      <h1>DANG NHAP</h1>
-      <?php
+    <?php
       if (isset ($_SESSION['user'])) {
         extract($_SESSION['user']);
-        $avatar = $img_path . $avatar;
+        $avatar1 = $img_path . $avatar;
         ?>
-
-        <img class="card-img-top rounded-circle" src="./img/images.jpg" alt="Card image">
+      <h1>Chào <?=$user?></h1>
+        <img class="card-img-top rounded-circle" src="<?=$avatar1?>" alt="Card image">
         <form action="index.php?act=dangnhap" method="post">
           <div class="mb-3 mt-3 m-3">
             <label for="text" class="form-label">User:</label>
@@ -76,7 +75,7 @@
           <a href="index.php"><input type="button" value="Home" class="btn btn-primary m-3"></a>
         </form>
 
-      <?php } ?>
+      <?php }else{ ?>
 
       <img class="card-img-top rounded-circle" src="./img/images.jpg" alt="Card image">
       <form action="index.php?act=dangnhap" method="post">
@@ -95,6 +94,7 @@
         <input type="submit" name="dangnhap" value="Đăng nhập" class="btn btn-primary m-3">
         <a href="index.php"><input type="button" value="Home" class="btn btn-primary m-3"></a>
       </form>
+      <?php } ?>
     </div>
   </div>
 </body>

@@ -7,18 +7,7 @@
                         <div class="col-6 p-3">
                             <div class="input-group">
                             <form action="index.php?act=sanpham" method="post" class="flex">
-                                <input type="text" name="kyw" class="form-control col-6" placeholder="Search for..." aria-label="Search for...">
-                                <select name="iddm" id="" class="btn btn-outline-secondary">
-                                    <option value="0">Danh mục</option>
-                                    <?php 
-                                        foreach ($dsdm as $dm) {
-                                            extract($dm);
-                                            echo '
-                                                <option value="' . $id . '" >' . $name . '</option>
-                                            ';
-                                        }
-                                    ?>
-                                </select>
+                                <input type="text" name="kyw" class="form-control col-8" placeholder="Search for..." aria-label="Search for..." size="40">
                                 <input class="btn btn-outline-secondary" type="submit" name="timkiem" value="Tìm kiếm">
                                 </form>
                             </div>
