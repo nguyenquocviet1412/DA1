@@ -82,6 +82,21 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             }
             include "view/taikhoan/dangky.php";
             break;
+        case 'capnhattaikhoan':
+            if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                $user=$_POST['user'];
+                $pass=$_POST['pass'];
+                $email=$_POST['email'];
+                $address=$_POST['address'];
+                $tel=$_POST['tel'];
+                $id=$_POST['id'];
+
+                update_taikhoan($id,$user,$pass,$email,$address,$tel);
+                $_SESSION['user']=checkuser($user,$pass);
+                header('Location: index.php?act=edit_taikhoan');
+            }
+            include "view/taikhoan/edit_taikhoan.php";
+            break;
         case 'thoat':
             session_unset();
             header('Location: index.php');
