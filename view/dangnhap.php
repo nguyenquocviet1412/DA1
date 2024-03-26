@@ -59,19 +59,21 @@
       <h1>Chào <?=$user?></h1>
         <img class="card-img-top rounded-circle" src="<?=$avatar1?>" alt="Card image">
         <form action="index.php?act=dangnhap" method="post">
-          <div class="mb-3 mt-3 m-3">
-            <label for="text" class="form-label">User:</label>
-            <input type="text" class="form-control" name="user">
-          </div>
-          <div class="mb-3 m-3">
-            <label for="pwd" class="form-label">Password:</label>
-            <input type="password" class="form-control" name="pass">
-          </div>
-          <div class="form-check mb-3 m-3">
-            <a href="index.php?act=trangdangky" class="text-decoration-none">Đăng ký tài khoản</a><br>
-            <a href="#" class="text-decoration-none">quen mat khau</a><br>
-          </div>
-          <input type="submit" name="dangnhap" value="Đăng nhập" class="btn btn-primary m-3">
+        <div class="mb-3 m-3">
+                  <label for="email" class="form-label">Email: <?=$email?></label>
+                </div>
+
+                <div class="mb-3 mt-3 m-3">
+                  <label for="text" class="form-label">Address: <?=$address?></label>
+                </div>
+
+                <div class="mb-3 mt-3 m-3">
+                  <label for="text" class="form-label">Tell: <?=$tel?></label>
+                </div>
+                <div class="form-check mb-3 m-3">
+                  <a href="index.php?act=capnhattaikhoan" class="text-decoration-none">Cập nhật tài khoản</a><br>
+                  <a href="index.php?act=" class="text-decoration-none">quen mat khau</a><br>
+                </div>
           <a href="index.php"><input type="button" value="Home" class="btn btn-primary m-3"></a>
         </form>
 
