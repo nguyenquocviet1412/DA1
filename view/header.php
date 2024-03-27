@@ -142,7 +142,7 @@
     <div class="container" style="height: auto;">
         <div class="row">
             <header>
-                <h1 class="name text-danger">Shop</h1>
+                <a href="index.php" style="text-decoration: none;"><h1 class="name text-danger" style="text-align: center;">Shop</h1></a>
                 <nav>
                     <?php
                     if (isset($_SESSION['user'])) {
@@ -169,7 +169,7 @@
                                     <ul>
                                         <li><a href="index.php">Home</a></li>
                                         <li><a href="#">New</a></li>
-                                        <li><a href="index.php?act=taikhoan">Danh mục</a></li>
+                                        <li><a href="index.php?act=taikhoan">Đăng nhập</a></li>
                                     </ul>
                                 </div>
                             </ul>

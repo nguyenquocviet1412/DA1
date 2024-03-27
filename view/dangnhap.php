@@ -57,7 +57,7 @@
         $avatar1 = $img_path . $avatar;
         ?>
       <h1>Chào <?=$user?></h1>
-        <img class="card-img-top rounded-circle" src="<?=$avatar1?>" alt="Card image">
+        <img class="card-img-top rounded-circle"  src="<?=$avatar1?>" alt="Card image">
         <form action="index.php?act=dangnhap" method="post">
         <div class="mb-3 m-3">
                   <label for="email" class="form-label">Email: <?=$email?></label>
@@ -71,8 +71,8 @@
                   <label for="text" class="form-label">Tell: <?=$tel?></label>
                 </div>
                 <div class="form-check mb-3 m-3">
-                  <a href="index.php?act=capnhattaikhoan" class="text-decoration-none">Cập nhật tài khoản</a><br>
-                  <a href="index.php?act=" class="text-decoration-none">quen mat khau</a><br>
+                  <a href="index.php?act=trangcapnhat" class="text-decoration-none">Cập nhật tài khoản</a><br>
+                  <a href="index.php?act=quenmk" class="text-decoration-none">quen mat khau</a><br>
                 </div>
           <a href="index.php"><input type="button" value="Home" class="btn btn-primary m-3"></a>
         </form>

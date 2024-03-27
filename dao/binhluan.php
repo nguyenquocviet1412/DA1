@@ -8,35 +8,39 @@ function binhluan_selectall()
     return pdo_query($sql);
 }
 
-function binhluan_insert($noidung, $mahh, $makh, $ngaybl)
+function binhluan_insert($noidung, $id_sanpham, $id_taikhoan, $ngaybl)
 {
-    $sql = "INSERT INTO binhluan(noidung, mahanghoa, makhachhang, ngaybinhluan) VALUES(?,?,?,?)";
-    pdo_execute($sql, $noidung, $mahh, $makh, $ngaybl);
+    $sql = "INSERT INTO binhluan(noidung, id_sanpham, id_taikhoan, ngaybinhluan) VALUES(?,?,?,?)";
+    pdo_execute($sql, $noidung, $id_sanpham, $id_taikhoan, $ngaybl);
 }
 
-function binhluan_delete($mabl)
+function binhluan_delete($id)
 {
-    $sql = "DELETE FROM binhluan WHERE mabinhluan=?";
-    pdo_execute($sql, $mabl);
+    $sql = "DELETE FROM binhluan WHERE id=?";
+    pdo_execute($sql, $id);
 }
 
-function binhluan_getinfo($mabl)
+function binhluan_getinfo($id)
 {
-    $sql = "SELECT*FROM binhluan WHERE mabinhluan=?";
-    return pdo_query_one($sql, $mabl);
+    $sql = "SELECT*FROM binhluan WHERE id=?";
+    return pdo_query_one($sql, $id);
 }
 
-function binhluan_update($mabl, $noidung, $makh, $mahh, $ngaybl)
+function binhluan_update($id, $noidung, $id_taikhoan, $id_sanpham, $ngaybl)
 {
-    $sql = "UPDATE binhluan SET noidung=?, mahanghoa=?, makhachhang=?, ngaybinhluan=? WHERE mabinhluan=?";
-    pdo_execute($sql, $noidung, $makh, $mahh, $ngaybl, $mabl);
+    $sql = "UPDATE binhluan SET noidung=?, id_sanpham=?, id_taikhoan=?, ngaybinhluan=? WHERE id=?";
+    pdo_execute($sql, $noidung, $id_taikhoan, $id_sanpham, $ngaybl, $id);
 }
-function binhluan_exist($mabl){
-    $sql="SELECT COUNT (*) FROM binhluan WHERE mabinhluan=?";
-    return pdo_query_value($sql, $mabl);
+function binhluan_exist($id){
+    $sql="SELECT COUNT (*) FROM binhluan WHERE id=?";
+    return pdo_query_value($sql, $id);
 }
-function binhluan_selectby_hanghoa($mahh){
-    $sql="SELECT b.* , h.tenhang FROM binhluan b JOIN hanghoa h ON b.mahanghoa=h.mahang WHERE b.mahanghoa=? ORDER BY ngaybinhluan DESC";
-    return pdo_query($sql, $mahh);
+function binhluan_selectby_hanghoa($id_sanpham){
+    $sql="SELECT b.* , s.name FROM binhluan b JOIN sanpham s ON b.id_sanpham=s.id_sanpham WHERE b.id_sanpham    =? ORDER BY ngaybinhluan DESC";
+    return pdo_query($sql, $id_sanpham);
+}
+function binhluan_selectby_taikhoan($id_taikhoan){
+    $sql="SELECT b.* , t.user, t.avatar FROM binhluan b JOIN taikhoan t ON b.id_taikhoan=t.id_taikhoan WHERE b.id_taikhoan    =? ORDER BY ngaybinhluan DESC";
+    return pdo_query($sql, $id_taikhoan);
 }
 ?>

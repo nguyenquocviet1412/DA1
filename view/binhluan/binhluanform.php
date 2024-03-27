@@ -1,0 +1,117 @@
+<?php 
+
+    session_start();
+    include "../../dao/pdo.php";
+    include "../../dao/binhluan.php";
+    $id_sanpham=$_REQUEST['id_sanpham'];
+
+    $dsbl=binhluan_selectby_hanghoa($id_sanpham);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bình luận</title>
+    <style>
+        .binhluan table{
+            width: 90%;
+            margin-left: 5%;
+    }
+        .binhluan table td:nth-child(1){
+            width: 20%;
+    }
+        .binhluan table td:nth-child(2){
+            width: 50%;
+    }
+        .binhluan table td:nth-child(3){
+            width: 30%;
+    }
+    .row{
+    float: left;
+    width: 100%;
+    }
+
+    .mb{
+        margin-bottom: 20px;
+    }
+    .boxtitle{
+    color: #333;
+    padding: 10px;
+    background-color: #EEE;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 1px #CCC solid;
+    }
+    .boxcontent2{
+    border-left: 1px #CCC solid;
+    border-right: 1px #CCC solid;
+    background-color: #EEE;
+    }
+    .boxfooter{
+    padding: 10px;
+    background-color: #EEE;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 1px #CCC solid;
+    border-right: 1px #CCC solid;
+    border-bottom: 1px #CCC solid;
+    }
+    </style>
+</head>
+<body>
+ 
+<div class="row mb">
+    <div class="boxtitle">BÌNH LUẬN</div>
+    <div class="boxcontent2 binhluan">
+        <table>
+            <?php
+
+            foreach ($dsbl as $bl) {
+                extract($bl);
+                $dsbl1=binhluan_selectby_taikhoan($id_taikhoan);
+                    $img_path="upload/";
+                    $avatar1 = $img_path . $avatar;
+                echo '<tr><td>'.$user.'<img src="' . $avatar1 . '" style="width: 50px; height: 50px; " alt="Product Image"></td>';
+
+                echo '<td>'.$noidung.'</td>';
+                
+                echo '<td>'.$ngaybinhluan.'</td></tr>';
+            }
+            ?>
+        </table>
+        
+    </div>
+    <div class="boxfooter binhluanform">
+    <?php
+            if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
+                extract($_SESSION['user']);
+                ?>
+        <form action="<?=$_SERVER['PHP_SELF'];?>" method="post">
+            <input type="hidden" name="id_sanpham" value="<?=$id_sanpham?>">
+            
+            <input type="text" name="noidung" >
+            <input type="submit" name="guibinhluan" value="Gửi bình luận">
+        </form>
+        <?php } else { ?>
+                <p style=color:red;>Bạn phải đăng nhập để bình luận!</p>
+            <?php } ?>
+    </div>
+
+        <?php 
+        if(isset($_POST['guibinhluan'])&&($_POST['guibinhluan'])){
+            $noidung=$_POST['noidung'];
+            $id_sanpham=$_POST['id_sanpham'];
+            $id_taikhoan=$_SESSION['user']['id_taikhoan'];
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
+            $ngaybinhluan=date('h:i:s d/m/Y');
+            binhluan_insert($noidung,$id_sanpham,$id_taikhoan,$ngaybinhluan);
+            header ("Location: ".$_SERVER['HTTP_REFERER']);
+        }
+        
+        ?>
+
+</div>
+   
+</body>
+</html>

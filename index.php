@@ -21,8 +21,8 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             } else {
                 $kyw = "";
             }
-            if (isset ($_POST['iddm']) && ($_POST['iddm'] > 0)) {
-                $iddm = $_POST['iddm'];
+            if (isset ($_GET['iddm']) && ($_GET['iddm'] > 0)) {
+                $iddm = $_GET['iddm'];
 
             } else {
                 $iddm = 0;
@@ -82,20 +82,42 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             }
             include "view/taikhoan/dangky.php";
             break;
+        case 'trangcapnhat':
+            include "view/taikhoan/capnhattaikhoan.php";
+            break;
         case 'capnhattaikhoan':
             if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                $email=$_POST['email'];
                 $user=$_POST['user'];
                 $pass=$_POST['pass'];
-                $email=$_POST['email'];
                 $address=$_POST['address'];
                 $tel=$_POST['tel'];
-                $id=$_POST['id'];
+                $gender=$_POST['gender'];
+                $avatar = savefile('avatar', 'upload/');
 
-                update_taikhoan($id,$user,$pass,$email,$address,$tel);
+                taikhoan_update($id_taikhoan, $user, $pass, $email, $address, $tel, $avatar, $gender);
+                $thongbao="Đã cập nhật thành công!!";
                 $_SESSION['user']=checkuser($user,$pass);
-                header('Location: index.php?act=edit_taikhoan');
+                header('Location: index.php?act=capnhattaikhoan');
             }
-            include "view/taikhoan/edit_taikhoan.php";
+            include "view/taikhoan/capnhattaikhoan.php";    
+            break;
+        case 'quenmk':
+            if(isset($_POST['guiemail'])&&($_POST['guiemail'])){
+                $email=$_POST['email'];
+                $tel=$_POST['tel'];
+
+                $checkemail=checkemail($email);
+                $checktel=checktel($tel);
+                if(is_array($checkemail) && is_array($checktel)){
+                    $thongbao="Mật khẩu của bạn là:".$checkemail['pass'];
+                }elseif(!is_array($checkemail)){
+                    $thongbao="Email không tồn tại";
+                }elseif(!is_array($checktel)){
+                    $thongbao="Số điện thoại không tồn tại";
+                }
+            }
+            include "view/taikhoan/quenmk.php";
             break;
         case 'thoat':
             session_unset();

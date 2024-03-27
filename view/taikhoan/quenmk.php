@@ -51,7 +51,7 @@
                     $hinh="no photo";
                 }
         ?>
-            <h1>Cập nhật tài khoản</h1>
+            <h1>Quên mật khẩu</h1>
             <?=$hinh?>
             <h2 class="thongbao">
                <?php 
@@ -60,47 +60,18 @@
                     }
                 ?>
                 </h2>
-            <form action="index.php?act=capnhattaikhoan" method="post" enctype="multipart/form-data">
-                <div class="mb-3 mt-3 m-3">
-                  <label for="text" class="form-label">User:</label>
-                  <input type="text" class="form-control" id="" name="user" value="<?=$user?>">
-                </div>
-
-                <div class="mb-3 m-3">
-                  <label for="pwd" class="form-label">Password:</label>
-                  <input type="password" class="form-control" id="" name="pass" value="<?=$pass?>">
-                </div>
-
+            <form action="index.php?act=quenmk" method="post" enctype="multipart/form-data">
                 <div class="mb-3 m-3">
                   <label for="email" class="form-label">Email:</label>
-                  <input type="email" class="form-control" id="" name="email" value="<?=$email?>">
-                </div>
-
-                <div class="mb-3 mt-3 m-3">
-                  <label for="text" class="form-label">Address:</label>
-                  <input type="text" class="form-control" id="" name="address" value="<?=$address?>">
+                  <input type="email" class="form-control" id="" name="email" >
                 </div>
 
                 <div class="mb-3 mt-3 m-3">
                   <label for="text" class="form-label">Tell:</label>
-                  <input type="text" class="form-control" id="" name="tel" value="<?=$tel?>">
+                  <input type="text" class="form-control" id="" name="tel" >
                 </div>
                 
-                <div class="mb-3 mt-3 m-3">
-                  <label for="file" class="form-label">Ảnh đại diện:</label>
-                  <input type="file" class="form-control" name="avatar" >
-                </div>
-
-                <div class="mb-3 mt-3 m-3">
-                <label for="male">Nam</label>
-                    <input type="radio" id="male" name="gender" value="nam" required>
-                <label for="female">Nữ</label>
-                    <input type="radio" id="female" name="gender" value="nữ" required>
-                <label for="other">Khác</label>
-                    <input type="radio" id="other" name="gender" value="khác" required>
-                </div>
-                <input type="hidden" name="id_taikhoan" value="<?=$id_taikhoan?>">
-                <input type="submit" value="Cập nhật" name="capnhat" class="btn btn-primary m-3">
+                <input type="submit" value="Gửi" name="guiemail" class="btn btn-primary m-3">
                 <a href="index.php"><input  type="button" value="Home" class="btn btn-primary m-3"></a>
             </form>
         </div>

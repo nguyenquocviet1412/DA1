@@ -103,29 +103,18 @@
                 ';
                 ?>
 
-
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        $("#binhluan").load("view/binhluan/binhluanform.php", {id_sanpham: <?=$id_sanpham?>});
+                    });
+                </script>
+        
                 <h3>Binh Luan</h3>
-                <div class="binhluan">
-                    <div class="listbl">
-                        
+                    <div  id="binhluan">
+                    
                     </div>
-                    <div class="thanhbl">
-                        <?php
-                            if (isset($_SESSION['user'])) {
-                            extract($_SESSION['user']);
-                        ?>
-                        <input type="text" name="" id="" class="btn btn-outline-secondary col-4" >
-                        <button type="submit" class="btn btn-danger">Gửi</button>
-                        <?php 
-                            }else{
-                                echo '
-                                <p class="thongbao">
-                                    Hãy đăng nhập để bình buận!
-                                </p>
-                                ';
-                            }
-                        ?>
-                    </div>
+                    
                 </div>
                 <h3>Sản phẩm cùng hãng <?php extract($sp_cung_loai); echo $name; ?></h3>
                 <div class="spcungloai">

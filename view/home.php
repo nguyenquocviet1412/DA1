@@ -25,21 +25,30 @@
 
     .product-list.active {
         display: block;
+        transform: scaleY(0);
+        transform-origin:left;
+        transition: transform 1s ease-out;
     }
 
 
     .category:hover .product-list {
         display: block;
-    }
+        transform: scaleY(1);
+    }   
 
 </style>
 <div class="category">
     <h3 class="category-title">danh mục</h3>
     <ul class="product-list">
-        <li class="product">Sản phẩm 1 ></li>
-        <li class="product">Sản phẩm 2</li>
-        <li class="product">Sản phẩm 3</li>
-        <li class="product">Sản phẩm 4</li>
+        <?php
+            foreach ($dsdm as $dm) {
+                extract($dm);
+                $linkdm = "index.php?act=sanpham&iddm=" . $id;
+                echo '<li class="product">
+                        <a href="' . $linkdm . '">' . $name . '</a>
+                    </li>';
+            }
+        ?>
     </ul>
 </div>
 <div class="row justify-content-center">

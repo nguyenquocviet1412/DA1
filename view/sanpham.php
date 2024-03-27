@@ -1,8 +1,57 @@
 <style>
-    .flex{
+    .flex {
         display: flex;
     }
+
+    .category {
+        position: relative;
+        display: inline-block;
+    }
+
+    .category-title {
+        position: absolute;
+        width: 200px;
+    }
+
+    .product-list {
+        list-style: none;
+        padding: 10px;
+        margin: 0;
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        width: 200px;
+    }
+
+    .product-list.active {
+        display: block;
+        transform: scaleY(0);
+        transform-origin:left;
+        transition: transform 1s ease-out;
+    }
+
+
+    .category:hover .product-list {
+        display: block;
+        transform: scaleY(1);
+    }   
+
 </style>
+</style>
+<div class="category">
+    <h3 class="category-title">danh mục</h3>
+    <ul class="product-list">
+        <?php
+            foreach ($dsdm as $dm) {
+                extract($dm);
+                $linkdm = "index.php?act=sanpham&iddm=" . $id;
+                echo '<li class="product">
+                        <a href="' . $linkdm . '">' . $name . '</a>
+                    </li>';
+            }
+        ?>
+    </ul>
+</div>
 <div class="row justify-content-center">
                         <div class="col-6 p-3">
                             <div class="input-group">
