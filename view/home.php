@@ -1,39 +1,74 @@
 <style>
-    .flex{
+    .flex {
         display: flex;
     }
+
+    .category {
+        position: relative;
+        display: inline-block;
+    }
+
+    .category-title {
+        position: absolute;
+        width: 200px;
+    }
+
+    .product-list {
+        list-style: none;
+        padding: 10px;
+        margin: 0;
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        width: 200px;
+    }
+
+    .product-list.active {
+        display: block;
+    }
+
+
+    .category:hover .product-list {
+        display: block;
+    }
+
 </style>
+<div class="category">
+    <h3 class="category-title">danh mục</h3>
+    <ul class="product-list">
+        <li class="product">Sản phẩm 1 ></li>
+        <li class="product">Sản phẩm 2</li>
+        <li class="product">Sản phẩm 3</li>
+        <li class="product">Sản phẩm 4</li>
+    </ul>
+</div>
 <div class="row justify-content-center">
-                        <div class="col-6 p-3">
-                            <div class="input-group">
-                            <form action="index.php?act=sanpham" method="post" class="flex">
-                                <input type="text" name="kyw" class="form-control col-8" placeholder="Search for..." aria-label="Search for..." size="40">
-                                <input class="btn btn-outline-secondary" type="submit" name="timkiem" value="Tìm kiếm">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+    <div class="col-6 p-3">
+        <div class="input-group">
+            <form action="index.php?act=sanpham" method="post" class="flex">
+                <input type="text" name="kyw" class="form-control col-8" placeholder="Search for..." aria-label="Search for..." size="40">
+                <input class="btn btn-outline-secondary" type="submit" name="timkiem" value="Tìm kiếm">
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="baner img-thumbnail p-3">
     <div class="icon">
         <ul class="nav justify-content-end">
             <div class="user">
                 <a class="nav-link" href="index.php?act=taikhoan">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="text-light"
-                        class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="text-light" class="bi bi-person-circle" viewBox="0 0 16 16">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                        <path fill-rule="evenodd"
-                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
                     </svg>
                 </a>
             </div>
 
             <div class="buy">
                 <a class="nav-link" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="text-light" class="bi bi-bag"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="text-light" class="bi bi-bag" viewBox="0 0 16 16">
+                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
                     </svg>
                 </a>
             </div>

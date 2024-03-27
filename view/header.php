@@ -5,11 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DỰ ÁN 1</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
-        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <style>
         * {
             margin: 0px;
@@ -26,6 +23,48 @@
             height: 400px;
             width: 100%;
         }
+
+        /* menu */
+        .menu {
+            background-color: black;
+            width: 100%;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .menu ul li {
+            float: left;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .menu ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .menu ul li a:hover {
+            color: white;
+            background-color: #ef0606;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 5px;
+            text-decoration: none;
+            transition: 0.5s;
+            border: 1px solid #ef0606;
+
+        }
+
+        /* danh muc */
+
+
+        /* end */
+
 
         /* product */
 
@@ -106,56 +145,30 @@
                 <h1 class="name text-danger">Shop</h1>
                 <nav>
                     <?php
-                    if (isset ($_SESSION['user'])) {
+                    if (isset($_SESSION['user'])) {
                         extract($_SESSION['user']);
-                        ?>
+                    ?>
                         <div class="menu">
-                            <ul class="col-12 navbar navbar-expand-sm bg-dark navbar-dark">
-                                <div class="container-fluid">
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="index.php">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">News</a>
-                                        </li>
-                                        <?php if (isset ($role) && $role == 1) { ?>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="admin/danhmuc/">Admin</a>
-                                            </li>
-                                        <?php } ?>
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="index.php?act=thoat">Thoát</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link disabled" href="#">Disabled</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <ul>
+                                <li><a href="index.php">Home</a></li>
+                                <li><a href="#">New</a></li>
+                                <?php if (isset($role) && $role == 1) { ?>
+
+                                    <li><a href="admin/danhmuc">Admin</a></li>
+                                <?php } ?>
+                                <li><a href="index.php?act=thoat">Thoát</a></li>
                             </ul>
                         </div>
-                        <?php
+                    <?php
                     } else {
-                        ?>
+                    ?>
                         <div class="menu">
                             <ul class="col-12 navbar navbar-expand-sm bg-dark navbar-dark">
                                 <div class="container-fluid">
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="index.php">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">News</a>
-                                        </li>
-                                        <!-- <li class="nav-item">
-                                        <a class="nav-link" href="admin/danhmuc/">Admin</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="index.php?act=thoat">Thoát</a>
-                                    </li> -->
-                                        <li class="nav-item">
-                                            <a class="nav-link disabled" href="#">Disabled</a>
-                                        </li>
+                                    <ul>
+                                        <li><a href="index.php">Home</a></li>
+                                        <li><a href="#">New</a></li>
+                                        <li><a href="index.php?act=taikhoan">Danh mục</a></li>
                                     </ul>
                                 </div>
                             </ul>
