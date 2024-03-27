@@ -33,6 +33,7 @@
     }
 
 </style>
+// update menu
 <div class="category">
     <h3 class="category-title">danh mục</h3>
     <ul class="product-list">

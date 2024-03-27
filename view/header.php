@@ -149,7 +149,7 @@
                         extract($_SESSION['user']);
                     ?>
                         <div class="menu">
-                            <!--  -->
+                            <!-- update menu -->
                             <ul>
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="#">New</a></li>
