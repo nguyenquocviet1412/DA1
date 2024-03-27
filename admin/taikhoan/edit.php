@@ -2,55 +2,64 @@
 <form action="index.php" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-6 my-2">
-            <label class="fw-bold">MÃ KHÁCH HÀNG (Tên đăng nhập)</label>
-            <input type="text" name="makhachhang" id="" class="form-control" value="<?=$makh?>">
+            <label class="fw-bold">USER</label>
+            <input type="text" name="user" id="" class="form-control" value="<?= $user ?>">
         </div>
-        <div class="col-6 my-2">
-            <label class="fw-bold">HỌ TÊN</label>
-            <input type="text" name="hoten" id="" class="form-control" value="<?=$hoten?>">
-        </div>
-    </div>
-    <div class="row">
         <div class="col-6 my-2">
             <label class="fw-bold">MẬT KHẨU</label>
-            <input type="password" name="matkhau" id="" class="form-control" value="<?=$matkhau?>">
+            <input type="password" name="pass" id="" class="form-control" value="<?= $pass ?>">
         </div>
+    </div>
+    <div class="row">
         <div class="col-6 my-2">
             <label class="fw-bold">EMAIL</label>
-            <input type="email" name="email" id="" class="form-control" value="<?=$email?>">
+            <input type="email" name="email" id="" class="form-control" value="<?= $email ?>">
         </div>
-    </div>
-    <div class="row">
         <div class="col-6 my-2">
             <label class="fw-bold">XÁC NHẬN MẬT KHẨU</label>
-            <input type="password" name="matkhau2" id="" class="form-control" value="<?=$matkhau?>">
-        </div>
-        <div class="col-6 my-2">
-            <label class="fw-bold">HÌNH ẢNH</label>
-            <input type="hidden" name="hinhcu" value="<?=$hinh?>">
-            <input type="file" name="hinh" id="" class="form-control">
-            (<?=$hinh?>)
+            <input type="password" name="pass2" id="" class="form-control" value="<?= $pass ?>">
         </div>
     </div>
+
     <div class="row">
         <div class="col-6 my-2">
-            <label class="fw-bold">KÍCH HOẠT</label>
-            <div class="radio">
-                <input type="radio" name="kichhoat" id="no_activate" value="0" <?=!$kichhoat?'checked':''?>>
-                <label for="no_activate">Không kích hoạt</label>
-                <input type="radio" name="kichhoat" id="activate" value="1" <?=$kichhoat?'checked':''?>>
-                <label for="activate">Kích hoạt</label>
-            </div>
+            <label class="fw-bold">SỐ ĐIỆN THOẠI</label>
+            <input type="text" name="tel" id="" class="form-control" value="<?= $tel ?>">
         </div>
         <div class="col-6 my-2">
-            <label class="fw-bold">VAI TRÒ</label>
+            <label class="fw-bold">GIỚI TÍNH</label>
             <div class="radio">
-                <input type="radio" name="vaitro" id="no_activate" value="0" <?=!$vaitro?'checked':''?>>
-                <label for="no_activate">Khách hàng</label>
-                <input type="radio" name="vaitro" id="activate" value="1" <?=$vaitro?'checked':''?>>
-                <label for="activate">Nhân viên</label>
+                <input type="radio" name="gender" id="male" value="Nam" <?= $gender == "Nam" ? 'checked' : '' ?>>
+                <label for="male">Nam</label>
+                <input type="radio" name="gender" id="female" value="Nữ" <?= $gender == "Nữ" ? 'checked' : '' ?>>
+                <label for="female">Nữ</label>
             </div>
         </div>
+        <div class="row">
+            <div class="col-6 my-2">
+                <label class="fw-bold">ĐỊA CHỈ</label>
+                <input type="text" name="address" id="" class="form-control" value="<?= $address ?>">
+            </div>
+            <div class="col-6 my-2">
+                <label class="fw-bold">HÌNH ẢNH</label>
+                <input type="hidden" name="oldavatar" value="<?= $avatar ?>">
+                <input type="file" name="avatar" id="" class="form-control">
+                (
+                <?= $avatar ?>)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 my-2">
+                <label class="fw-bold">VAI TRÒ</label>
+                <div class="radio">
+                    <input type="radio" name="role" id="no_activate" value="1" <?= !$role ? 'checked' : '' ?>>
+                    <label for="no_activate">Admin</label>
+                    <input type="radio" name="role" id="activate" value="0" <?= $role ? 'checked' : '' ?>>
+                    <label for="activate">Khách hàng</label>
+                </div>
+            </div>
+        </div>
+
     </div>
     <button class="btn btn-outline-success" name="btn_update">Cập nhật</button>
     <button type="reset" class="btn btn-outline-success">Nhập lại</button>
