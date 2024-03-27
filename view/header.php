@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DỰ ÁN 1</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
     <style>
         * {
             margin: 0px;
@@ -142,36 +145,46 @@
     <div class="container" style="height: auto;">
         <div class="row">
             <header>
-                <a href="index.php" style="text-decoration: none;"><h1 class="name text-danger" style="text-align: center;">Shop</h1></a>
+                <a href="index.php" style="text-decoration: none;">
+                    <h1 class="name text-danger" style="text-align: center;">Shop</h1>
+                </a>
                 <nav>
                     <?php
                     if (isset($_SESSION['user'])) {
                         extract($_SESSION['user']);
-                    ?>
+                        ?>
                         <div class="menu">
                             <!-- update menu -->
                             <ul>
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="#">New</a></li>
                                 <?php if (isset($role) && $role == 1) { ?>
-
-                                    <li><a href="admin/danhmuc">Admin</a></li>
+                                    <li>
+                                        <a href="admin/danhmuc">Admin</a>
+                                    </li>
                                 <?php } ?>
                                 <li><a href="index.php?act=thoat">Thoát</a></li>
+                                <li>
+                                <li>
+
+                                </li>
                             </ul>
                         </div>
-                    <?php
+                        </li>
+                        </ul>
+            </div>
+            <?php
                     } else {
-                    ?>
-                        <div class="menu">
-                            <ul class="col-12 navbar navbar-expand-sm bg-dark navbar-dark">
-                                <div class="container-fluid">
-                                    <ul>
-                                        <li><a href="index.php">Home</a></li>
-                                        <li><a href="#">New</a></li>
-                                        <li><a href="index.php?act=taikhoan">Đăng nhập</a></li>
-                                    </ul>
-                                </div>
-                            </ul>
-                        </div>
-                    <?php } ?>
+                        ?>
+            <div class="menu">
+                <ul class="col-12 navbar navbar-expand-sm bg-dark navbar-dark">
+                    <div class="container-fluid">
+                        <ul>
+                            <li><a href="index.php">Home</a></li>
+                            <li><a href="#">New</a></li>
+                            <li><a href="index.php?act=taikhoan">Đăng nhập</a></li>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+        <?php } ?>

@@ -39,7 +39,7 @@
 </style>
 // update menu
 <div class="category">
-    <h3 class="category-title">danh mục</h3>
+    <h3 class="category-title">Danh mục</h3>
     <ul class="product-list">
         <?php
             foreach ($dsdm as $dm) {

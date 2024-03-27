@@ -13,7 +13,7 @@ if (exist_param("btn_list")) {
     $avatar = $_FILES['avatar']['name'];
     $kichhoat = $_POST['kichhoat'];
     $vaitro = $_POST['vaitro'];
-    taikhoan_insert($makh, $matkhau, $hoten, $email, $avatar, $kichhoat, $vaitro);
+    // taikhoan_insert($makh, $matkhau, $hoten, $email, $avatar, $kichhoat, $vaitro);
     $items = taikhoan_selectall();
     $VIEW_NAME = "add.php";
 } else if (exist_param("btn_edit")) {
@@ -28,6 +28,7 @@ if (exist_param("btn_list")) {
     $items = taikhoan_selectall();
     $VIEW_NAME = "list.php";
 } elseif (exist_param("btn_update")) {
+    $id = $_POST['id'];
     $user = $_POST['user'];
     $pass = $_POST['pass'];
     $email = $_POST['email'];
@@ -42,9 +43,7 @@ if (exist_param("btn_list")) {
         // Nếu không có chọn file mới, sử dụng lại tên file ảnh cũ
         $avatar = $_POST['avatarcu'];
     }
-    $kichhoat = $_POST['kichhoat'];
-    $vaitro = $_POST['vaitro'];
-    taikhoan_update($makh, $matkhau, $hoten, $email, $avatar, $kichhoat, $vaitro, $gender);
+    taikhoan_update($id, $user, $pass, $email, $address, $tel, $avatar, $gender, $role);
     $items = taikhoan_selectall();
     $VIEW_NAME = "list.php";
 } else {

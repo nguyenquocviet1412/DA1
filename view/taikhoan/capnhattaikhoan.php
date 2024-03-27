@@ -93,11 +93,11 @@
 
                 <div class="mb-3 mt-3 m-3">
                 <label for="male">Nam</label>
-                    <input type="radio" id="male" name="gender" value="nam" required>
+                    <input type="radio" id="male" name="gender" value="Nam" required>
                 <label for="female">Nữ</label>
-                    <input type="radio" id="female" name="gender" value="nữ" required>
+                    <input type="radio" id="female" name="gender" value="Nữ" required>
                 <label for="other">Khác</label>
-                    <input type="radio" id="other" name="gender" value="khác" required>
+                    <input type="radio" id="other" name="gender" value="Khác" required>
                 </div>
                 <input type="hidden" name="id_taikhoan" value="<?=$id_taikhoan?>">
                 <input type="submit" value="Cập nhật" name="capnhat" class="btn btn-primary m-3">

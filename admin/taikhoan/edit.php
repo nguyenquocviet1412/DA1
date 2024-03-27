@@ -2,6 +2,7 @@
 <form action="index.php" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-6 my-2">
+            <input type="hidden" name="id" value="<?=$id_taikhoan?>">
             <label class="fw-bold">USER</label>
             <input type="text" name="user" id="" class="form-control" value="<?= $user ?>">
         </div>
@@ -33,6 +34,8 @@
                 <label for="male">Nam</label>
                 <input type="radio" name="gender" id="female" value="Nữ" <?= $gender == "Nữ" ? 'checked' : '' ?>>
                 <label for="female">Nữ</label>
+                <input type="radio" name="gender" id="other" value="Khác" <?= $gender == "Khác" ? 'checked' : '' ?>>
+                <label for="female">Khác</label>
             </div>
         </div>
         <div class="row">
@@ -42,7 +45,7 @@
             </div>
             <div class="col-6 my-2">
                 <label class="fw-bold">HÌNH ẢNH</label>
-                <input type="hidden" name="oldavatar" value="<?= $avatar ?>">
+                <input type="hidden" name="avatarcu" value="<?= $avatar ?>">
                 <input type="file" name="avatar" id="" class="form-control">
                 (
                 <?= $avatar ?>)
@@ -52,17 +55,17 @@
             <div class="col-6 my-2">
                 <label class="fw-bold">VAI TRÒ</label>
                 <div class="radio">
-                    <input type="radio" name="role" id="no_activate" value="1" <?= !$role ? 'checked' : '' ?>>
+                    <input type="radio" name="role" id="admin" value="1" <?= $role ? 'checked' : '' ?>>
                     <label for="no_activate">Admin</label>
-                    <input type="radio" name="role" id="activate" value="0" <?= $role ? 'checked' : '' ?>>
+                    <input type="radio" name="role" id="user" value="0" <?= !$role ? 'checked' : '' ?>>
                     <label for="activate">Khách hàng</label>
                 </div>
             </div>
         </div>
 
     </div>
-    <button class="btn btn-outline-success" name="btn_update">Cập nhật</button>
-    <button type="reset" class="btn btn-outline-success">Nhập lại</button>
-    <a class="btn btn-outline-success" href="index.php" role="button">Thêm mới</a>
-    <a class="btn btn-outline-success" href="index.php?btn_list" role="button">Danh sách</a>
+    <button class="btn btn-primary" name="btn_update">Cập nhật</button>
+    <button type="reset" class="btn btn-primary">Nhập lại</button>
+    <a class="btn btn-primary" href="index.php" role="button">Thêm mới</a>
+    <a class="btn btn-primary" href="index.php?btn_list" role="button">Danh sách</a>
 </form>
