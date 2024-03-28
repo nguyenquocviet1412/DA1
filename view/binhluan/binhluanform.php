@@ -17,6 +17,7 @@
         .binhluan table{
             width: 90%;
             margin-left: 5%;
+            overflow: hidden;
     }
         .binhluan table td:nth-child(1){
             width: 20%;
@@ -56,6 +57,7 @@
     border-left: 1px #CCC solid;
     border-right: 1px #CCC solid;
     border-bottom: 1px #CCC solid;
+    margin-top: -20px;
     }
     </style>
 </head>
@@ -70,9 +72,14 @@
             foreach ($dsbl as $bl) {
                 extract($bl);
                 $dsbl1=binhluan_selectby_taikhoan($id_taikhoan);
+                foreach ($dsbl1 as $bl1) {
+                    extract($bl1);
                     $img_path="upload/";
                     $avatar1 = $img_path . $avatar;
-                echo '<tr><td>'.$user.'<img src="' . $avatar1 . '" style="width: 50px; height: 50px; " alt="Product Image"></td>';
+                echo '<tr><td>'.$user.'<img src="' . $avatar1 . '" style="width: 30px; height: 30px; " alt="Product Image"></td>';
+                break;
+                }
+
 
                 echo '<td>'.$noidung.'</td>';
                 

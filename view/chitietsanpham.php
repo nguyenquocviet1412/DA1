@@ -28,11 +28,11 @@
         .thanhbl{
             margin-top: 20px;
         }
-        .listbl{
+        /* .listbl{
              border: 1px solid #000000;
              height: 200px;
              border-radius: 5px;
-        }
+        } */    
         .spcungloai{
              border: 1px solid #000000;
              border-radius: 5px;
@@ -73,6 +73,11 @@
         .video{
             display: flex;
         }
+        .row{
+            float: left;
+            width: 100%;
+            overflow: hidden;
+            }
     </style>
     
 <main class="justify-content-center">
@@ -109,12 +114,10 @@
                         $("#binhluan").load("view/binhluan/binhluanform.php", {id_sanpham: <?=$id_sanpham?>});
                     });
                 </script>
-        
                 <h3>Binh Luan</h3>
-                    <div  id="binhluan">
+                    <div class="row"  id="binhluan">
                     
                     </div>
-                    
                 </div>
                 <h3>Sản phẩm cùng hãng <?php extract($sp_cung_loai); echo $name; ?></h3>
                 <div class="spcungloai">
