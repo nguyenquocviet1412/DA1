@@ -154,6 +154,7 @@
                         extract($_SESSION['user']);
                         ?>
                         <div class="menu">
+                            <!-- update menu -->
                             <ul>
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="#">New</a></li>
@@ -163,8 +164,11 @@
                                     </li>
                                 <?php } ?>
                                 <li><a href="index.php?act=thoat">Thoát</a></li>
+                                
                             </ul>
                         </div>
+                        
+            </div>
             <?php
                     } else {
                         ?>

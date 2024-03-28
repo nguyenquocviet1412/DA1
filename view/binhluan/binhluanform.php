@@ -7,66 +7,74 @@ include "../../dao/taikhoan.php";
 $id_sanpham = $_REQUEST['id_sanpham'];
 $dsbl = binhluan_selectby_hanghoa($id_sanpham);
 ?>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bình luận</title>
+    <title>Bình luận</title> -->
     <style>
-        .binhluan table{
+        .binhluan table {
             width: 90%;
             margin-left: 5%;
-    }
-        .binhluan table td:nth-child(1){
+        }
+
+        .binhluan table td:nth-child(1) {
             width: 25%;
-    }
-        .binhluan table td:nth-child(2){
+        }
+
+        .binhluan table td:nth-child(2) {
             width: 60%;
             padding-left: 5px;
             padding-right: 5px;
-    }
-        .binhluan table td:nth-child(3){
+        }
+
+        .binhluan table td:nth-child(3) {
             width: 15%;
-    }
-    .row{
-    float: left;
-    width: 100%;
-    }
+        }
 
-    .mb{
-        margin-bottom: 20px;
-    }
-    .boxtitle{
-    color: #333;
-    padding: 10px;
-    background-color: #EEE;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border: 1px #CCC solid;
-    }
-    .boxcontent2{
-    border-left: 1px #CCC solid;
-    border-right: 1px #CCC solid;
-    background-color: #EEE;
-    overflow: hidden;
-    }
-    .boxfooter{
-    padding: 10px;
-    background-color: #EEE;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-left: 1px #CCC solid;
-    border-right: 1px #CCC solid;
-    border-bottom: 1px #CCC solid;
-    margin-top: -20px;
-    }
+        .row {
+            justify-content: center;
+            width: 100%;
+        }
+
+        .mb {
+            margin-bottom: 20px;
+        }
+
+        .boxtitle {
+            color: #333;
+            padding: 10px;
+            background-color: #EEE;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border: 1px #CCC solid;
+        }
+
+        .boxcontent2 {
+            border-left: 1px #CCC solid;
+            border-right: 1px #CCC solid;
+            background-color: #EEE;
+            overflow: auto;
+            max-height: 300px;
+        }
+
+        .boxfooter {
+            padding: 10px;
+            background-color: #EEE;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-left: 1px #CCC solid;
+            border-right: 1px #CCC solid;
+            border-bottom: 1px #CCC solid;
+            margin-top: -20px;
+        }
     </style>
-</head>
+<!-- </head> -->
 
-<body>
-    <div class="row mb">
+<!-- <body> -->
+    <div class="row">
         <div class="boxtitle">BÌNH LUẬN</div>
         <div class="boxcontent2 binhluan">
             <table>
@@ -82,17 +90,18 @@ $dsbl = binhluan_selectby_hanghoa($id_sanpham);
                     echo '<td>' . $noidung . '</td>';
 
                     echo '<td>' . $ngaybinhluan . '</td></tr>';
+
                 }
                 ?>
             </table>
 
         </div>
-        
+
         <div class="boxfooter binhluanform">
             <?php
             if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
                 extract($_SESSION['user']);
-            ?>
+                ?>
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                     <input type="hidden" name="id_sanpham" value="<?= $id_sanpham ?>">
 
@@ -119,6 +128,6 @@ $dsbl = binhluan_selectby_hanghoa($id_sanpham);
 
     </div>
 
-</body>
+<!-- </body>
 
-</html>
+</html> -->
