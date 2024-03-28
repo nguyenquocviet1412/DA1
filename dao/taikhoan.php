@@ -7,10 +7,10 @@ function taikhoan_selectall()
     return pdo_query($sql);
 }
 
-function taikhoan_insert($user, $pass, $email, $address, $tel, $avatar, $gender)
+function taikhoan_insert($user, $pass, $email, $address, $tel, $avatar, $gender, $role)
 {
-    $sql = "INSERT INTO taikhoan (user,pass,email,address,tel,avatar,gender) VALUES(?,?,?,?,?,?,?)";
-    pdo_execute($sql, $user, $pass, $email, $address, $tel, $avatar, $gender);
+    $sql = "INSERT INTO taikhoan (user,pass,email,address,tel,avatar,gender) VALUES(?,?,?,?,?,?,?,?)";
+    pdo_execute($sql, $user, $pass, $email, $address, $tel, $avatar, $gender, $role);
 }
 
 function taikhoan_delete($matk)
@@ -31,10 +31,10 @@ function taikhoan_select_by_id($matk)
     return pdo_query_one($sql, $matk);
 }
 
-function taikhoan_update($id_taikhoan, $user, $pass, $email, $address, $tel, $avatar, $gender)
+function taikhoan_update($id_taikhoan, $user, $pass, $email, $address, $tel, $avatar, $gender, $role)
 {
-    $sql = "UPDATE taikhoan SET id_taikhoan=?,user=?,pass=?,email=?,address=?,tel=?,avatar=?, gender=? WHERE id_taikhoan=?";
-    pdo_execute($sql, $id_taikhoan, $user, $pass, $email, $address, $tel, $avatar, $gender, $id_taikhoan);
+    $sql = "UPDATE taikhoan SET id_taikhoan=?,user=?,pass=?,email=?,address=?,tel=?,avatar=?, gender=?, role=? WHERE id_taikhoan=?";
+    pdo_execute($sql, $id_taikhoan, $user, $pass, $email, $address, $tel, $avatar, $gender, $role, $id_taikhoan);
 }
 function taikhoan_exist($user)
 {
@@ -58,14 +58,16 @@ function checkuser($user, $pass)
     return $sp;
 }
 
-function checkemail($email){
-        $sql = "select * from taikhoan where email='".$email."' ";
-        $sp=pdo_query_one($sql);
-        return $sp;
-    }
-    function checktel($tel){
-        $sql = "select * from taikhoan where tel='".$tel."' ";
-        $sp=pdo_query_one($sql);
-        return $sp;
-    }
+function checkemail($email)
+{
+    $sql = "select * from taikhoan where email='" . $email . "' ";
+    $sp = pdo_query_one($sql);
+    return $sp;
+}
+function checktel($tel)
+{
+    $sql = "select * from taikhoan where tel='" . $tel . "' ";
+    $sp = pdo_query_one($sql);
+    return $sp;
+}
 ?>

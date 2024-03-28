@@ -26,7 +26,7 @@
     .product-list.active {
         display: block;
         transform: scaleY(0);
-        transform-origin:left;
+        transform-origin: left;
         transition: transform 1s ease-out;
     }
 
@@ -34,20 +34,19 @@
     .category:hover .product-list {
         display: block;
         transform: scaleY(1);
-    }   
-
+    }
 </style>
 <div class="category">
-    <h3 class="category-title">danh mục</h3>
+    <h3 class="category-title">Danh mục</h3>
     <ul class="product-list">
         <?php
-            foreach ($dsdm as $dm) {
-                extract($dm);
-                $linkdm = "index.php?act=sanpham&iddm=" . $id;
-                echo '<li class="product">
+        foreach ($dsdm as $dm) {
+            extract($dm);
+            $linkdm = "index.php?act=sanpham&iddm=" . $id;
+            echo '<li class="product">
                         <a href="' . $linkdm . '">' . $name . '</a>
                     </li>';
-            }
+        }
         ?>
     </ul>
 </div>

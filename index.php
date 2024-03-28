@@ -77,7 +77,7 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $avatar = savefile('avatar', 'upload/');
                
 
-                taikhoan_insert($user,$pass,$email,$address,$tel,$avatar,$gender);
+                taikhoan_insert($user,$pass,$email,$address,$tel,$avatar,$gender,0);
                 $thongbao="Đã đăng kí thành công!!";
             }
             include "view/taikhoan/dangky.php";
@@ -94,8 +94,9 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $tel=$_POST['tel'];
                 $gender=$_POST['gender'];
                 $avatar = savefile('avatar', 'upload/');
+                
 
-                taikhoan_update($id_taikhoan, $user, $pass, $email, $address, $tel, $avatar, $gender);
+                taikhoan_update($id_taikhoan, $user, $pass, $email, $address, $tel, $avatar, $gender,$role);
                 $thongbao="Đã cập nhật thành công!!";
                 $_SESSION['user']=checkuser($user,$pass);
                 header('Location: index.php?act=capnhattaikhoan');

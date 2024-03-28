@@ -10,39 +10,40 @@ if (exist_param("btn_list")) {
     $matkhau = $_POST['matkhau'];
     $hoten = $_POST['hoten'];
     $email = $_POST['email'];
-    $hinh = $_FILES['hinh']['name'];
+    $avatar = $_FILES['avatar']['name'];
     $kichhoat = $_POST['kichhoat'];
     $vaitro = $_POST['vaitro'];
-    taikhoan_insert($makh, $matkhau, $hoten, $email, $hinh, $kichhoat, $vaitro);
+    // taikhoan_insert($makh, $matkhau, $hoten, $email, $avatar, $kichhoat, $vaitro);
     $items = taikhoan_selectall();
     $VIEW_NAME = "add.php";
 } else if (exist_param("btn_edit")) {
-    $makh = $_REQUEST['makh'];
-    $taikhoaninfo = taikhoan_select_by_id($makh);
+    $id = $_REQUEST['id'];
+    $taikhoaninfo = taikhoan_select_by_id($id);
     extract($taikhoaninfo);
     $items = taikhoan_selectall();
     $VIEW_NAME = "edit.php";
 } elseif (exist_param("btn_delete")) {
-    $makh = $_REQUEST['makh'];
-    taikhoan_delete($makh);
+    $id = $_REQUEST['id'];
+    taikhoan_delete($id);
     $items = taikhoan_selectall();
     $VIEW_NAME = "list.php";
 } elseif (exist_param("btn_update")) {
-    $makh = $_POST['mataikhoan'];
-    $matkhau = $_POST['matkhau'];
-    $hoten = $_POST['hoten'];
-    $gender = 1;
+    $id = $_POST['id'];
+    $user = $_POST['user'];
+    $pass = $_POST['pass'];
     $email = $_POST['email'];
-    if ($_FILES['hinh']['error'] === UPLOAD_ERR_OK) {
+    $address = $_POST['address'];
+    $tel = $_POST['tel'];
+    $gender = $_POST['gender'];
+    $role = $_POST['role'];
+    if ($_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
         // Nếu có chọn file mới, lưu và sử dụng tên file mới
-        $hinh = savefile('hinh', '../../upload/');
+        $avatar = savefile('avatar', '../../upload/');
     } else {
         // Nếu không có chọn file mới, sử dụng lại tên file ảnh cũ
-        $hinh = $_POST['hinhcu'];
+        $avatar = $_POST['avatarcu'];
     }
-    $kichhoat = $_POST['kichhoat'];
-    $vaitro = $_POST['vaitro'];
-    taikhoan_update($makh, $matkhau, $hoten, $email, $hinh, $kichhoat, $vaitro, $gender);
+    taikhoan_update($id, $user, $pass, $email, $address, $tel, $avatar, $gender, $role);
     $items = taikhoan_selectall();
     $VIEW_NAME = "list.php";
 } else {
