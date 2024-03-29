@@ -72,11 +72,11 @@ function sanpham_home()
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
-// function sanpham_giamgia($giatien, $giamgia)
-// {
-//     $giasau = $giatien - $giatien * $giamgia / 100;
-//     return $giasau;
-// }
+function sanpham_giamgia($price, $sale)
+{
+    $giasau = $price - $price * $sale / 100;
+    return $giasau;
+}
 
 
 

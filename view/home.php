@@ -115,7 +115,7 @@
 
 
     </div>
-
+    </div>
 </main>
 <div class="video justify-content-center">
     <video width="400px" controls>

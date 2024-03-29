@@ -80,6 +80,15 @@
     .video {
         display: flex;
     }
+    .original-price span {
+    text-decoration: line-through;
+    color: red;
+    }
+
+    .sale-price span {
+    color: green;
+    font-weight: bold;
+    }
 </style>
 
 <main class="">
@@ -89,6 +98,7 @@
         extract($onesp);
         sanpham_tangsoluotxem($id_sanpham);
         $img = $img_path . $img;
+        if($sale==""|| $sale==0){
         echo '
                 <div class="item">
                     <div class="item-image flex col-5">
@@ -98,8 +108,20 @@
                             <h3 class="item-title">' . $name . '</h3>
                             <p class=" h1 product-price">' . $price . '$</p>
                             <p class="item-text ">
-                            ' . $mota . '
+                            Mô tả: ' . $mota . '
                             </p>
+                            <div class="mb-3 mt-3 m-3">
+                                <label for="size2">Full</label>
+                                <input type="radio" id="full" name="size" value="full"> 
+                                ';
+                if($price_chiet>0){
+                    echo '
+                               | <label for="size1">Chiết '.$price_chiet.'$</label>
+                                <input type="radio" id="chiet" name="size" value="chiết">
+                    ';
+                }
+        echo' 
+                            </div>
                             <div class="sub p-2">
                                 <button type="submit" class="btn btn-danger">them vao gio hang</button>
                             </div>
@@ -107,6 +129,44 @@
                     </div>
                 </div>
                 ';
+            }else{
+                $giasau=sanpham_giamgia($price, $sale);
+                echo '
+                <div class="item">
+                    <div class="item-image flex col-5">
+                        <img src="' . $img . '" alt="" class="item-img" width="400px" height="400px">
+                    </div>
+                        <div class="item-content col-6">
+                            <h3 class="item-title">' . $name . '</h3>
+                            <p class=" h1 product-price">
+                            <div >
+                                <p class="original-price">Giá gốc: <span>'.$price.'$</span></p>
+                                <p class="sale-price">Giá sau giảm: <span>'.$giasau.'$</span></p>
+                            </div>
+                            </p>
+                            <p class="item-text ">
+                            Mô tả: ' . $mota . '
+                            </p>
+                            <div class="mb-3 mt-3 m-3">
+                                <label for="size2">Full</label>
+                                <input type="radio" id="full" name="size" value="full"> 
+                                ';
+                                if($price_chiet>0){
+                                    echo '
+                                        | <label for="size1">Chiết '.$price_chiet.'$</label>
+                                        <input type="radio" id="chiet" name="size" value="chiết">
+                                    ';
+                                }
+                        echo' 
+                            </div>
+                            <div class="sub p-2">
+                                <button type="submit" class="btn btn-danger">them vao gio hang</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                ';
+            }
         ?>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

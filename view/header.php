@@ -167,8 +167,6 @@
                                 
                             </ul>
                         </div>
-                        
-            </div>
             <?php
                     } else {
                         ?>
