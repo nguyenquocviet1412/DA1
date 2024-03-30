@@ -158,18 +158,19 @@
                             <ul>
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="#">New</a></li>
-                                <?php if (isset($role) && $role == 1) { ?>
+                                <?php if(isset($role) && $role == 1) { ?>
                                     <li>
                                         <a href="admin/danhmuc">Admin</a>
                                     </li>
-                                <?php } ?>
+                                <?php }
+                                ob_start();
+                                ?>
                                 <li><a href="index.php?act=thoat">Thoát</a></li>
-                                
                             </ul>
                         </div>
-            <?php
-                    } else {
-                        ?>
+                    <?php
+                    }else{
+                    ?>
             <div class="menu">
                 <ul class="col-12 navbar navbar-expand-sm bg-dark navbar-dark">
                     <div class="container-fluid">

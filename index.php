@@ -69,6 +69,7 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
         case 'dangky':
             if(isset($_POST['dangky'])&&($_POST['dangky'])){
                 $email=$_POST['email'];
+                $hoten=$_POST['hoten'];
                 $user=$_POST['user'];
                 $pass=$_POST['pass'];
                 $address=$_POST['address'];
@@ -77,7 +78,7 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $avatar = savefile('avatar', 'upload/');
                
 
-                taikhoan_insert($user,$pass,$email,$address,$tel,$avatar,$gender,0);
+                taikhoan_insert($hoten,$user,$pass,$email,$address,$tel,$avatar,$gender,0);
                 $thongbao="Đã đăng kí thành công!!";
             }
             include "view/taikhoan/dangky.php";
@@ -88,6 +89,7 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
         case 'capnhattaikhoan':
             if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
                 $email=$_POST['email'];
+                $hoten=$_POST['hoten'];
                 $user=$_POST['user'];
                 $pass=$_POST['pass'];
                 $address=$_POST['address'];
@@ -96,7 +98,7 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $avatar = savefile('avatar', 'upload/');
                 
 
-                taikhoan_update($id_taikhoan, $user, $pass, $email, $address, $tel, $avatar, $gender,$role);
+                taikhoan_update($id_taikhoan,$hoten, $user, $pass, $email, $address, $tel, $avatar, $gender,$role);
                 $thongbao="Đã cập nhật thành công!!";
                 $_SESSION['user']=checkuser($user,$pass);
                 header('Location: index.php?act=capnhattaikhoan');
@@ -119,6 +121,9 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 }
             }
             include "view/taikhoan/quenmk.php";
+            break;
+        case 'themvaogiohang':
+            
             break;
         case 'thoat':
             session_unset();

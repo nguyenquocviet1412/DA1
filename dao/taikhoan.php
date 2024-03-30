@@ -7,10 +7,10 @@ function taikhoan_selectall()
     return pdo_query($sql);
 }
 
-function taikhoan_insert($user, $pass, $email, $address, $tel, $avatar, $gender, $role)
+function taikhoan_insert($hoten,$user, $pass, $email, $address, $tel, $avatar, $gender, $role)
 {
-    $sql = "INSERT INTO taikhoan (user,pass,email,address,tel,avatar,gender) VALUES(?,?,?,?,?,?,?,?)";
-    pdo_execute($sql, $user, $pass, $email, $address, $tel, $avatar, $gender, $role);
+    $sql = "INSERT INTO taikhoan (hoten,user,pass,email,address,tel,avatar,gender) VALUES(?,?,?,?,?,?,?,?,?)";
+    pdo_execute($sql,$hoten, $user, $pass, $email, $address, $tel, $avatar, $gender, $role);
 }
 
 function taikhoan_delete($matk)
@@ -31,10 +31,10 @@ function taikhoan_select_by_id($matk)
     return pdo_query_one($sql, $matk);
 }
 
-function taikhoan_update($id_taikhoan, $user, $pass, $email, $address, $tel, $avatar, $gender, $role)
+function taikhoan_update($id_taikhoan,$hoten, $user, $pass, $email, $address, $tel, $avatar, $gender, $role)
 {
-    $sql = "UPDATE taikhoan SET id_taikhoan=?,user=?,pass=?,email=?,address=?,tel=?,avatar=?, gender=?, role=? WHERE id_taikhoan=?";
-    pdo_execute($sql, $id_taikhoan, $user, $pass, $email, $address, $tel, $avatar, $gender, $role, $id_taikhoan);
+    $sql = "UPDATE taikhoan SET id_taikhoan=?,hoten=?,user=?,pass=?,email=?,address=?,tel=?,avatar=?, gender=?, role=? WHERE id_taikhoan=?";
+    pdo_execute($sql, $id_taikhoan,$hoten, $user, $pass, $email, $address, $tel, $avatar, $gender, $role, $id_taikhoan);
 }
 function taikhoan_exist($user)
 {

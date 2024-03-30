@@ -50,7 +50,6 @@
         padding: 10px;
         ;
     }
-
     .product-price {
         font-size: 1.1rem;
         color: #ef0606;
@@ -82,18 +81,24 @@
     }
     .original-price span {
     text-decoration: line-through;
-    color: red;
+    color: black;
     }
 
     .sale-price span {
-    color: green;
+    color: red;
     font-weight: bold;
+    font-size: 30px;
+    }
+    .flex-form{
+        display: flex;
+        justify-content: space-between;
     }
 </style>
 
 <main class="">
     <h3>Chi tiết sản phẩm</h3>
     <div class="showsp">
+
         <?php
         extract($onesp);
         sanpham_tangsoluotxem($id_sanpham);
@@ -101,7 +106,8 @@
         if($sale==""|| $sale==0){
         echo '
                 <div class="item">
-                    <div class="item-image flex col-5">
+                <form action="index.php?act=themgiohang" method="post" class="flex-form col-12">
+                    <div class="item-image flex col-6">
                         <img src="' . $img . '" alt="" class="item-img" width="400px" height="400px">
                     </div>
                         <div class="item-content col-6">
@@ -120,20 +126,12 @@
                                 <input type="radio" id="chiet" name="size" value="chiết">
                     ';
                 }
-        echo' 
-                            </div>
-                            <div class="sub p-2">
-                                <button type="submit" class="btn btn-danger">them vao gio hang</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                ';
             }else{
                 $giasau=sanpham_giamgia($price, $sale);
                 echo '
                 <div class="item">
-                    <div class="item-image flex col-5">
+                <form action="index.php?act=themgiohang" method="post" class="flex-form col-12">
+                    <div class="item-image flex col-6">
                         <img src="' . $img . '" alt="" class="item-img" width="400px" height="400px">
                     </div>
                         <div class="item-content col-6">
@@ -157,16 +155,17 @@
                                         <input type="radio" id="chiet" name="size" value="chiết">
                                     ';
                                 }
+                            }
                         echo' 
                             </div>
                             <div class="sub p-2">
-                                <button type="submit" class="btn btn-danger">them vao gio hang</button>
+                                    <input type="submit" class="btn btn-danger" name="themvaogiohang" value="Thêm vào giỏ hàng">
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
                 ';
-            }
         ?>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

@@ -62,6 +62,10 @@
                 </h2>
             <form action="index.php?act=capnhattaikhoan" method="post" enctype="multipart/form-data">
                 <div class="mb-3 mt-3 m-3">
+                  <label for="text" class="form-label">Họ và tên: </label>
+                  <input type="text" class="form-control" id="" name="hoten" value="<?=$hoten?>">
+                </div>
+                <div class="mb-3 mt-3 m-3">
                   <label for="text" class="form-label">User:</label>
                   <input type="text" class="form-control" id="" name="user" value="<?=$user?>">
                 </div>
