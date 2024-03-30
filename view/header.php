@@ -1,3 +1,9 @@
+<?php
+require_once "dao/pdo.php";
+require_once "dao/danhmuc.php";
+$dsdm = danhmuc_selectall();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,8 +11,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DỰ ÁN 1</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
-        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
@@ -21,12 +30,6 @@
             width: 100%;
         }
 
-        .baner {
-            background-image: url("img/bn\ 4.jpg");
-            height: 400px;
-            width: 100%;
-        }
-
         /* menu */
         .menu {
             background-color: black;
@@ -35,7 +38,6 @@
 
         .menu ul {
             list-style-type: none;
-            overflow: hidden;
             padding: 10px;
         }
 
@@ -48,20 +50,44 @@
 
         .menu ul li a {
             text-decoration: none;
-            color: white;
+            color: black;
         }
 
         .menu ul li a:hover {
             color: white;
             background-color: #ef0606;
             border-radius: 5px;
-            padding: 5px;
-            margin: 5px;
             text-decoration: none;
             transition: 0.5s;
-            border: 1px solid #ef0606;
-
         }
+
+        .dropdown-item {
+            color: white;
+            font-size: 16px;
+        }
+
+        ul.dropdown-menu.show li {
+            width: 100%;
+        }
+
+        ul.dropdown-menu.show li a {
+            width: 100%;
+        }
+
+        ul.dropdown-menu.show li a:hover {
+            width: 100%;
+            background-color: aquamarine !important;
+        }
+
+        .nav-link {
+            color: white !important;
+        }
+
+        .nav-link:active {
+            color: white;
+        }
+
+
 
         /* danh muc */
 
@@ -148,38 +174,87 @@
                 <a href="index.php" style="text-decoration: none;">
                     <h1 class="name text-danger" style="text-align: center;">Shop</h1>
                 </a>
-                <nav>
-                    <?php
-                    if (isset($_SESSION['user'])) {
-                        extract($_SESSION['user']);
-                        ?>
-                        <div class="menu">
-                            <!-- update menu -->
-                            <ul>
-                                <li><a href="index.php">Home</a></li>
-                                <li><a href="#">New</a></li>
-                                <?php if(isset($role) && $role == 1) { ?>
-                                    <li>
-                                        <a href="admin/danhmuc">Admin</a>
-                                    </li>
-                                <?php }
-                                ob_start();
-                                ?>
-                                <li><a href="index.php?act=thoat">Thoát</a></li>
-                            </ul>
-                        </div>
-                    <?php
-                    }else{
+                <?php
+                if (isset($_SESSION['user'])) {
+                    extract($_SESSION['user']);
                     ?>
-            <div class="menu">
-                <ul class="col-12 navbar navbar-expand-sm bg-dark navbar-dark">
-                    <div class="container-fluid">
-                        <ul>
-                            <li><a href="index.php">Home</a></li>
-                            <li><a href="#">New</a></li>
-                            <li><a href="index.php?act=taikhoan">Đăng nhập</a></li>
-                        </ul>
-                    </div>
-                </ul>
-            </div>
-        <?php } ?>
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                        <div class="container-fluid menu">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="index.php">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">News</a>
+                                    </li>
+                                    <?php if (isset($role) && $role == 1) { ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="admin/danhmuc">Admin</a>
+                                        </li>
+                                    <?php } ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.php?act=thoat">Thoát</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            Danh mục
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <?php
+                                            foreach ($dsdm as $dm) {
+                                                extract($dm);
+                                                $linkdm = "index.php?act=sanpham&iddm=" . $id;
+                                                echo '<li><a class="dropdown-item" href="' . $linkdm . '">' . $name . '</a></li>';
+                                            }
+                                            ?>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                <?php } else { ?>
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                        <div class="container-fluid menu">
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="index.php">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">News</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.php?act=taikhoan">Đăng nhập</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            Danh mục
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <?php
+                                            foreach ($dsdm as $dm) {
+                                                extract($dm);
+                                                $linkdm = "index.php?act=sanpham&iddm=" . $id;
+                                                echo '<li><a class="dropdown-item" href="' . $linkdm . '">' . $name . '</a></li>';
+                                            }
+                                            ?>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+
+
+
+                            </div>
+                        </div>
+                    <?php } ?>
+                </nav>

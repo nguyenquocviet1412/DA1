@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include "dao/pdo.php";
 require_once "dao/pdo.php";
