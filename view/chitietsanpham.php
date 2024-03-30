@@ -82,12 +82,13 @@
     }
     .original-price span {
     text-decoration: line-through;
-    color: red;
+    color: black;
     }
 
     .sale-price span {
-    color: green;
+    color: red;
     font-weight: bold;
+    font-size: 30px;
     }
 </style>
 
