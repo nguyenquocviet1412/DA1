@@ -43,4 +43,5 @@ function binhluan_selectby_taikhoan($id_taikhoan){
     $sql="SELECT b.* , t.user, t.avatar FROM binhluan b JOIN taikhoan t ON b.id_taikhoan=t.id_taikhoan WHERE b.id_taikhoan    =? ORDER BY ngaybinhluan DESC";
     return pdo_query($sql, $id_taikhoan);
 }
+
 ?>

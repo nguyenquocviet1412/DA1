@@ -22,7 +22,7 @@
                     <a class="nav-link text-primary" href="../../admin/taikhoan/">Tài khoản</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary" href="#">binh luan</a>
+                    <a class="nav-link text-primary" href="../../admin/binhluan/">binh luan</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-primary" href="#">thong ke</a>
