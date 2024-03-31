@@ -9,7 +9,7 @@ function taikhoan_selectall()
 
 function taikhoan_insert($hoten,$user, $pass, $email, $address, $tel, $avatar, $gender, $role)
 {
-    $sql = "INSERT INTO taikhoan (hoten,user,pass,email,address,tel,avatar,gender) VALUES(?,?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO taikhoan (hoten,user,pass,email,address,tel,avatar,gender,role) VALUES(?,?,?,?,?,?,?,?,?)";
     pdo_execute($sql,$hoten, $user, $pass, $email, $address, $tel, $avatar, $gender, $role);
 }
 

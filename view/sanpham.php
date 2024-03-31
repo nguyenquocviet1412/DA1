@@ -64,11 +64,11 @@
                     </div>
 
 
-<div class="baner img-thumbnail p-3">
+                    <div class="baner img-thumbnail p-3">
     <div class="icon">
         <ul class="nav justify-content-end">
             <div class="user">
-                <a class="nav-link" href="index.php?act=dangnhap">
+                <a class="nav-link" href="index.php?act=taikhoan">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="text-light"
                         class="bi bi-person-circle" viewBox="0 0 16 16">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
@@ -90,6 +90,38 @@
 
         </ul>
     </div>
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/nuochoa.jpg" class="d-block w-100" alt="..." height="400px">
+            </div>
+            <div class="carousel-item">
+                <img src="img/images.jpg" class="d-block w-100" alt="..." height="400px">
+            </div>
+            <div class="carousel-item">
+                <img src="img/bn 4.jpg" class="d-block w-100" alt="..." height="400px">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
 </div>
 </nav>
 </header>

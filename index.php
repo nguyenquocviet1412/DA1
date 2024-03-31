@@ -77,9 +77,10 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $tel=$_POST['tel'];
                 $gender=$_POST['gender'];
                 $avatar = savefile('avatar', 'upload/');
+                $role = 0;
                
 
-                taikhoan_insert($hoten,$user,$pass,$email,$address,$tel,$avatar,$gender,0);
+                taikhoan_insert($hoten,$user, $pass, $email, $address, $tel, $avatar, $gender, $role);
                 $thongbao="Đã đăng kí thành công!!";
             }
             include "view/taikhoan/dangky.php";
