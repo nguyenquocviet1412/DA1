@@ -12,18 +12,30 @@
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($items as $key => $value){
+            <?php foreach ($items as $key => $value) {
 
-            extract($value);?>
+                extract($value); ?>
                 <tr>
-                    <td><?= $maloai?></td>
-                    <td><?= $tenloai ?></td>
-                    <td><?= $soluong ?></td>
-                    <td><?= $giamin ?></td>
-                    <td><?= $giamax ?></td>
-                    <td><?= $giaavg ?></td>
+                    <td>
+                        <?= $id ?>
+                    </td>
+                    <td>
+                        <?= $name ?>
+                    </td>
+                    <td>
+                        <?= $soluong ?>
+                    </td>
+                    <td>
+                        <?= $giamin ?>
+                    </td>
+                    <td>
+                        <?= $giamax ?>
+                    </td>
+                    <td>
+                        <?= $giaavg ?>
+                    </td>
                 </tr>
-        <?php }?>
+            <?php } ?>
         </tbody>
 
     </table>

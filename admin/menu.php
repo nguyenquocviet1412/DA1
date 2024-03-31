@@ -25,24 +25,10 @@
                     <a class="nav-link text-primary" href="../../admin/binhluan/">Bình luận</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary" href="../../admin/thongke/">thong ke</a>
+                    <a class="nav-link text-primary" href="../../admin/thongke/">Thống kê</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-primary" href="#">quan li gio hang</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link text-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
                 </li>
         </div>
     </div>

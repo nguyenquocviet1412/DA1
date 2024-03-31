@@ -13,16 +13,16 @@ $spnew = sanpham_selectall();
 $dsdm = danhmuc_selectall();
 $dstop10 = sanpham_selecttop10();
 
-if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
+if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
         case 'sanpham':
-            if (isset ($_POST['kyw']) && ($_POST['kyw'] != "")) {
+            if (isset($_POST['kyw']) && ($_POST['kyw'] != "")) {
                 $kyw = $_POST['kyw'];
             } else {
                 $kyw = "";
             }
-            if (isset ($_GET['iddm']) && ($_GET['iddm'] > 0)) {
+            if (isset($_GET['iddm']) && ($_GET['iddm'] > 0)) {
                 $iddm = $_GET['iddm'];
 
             } else {
@@ -34,7 +34,7 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             break;
         case 'sanphamct':
 
-            if (isset ($_GET['idsp']) && ($_GET['idsp'] > 0)) {
+            if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
                 $id = $_GET['idsp'];
                 $onesp = sanpham_getinfo($id);
                 extract($onesp);
@@ -50,16 +50,16 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             include "view/dangnhap.php";
             break;
         case 'dangnhap':
-            if(isset($_POST['dangnhap'])&&($_POST['dangnhap'])){
-                $user=$_POST['user'];
-                $pass=$_POST['pass'];
-                $checkuser=checkuser($user,$pass);
-                if(is_array($checkuser)){
-                    $_SESSION['user']=$checkuser;
+            if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
+                $user = $_POST['user'];
+                $pass = $_POST['pass'];
+                $checkuser = checkuser($user, $pass);
+                if (is_array($checkuser)) {
+                    $_SESSION['user'] = $checkuser;
                     //$thongbao="Bạn đã đăng nhập thành công!";
                     header('Location: index.php');
-                }else{
-                    $thongbao="Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
+                } else {
+                    $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
                 }
             }
             include "view/taikhoan/dangky.php";
@@ -68,20 +68,21 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             include "view/taikhoan/dangky.php";
             break;
         case 'dangky':
-            if(isset($_POST['dangky'])&&($_POST['dangky'])){
-                $email=$_POST['email'];
-                $hoten=$_POST['hoten'];
-                $user=$_POST['user'];
-                $pass=$_POST['pass'];
-                $address=$_POST['address'];
-                $tel=$_POST['tel'];
-                $gender=$_POST['gender'];
+            if (isset($_POST['dangky']) && ($_POST['dangky'])) {
+                $email = $_POST['email'];
+                $hoten = $_POST['hoten'];
+                $user = $_POST['user'];
+                $pass = $_POST['pass'];
+                $address = $_POST['address'];
+                $tel = $_POST['tel'];
+                $gender = $_POST['gender'];
                 $avatar = savefile('avatar', 'upload/');
                 $role = 0;
-               
 
-                taikhoan_insert($hoten,$user, $pass, $email, $address, $tel, $avatar, $gender, $role);
-                $thongbao="Đã đăng kí thành công!!";
+
+                taikhoan_insert($hoten, $user, $pass, $email, $address, $tel, $avatar, $gender, $role);
+                // $thongbao = "Đã đăng kí thành công!!";
+                header("location: index.php?act=taikhoan");
             }
             include "view/taikhoan/dangky.php";
             break;
@@ -89,43 +90,48 @@ if ((isset ($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             include "view/taikhoan/capnhattaikhoan.php";
             break;
         case 'capnhattaikhoan':
-            if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
-                $email=$_POST['email'];
-                $hoten=$_POST['hoten'];
-                $user=$_POST['user'];
-                $pass=$_POST['pass'];
-                $address=$_POST['address'];
-                $tel=$_POST['tel'];
-                $gender=$_POST['gender'];
-                $avatar = savefile('avatar', 'upload/');
-                
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $email = $_POST['email'];
+                $hoten = $_POST['hoten'];
+                $user = $_POST['user'];
+                $pass = $_POST['pass'];
+                $address = $_POST['address'];
+                $tel = $_POST['tel'];
+                $gender = $_POST['gender'];
+                if ($_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
+                    // Nếu có chọn file mới, lưu và sử dụng tên file mới
+                    $avatar = savefile('avatar', 'upload/');
+                } else {
+                    // Nếu không có chọn file mới, sử dụng lại tên file ảnh cũ
+                    $avatar = $_POST['avatarcu'];
+                }
 
-                taikhoan_update($id_taikhoan,$hoten, $user, $pass, $email, $address, $tel, $avatar, $gender,$role);
-                $thongbao="Đã cập nhật thành công!!";
-                $_SESSION['user']=checkuser($user,$pass);
+                taikhoan_update($id_taikhoan, $hoten, $user, $pass, $email, $address, $tel, $avatar, $gender, $role);
+                $thongbao = "Đã cập nhật thành công!!";
+                $_SESSION['user'] = checkuser($user, $pass);
                 header('Location: index.php?act=capnhattaikhoan');
             }
-            include "view/taikhoan/capnhattaikhoan.php";    
+            include "view/taikhoan/capnhattaikhoan.php";
             break;
         case 'quenmk':
-            if(isset($_POST['guiemail'])&&($_POST['guiemail'])){
-                $email=$_POST['email'];
-                $tel=$_POST['tel'];
+            if (isset($_POST['guiemail']) && ($_POST['guiemail'])) {
+                $email = $_POST['email'];
+                $tel = $_POST['tel'];
 
-                $checkemail=checkemail($email);
-                $checktel=checktel($tel);
-                if(is_array($checkemail) && is_array($checktel)){
-                    $thongbao="Mật khẩu của bạn là:".$checkemail['pass'];
-                }elseif(!is_array($checkemail)){
-                    $thongbao="Email không tồn tại";
-                }elseif(!is_array($checktel)){
-                    $thongbao="Số điện thoại không tồn tại";
+                $checkemail = checkemail($email);
+                $checktel = checktel($tel);
+                if (is_array($checkemail) && is_array($checktel)) {
+                    $thongbao = "Mật khẩu của bạn là:" . $checkemail['pass'];
+                } elseif (!is_array($checkemail)) {
+                    $thongbao = "Email không tồn tại";
+                } elseif (!is_array($checktel)) {
+                    $thongbao = "Số điện thoại không tồn tại";
                 }
             }
             include "view/taikhoan/quenmk.php";
             break;
         case 'themvaogiohang':
-            
+
             break;
         case 'thoat':
             session_unset();

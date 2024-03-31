@@ -2,16 +2,17 @@
 require_once "pdo.php";
 function thongkehanghoa()
 {
-    $sql = "SELECT lo.maloai, lo.tenloai,"
-        . "COUNT(*) soluong,"
-        . "MIN (hh.giatien) giamin,"
-        . "MAX (hh.giatien) giamax,"
-        . "AVG (hh.giatien) giaavg"
-        . "FROM hanghoa hh"
-        . "JOIN loaihang lo ON lo.maloai=hh.maloaihang"
-        . "GROUP BY lo.maloai, lo.tenloai";
+    $sql = "SELECT dm.id, dm.name,
+        COUNT(*) soluong,
+        MIN(sp.price) giamin,
+        MAX(sp.price) giamax,
+        AVG(sp.price) giaavg 
+        FROM sanpham sp 
+        JOIN danhmuc dm ON dm.id=sp.id_danhmuc 
+        GROUP BY dm.id, dm.name";
     return pdo_query($sql);
 }
+
 function thongkebinhluan()
 {
     $sql = "SELECT hh.mahang, hh.tenhang, COUNT(*) soluong, MIN(bl.ngaybinhluan) cunhat, MAX(bl.ngaybinhluan) moinhat FROM binhluan bl

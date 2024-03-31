@@ -107,7 +107,7 @@
           <input type="radio" id="other" name="gender" value="Khác">
         </div>
 
-        <input type="submit" value="Đăng ký" name="dangky" class="btn btn-primary m-3">
+        <input type="submit" value="Đăng ký" name="dangky" class="btn btn-primary m-3" onclick="return alert('Đã đăng kí thàng công')">
         <a href="index.php"><input type="button" value="Home" class="btn btn-primary m-3"></a>
       </form>
     </div>

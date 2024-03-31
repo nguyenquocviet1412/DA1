@@ -5,17 +5,6 @@ extract($_REQUEST);
 if (exist_param("btn_list")) {
     $items = taikhoan_selectall();
     $VIEW_NAME = "list.php";
-} else if (exist_param("btn_insert")) {
-    $makh = $_POST['mataikhoan'];
-    $matkhau = $_POST['matkhau'];
-    $hoten = $_POST['hoten'];
-    $email = $_POST['email'];
-    $avatar = $_FILES['avatar']['name'];
-    $kichhoat = $_POST['kichhoat'];
-    $vaitro = $_POST['vaitro'];
-    // taikhoan_insert($makh, $matkhau, $hoten, $email, $avatar, $kichhoat, $vaitro);
-    $items = taikhoan_selectall();
-    $VIEW_NAME = "add.php";
 } else if (exist_param("btn_edit")) {
     $id = $_REQUEST['id'];
     $taikhoaninfo = taikhoan_select_by_id($id);
@@ -29,6 +18,7 @@ if (exist_param("btn_list")) {
     $VIEW_NAME = "list.php";
 } elseif (exist_param("btn_update")) {
     $id = $_POST['id'];
+    $fullname=$_POST['fullname'];
     $user = $_POST['user'];
     $pass = $_POST['pass'];
     $email = $_POST['email'];
@@ -43,7 +33,7 @@ if (exist_param("btn_list")) {
         // Nếu không có chọn file mới, sử dụng lại tên file ảnh cũ
         $avatar = $_POST['avatarcu'];
     }
-    taikhoan_update($id, $user, $pass, $email, $address, $tel, $avatar, $gender, $role);
+    taikhoan_update($id, $hoten, $user, $pass, $email, $address, $tel, $avatar, $gender, $role);
     $items = taikhoan_selectall();
     $VIEW_NAME = "list.php";
 } else {

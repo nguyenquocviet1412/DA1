@@ -178,7 +178,7 @@ $dsdm = danhmuc_selectall();
                 if (isset($_SESSION['user'])) {
                     extract($_SESSION['user']);
                     ?>
-                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <nav class="navbar navbar-expand-lg ">
                         <div class="container-fluid menu">
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -221,7 +221,7 @@ $dsdm = danhmuc_selectall();
                         </div>
                     </nav>
                 <?php } else { ?>
-                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <nav class="navbar navbar-expand-lg ">
                         <div class="container-fluid menu">
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
