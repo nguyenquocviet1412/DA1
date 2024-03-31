@@ -25,7 +25,7 @@
                     <a class="nav-link text-primary" href="../../admin/binhluan/">Bình luận</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary" href="#">thong ke</a>
+                    <a class="nav-link text-primary" href="../../admin/thongke/">thong ke</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-primary" href="#">quan li gio hang</a>
