@@ -127,10 +127,10 @@
                         </p>
                         <div class="mb-3 mt-3 m-3">
                             <label for="size2">Full</label>
-                            <input type="radio" id="full" name="size" value="full">
+                            <input type="radio" id="full" name="size" value="full" required>
                             <?php if ($price_chiet > 0) { ?>
                                 | <label for="size1">Chiết <?= $price_chiet ?>$</label>
-                                <input type="radio" id="chiet" name="size" value="chiết">
+                                <input type="radio" id="chiet" name="size" value="chiết" required>
                             <?php }
                         } else {
                             $giasau = sanpham_giamgia($price, $sale);
@@ -153,10 +153,10 @@
                                         </p>
                                         <div class="mb-3 mt-3 m-3">
                                             <label for="size2">Full</label>
-                                            <input type="radio" id="full" name="size" value="full">
+                                            <input type="radio" id="full" name="size" value="full" required>
                                             <?php if ($price_chiet > 0) { ?>
                                                 | <label for="size1">Chiết <?= $price_chiet ?>$</label>
-                                                <input type="radio" id="chiet" name="size" value="chiết">
+                                                <input type="radio" id="chiet" name="size" value="chiết" required>
                                             <?php }
                                         }
                                         if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
@@ -167,10 +167,13 @@
                                             <input type="hidden" name="id_taikhoan" value="<?= $id_taikhoan ?>">
                                             <input type="hidden" name="id_sanpham" value="<?= $id_sanpham ?>">
                                             <input type="hidden" name="name_sanpham" value="<?= $name ?>">
+                                            <?php if($sale == "" || $sale == 0){ ?>
                                             <input type="hidden" name="price" value="<?= $price ?>">
+                                            <?php }else{?>
+                                            <input type="hidden" name="price" value="<?= $giasau ?>">
+                                            <?php } ?>
                                             <input type="hidden" name="price_chiet" value="<?= $price_chiet ?>">
                                             <input type="hidden" name="img" value="<?= $img ?>">
-                                            <input type="hidden" name="id_size" value="<?= $price_chiet ?>">
                                             <input type="submit" class="btn btn-danger" name="themvaogiohang" value="Thêm vào giỏ hàng">
                                         </div>
                                     <?php }else{?>
