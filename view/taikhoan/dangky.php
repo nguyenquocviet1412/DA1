@@ -55,12 +55,9 @@
       <img class="card-img-top rounded-circle" src="img/images.jpg" alt="Card image">
       <h2 class="thongbao">
         <?php
-
-
         if (isset($thongbao) && ($thongbao != "")) {
           echo $thongbao;
         }
-
         ?>
       </h2>
       <form action="index.php?act=dangky" method="post" enctype="multipart/form-data">

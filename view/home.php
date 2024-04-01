@@ -97,7 +97,6 @@
     </div>
 
 </div>
-</nav>
 </header>
 <main class="justify-content-center">
     <p class="h2 m-3">Danh sach sp</p>

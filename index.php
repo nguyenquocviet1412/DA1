@@ -130,8 +130,20 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             }
             include "view/taikhoan/quenmk.php";
             break;
-        case 'themvaogiohang':
-
+        case 'chua_dn':
+            if (isset($_POST['chua_dn']) && ($_POST['chua_dn'])) {
+                $thongbao = "Đăng nhập để thêm sản phẩm vào giỏ hàng!";
+            }
+            include "view/dangnhap.php";
+            break;
+        case 'themgiohang':
+            if (isset($_POST['themvaogiohang']) && ($_POST['themvaogiohang'])) {
+                $id_taikhoan=$_POST['id_taikhoan'];
+                $id_sanpham=$_POST['id_sanpham'];
+                $name_sanpham=$_POST['name_sanpham'];
+                $price=$_POST['id_taikhoan'];
+                $id_taikhoan=$_POST['id_taikhoan'];
+            }
             break;
         case 'thoat':
             session_unset();

@@ -250,10 +250,6 @@ $dsdm = danhmuc_selectall();
                                         </ul>
                                     </li>
                                 </ul>
-
-
-
-
                             </div>
                         </div>
                     <?php } ?>
