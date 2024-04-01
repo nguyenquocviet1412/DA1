@@ -9,7 +9,8 @@ include "dao/taikhoan.php";
 include "view/header.php";
 include "global.php";
 
-if(!isset($_SESSION['mycart'])) $_SESSION['mycart']=[];
+if (!isset($_SESSION['mycart']))
+    $_SESSION['mycart'] = [];
 
 $spnew = sanpham_selectall();
 $dsdm = danhmuc_selectall();
@@ -40,7 +41,7 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $id = $_GET['idsp'];
                 $onesp = sanpham_getinfo($id);
                 extract($onesp);
-
+                $danhmuc_sanpham = danhmuc_selectall();
                 $sp_cung_loai = sanpham_selectby_loai($id_danhmuc);
                 include "view/chitietsanpham.php";
             } else {
@@ -140,39 +141,39 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             break;
         case 'themgiohang':
             if (isset($_POST['themvaogiohang']) && ($_POST['themvaogiohang'])) {
-                $id_taikhoan=$_POST['id_taikhoan'];
-                $id_sanpham=$_POST['id_sanpham'];
-                $name_sanpham=$_POST['name_sanpham'];
-                $size=$_POST['size'];
-                if($size=="full"){
-                    $price=$_POST['price'];
-                    $id_size=2;
-                }else{
-                    $price=$_POST['price_chiet'];
-                    $id_size=1;
+                $id_taikhoan = $_POST['id_taikhoan'];
+                $id_sanpham = $_POST['id_sanpham'];
+                $name_sanpham = $_POST['name_sanpham'];
+                $size = $_POST['size'];
+                if ($size == "full") {
+                    $price = $_POST['price'];
+                    $id_size = 2;
+                } else {
+                    $price = $_POST['price_chiet'];
+                    $id_size = 1;
                 }
-                $img=$_POST['img'];
-                $soluong=1;
-                $ttien=$soluong * $price;
+                $img = $_POST['img'];
+                $soluong = 1;
+                $ttien = $soluong * $price;
 
-                $spgiohang=[$id_taikhoan,$id_sanpham,$name_sanpham,$price,$img,$soluong,$id_size];
-                array_push($_SESSION['mycart'],$spgiohang);
-                
+                $spgiohang = [$id_taikhoan, $id_sanpham, $name_sanpham, $price, $img, $soluong, $id_size];
+                array_push($_SESSION['mycart'], $spgiohang);
+
             }
             include "view/giohang/viewgiohang.php";
             break;
         case 'delcart':
-            if(isset($_GET['idgiohang'])){
-                array_slice($_SESSION['mycart'],$_GET['idgiohang'],1);
+            if (isset($_GET['idgiohang'])) {
+                array_slice($_SESSION['mycart'], $_GET['idgiohang'], 1);
                 header('Location: index.php');
-            }else{
-                $_SESSION['mycart']=[];
+            } else {
+                $_SESSION['mycart'] = [];
             }
             include "view/giohang/viewgiohang.php";
             // header('Location: index.php?act=viewcart');
             break;
         case 'viewcart':
-            
+
             break;
         case 'thoat':
             session_unset();
