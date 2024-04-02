@@ -31,21 +31,49 @@
     }
 </style>
 <main class="justify-content-center col-12">
-    <h3>gio hang</h3>
+    <h3>Giỏ hàng</h3>
     <table class="table table-bordered showsp">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Img</th>
-                <th>Ten san pham</th>
-                <th>ngay dat</th>
-                <th>gia</th>
-                <th>trang thai</th>
+                <th>Ảnh</th>
+                <th>Tên sản phẩm</th>
+                <th>Size</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
                 <th>action</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <?php 
+                $tong=0;
+                $i=0;
+                foreach ($_SESSION['mycart'] as $cart) {
+                    $ttien=$cart[3] * $cart[5];
+                    $tong+=$ttien;
+                    $xoasp='<a href="index.php?act=delcart&idgiohang='.$i.'"><input type="button" value="Xóa" class="btn btn-danger"></a>';
+                    if($cart[6]==1){
+                        $size="chiết";
+                    }else{
+                        $size="full";
+                    }
+                    echo'<tr>
+                            <td><img src="'.$cart[4].'" height="80px"></td>
+                            <td>'.$cart[2].'</td>
+                            <td>'.$size.'</td>
+                            <td>'.$cart[3].'$</td>
+                            <td>'.$cart[5].'</td>
+                            <td>'.$xoasp.'</td>
+                        </tr>';
+                        $i+=1;
+                }
+                echo'<tr>
+                        <td colspan="4">Tổng đơn hàng</td>
+                        <td>'.$tong.'</td>
+                        <td></td>
+                    </tr>
+                ';
+            ?>
+            <!-- <tr>
                 <td>1</td>
                 <td>dwadwd</td>
                 <td>Doe</td>
@@ -55,7 +83,7 @@
                 <td>
                     <a href="#" class="btn btn-danger">Delete</a>
                 </td>
-            </tr>
+            </tr> -->
 
         </tbody>
 
@@ -65,7 +93,4 @@
 <div class="sub p-2">
     <button type="submit" class="btn btn-primary">Dat hang</button>
     <button type="submit" class="btn btn-primary">home</button>
-</div>
-<div class="col-12 bg-dark p-2">
-    <p class="h2 text-center text-light">Copyright &copy; 2020</p>
 </div>

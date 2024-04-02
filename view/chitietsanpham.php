@@ -50,6 +50,7 @@
         padding: 10px;
         ;
     }
+
     .product-price {
         font-size: 1.1rem;
         color: #ef0606;
@@ -79,17 +80,27 @@
     .video {
         display: flex;
     }
-    .original-price span {
-    text-decoration: line-through;
-    color: black;
+
+    .original-price {
+        text-decoration: line-through;
+        color: black;
+        font-size: 20px;
+        padding: 0 5px;
     }
 
-    .sale-price span {
-    color: red;
-    font-weight: bold;
-    font-size: 30px;
+    .sale-price {
+        color: red;
+        font-weight: bold;
+        font-size: 25px;
+        margin: 0;
     }
-    .flex-form{
+
+    .percent {
+        color: red;
+        font-size: 20px;
+    }
+
+    .flex-form {
         display: flex;
         justify-content: space-between;
     }
@@ -103,75 +114,128 @@
         extract($onesp);
         sanpham_tangsoluotxem($id_sanpham);
         $img = $img_path . $img;
-        if($sale==""|| $sale==0){
-        echo '
-                <div class="item">
-                <form action="index.php?act=themgiohang" method="post" class="flex-form col-12">
+        if ($sale == "" || $sale == 0) {
+            if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
+                extract($_SESSION['user']);
+                $giohang = "themgiohang";
+            } else {
+                $giohang = "chua_dn";
+            }
+            ?>
+            <div class="item">
+                <form action="index.php?act=<?= $giohang ?>" method="post" class="flex-form col-12">
                     <div class="item-image flex col-6">
-                        <img src="' . $img . '" alt="" class="item-img" width="400px" height="400px">
+                        <img src="<?= $img ?>" alt="" class="item-img" width="400px" height="400px">
                     </div>
-                        <div class="item-content col-6">
-                            <h3 class="item-title">' . $name . '</h3>
-                            <p class=" h1 product-price">' . $price . '$</p>
-                            <p class="item-text ">
-                            Mô tả: ' . $mota . '
-                            </p>
-                            <div class="mb-3 mt-3 m-3">
-                                <label for="size2">Full</label>
-                                <input type="radio" id="full" name="size" value="full"> 
-                                ';
-                if($price_chiet>0){
-                    echo '
-                               | <label for="size1">Chiết '.$price_chiet.'$</label>
-                                <input type="radio" id="chiet" name="size" value="chiết">
-                    ';
-                }
-            }else{
-                $giasau=sanpham_giamgia($price, $sale);
-                echo '
-                <div class="item">
-                <form action="index.php?act=themgiohang" method="post" class="flex-form col-12">
-                    <div class="item-image flex col-6">
-                        <img src="' . $img . '" alt="" class="item-img" width="400px" height="400px">
-                    </div>
-                        <div class="item-content col-6">
-                            <h3 class="item-title">' . $name . '</h3>
-                            <p class=" h1 product-price">
-                            <div >
-                                <p class="original-price">Giá gốc: <span>'.$price.'$</span></p>
-                                <p class="sale-price">Giá sau giảm: <span>'.$giasau.'$</span></p>
-                            </div>
-                            </p>
-                            <p class="item-text ">
-                            Mô tả: ' . $mota . '
-                            </p>
-                            <div class="mb-3 mt-3 m-3">
-                                <label for="size2">Full</label>
-                                <input type="radio" id="full" name="size" value="full"> 
-                                ';
-                                if($price_chiet>0){
-                                    echo '
-                                        | <label for="size1">Chiết '.$price_chiet.'$</label>
-                                        <input type="radio" id="chiet" name="size" value="chiết">
-                                    ';
-                                }
-                            }
-                        echo' 
-                            </div>
-                            <div class="sub p-2">
-                                    <input type="submit" class="btn btn-danger" name="themvaogiohang" value="Thêm vào giỏ hàng">
-                            </div>
+                    <div class="item-content col-6">
+                        <h3 class="item-title">
+                            <?= $name ?>
+                        </h3>
+                        <p class=" h1 product-price">
+                            <?= $price ?>$
+                        </p>
+                        <p class="item-text ">
+                            Mô tả:
+                            <?= $mota ?>
+                        </p>
+                        <div class="mb-3 mt-3 m-3">
+                            <label for="size2">Full</label>
+                            <input type="radio" id="full" name="size" value="full" required>
+                            <?php if ($price_chiet > 0) { ?>
+                                | <label for="size1">Chiết
+                                    <?= $price_chiet ?>$
+                                </label>
+                                <input type="radio" id="chiet" name="size" value="chiết" required>
+                            <?php }
+        } else {
+            $giasau = sanpham_giamgia($price, $sale);
+            ?>
+                            <div class="item">
+                                <form action="index.php?act=themgiohang" method="post" class="flex-form col-12">
+                                    <div class="item-image flex col-6">
+                                        <img src="<?= $img ?>" alt="" class="item-img" width="400px" height="400px">
+                                    </div>
+                                    <div class="item-content col-6">
+                                        <h2 class="item-title">
+                                            <?php foreach ($danhmuc_sanpham as $key => $value) {
+                                                if ($id_danhmuc == $value['id']) {
+                                                    echo $value['name'];
+                                                }
+                                            }
+                                            ?>
+                                        </h2>
+                                        <h3 class="item-title">
+                                            <?= $name ?>
+                                        </h3>
+                                        <span>
+                                            <span class="sale-price">
+                                                <?= $giasau ?>$
+                                            </span>
+                                            <span class="original-price">
+                                                <?= $price ?>$
+                                            </span>
+                                            <span class="percent">
+                                                -
+                                                <?= $sale ?>%
+                                            </span>
+
+                                        </span>
+                                        <div class="mb-3 mt-3 m-3">
+                                            <label for="size2">Full</label>
+                                            <input type="radio" id="full" name="size" value="full" required>
+                                            <?php if ($price_chiet > 0) { ?>
+                                                | <label for="size1">Chiết
+                                                    <?= $price_chiet ?>$
+                                                </label>
+                                                <input type="radio" id="chiet" name="size" value="chiết" required>
+                                            <?php } ?>
+
+                                        </div>
+                                        <p class="item-text ">
+                                            Mô tả:
+                                            <?= $mota ?>
+                                        </p>
+
+
+                                    <?php }
+        if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
+            extract($_SESSION['user']);
+            ?>
+                                        <div class="sub p-2">
+                                            <input type="hidden" name="id_taikhoan" value="<?= $id_taikhoan ?>">
+                                            <input type="hidden" name="id_sanpham" value="<?= $id_sanpham ?>">
+                                            <input type="hidden" name="name_sanpham" value="<?= $name ?>">
+                                            <?php if ($sale == "" || $sale == 0) { ?>
+                                                <input type="hidden" name="price" value="<?= $price ?>">
+                                            <?php } else { ?>
+                                                <input type="hidden" name="price" value="<?= $giasau ?>">
+                                            <?php } ?>
+                                            <input type="hidden" name="price_chiet" value="<?= $price_chiet ?>">
+                                            <input type="hidden" name="img" value="<?= $img ?>">
+                                            <input type="submit" class="btn btn-danger" name="themvaogiohang"
+                                                value="Thêm vào giỏ hàng">
+                                        </div>
+                                    <?php } else { ?>
+                                    </div>
+                                    <div class="sub p-2">
+                                        <input type="submit" class="btn btn-danger" name="themvaogiohang1"
+                                            value="Thêm vào giỏ hàng"
+                                            onclick="return alert('Đăng nhập để thêm sản phẩm vào giỏ hàng!')">
+                                    </div>
+                                <?php } ?>
                         </div>
                     </div>
-                    </form>
                 </div>
-                ';
-        ?>
+            </form>
+        </div>
+
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
             $(document).ready(function () {
-                $("#binhluan").load("view/binhluan/binhluanform.php", { id_sanpham: <?= $id_sanpham ?> });
+                $("#binhluan").load("view/binhluan/binhluanform.php", {
+                    id_sanpham: <?= $id_sanpham ?>
+                });
             });
         </script>
 
