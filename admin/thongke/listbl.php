@@ -1,5 +1,5 @@
 <h1>thong ke binh luan</h1>
-<form action="index.php" method="post">
+<form action="index" method="post">
     <table class="table table-bordered rounded">
         <thead>
             <tr>
