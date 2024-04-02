@@ -157,7 +157,6 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $ttien = $soluong * $price;
 
                 check_soluong($id_taikhoan, $id_sanpham,$id_size);
-                extract()
                 if($checksoluong>0){
                     giohang_update_soluong($id_taikhoan, $id_sanpham,$id_size);
                 }else{

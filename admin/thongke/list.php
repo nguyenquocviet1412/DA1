@@ -39,5 +39,5 @@
         </tbody>
 
     </table>
-    <a href="index.php?btn_listbl"><button type="submit" class="btn btn-primary">bảng thống kê</button></a>
+    <a class="btn btn btn-primary" href="index.php?btn_listbl" role="button">thong ke binh luan</a>
 </form>
