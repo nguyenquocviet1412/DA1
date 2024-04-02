@@ -15,9 +15,13 @@ function thongkehanghoa()
 
 function thongkebinhluan()
 {
-    $sql = "SELECT hh.mahang, hh.tenhang, COUNT(*) soluong, MIN(bl.ngaybinhluan) cunhat, MAX(bl.ngaybinhluan) moinhat FROM binhluan bl
-    JOIN hanghoa hh ON bl.mahanghoa = hh.mahang
-    GROUP BY hh.mahang, hh.tenhang
+    $sql = "SELECT sp.id_sanpham, sp.name,
+     COUNT(*) soluong, 
+     MIN(bl.ngaybinhluan) cunhat, 
+     MAX(bl.ngaybinhluan) moinhat 
+     FROM binhluan bl
+    JOIN sanpham sp ON bl.id = sp.id_sanpham
+    GROUP BY sp.id_sanpham, sp.name
     HAVING soluong > 0";
     return pdo_query($sql);
 }

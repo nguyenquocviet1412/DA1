@@ -4,15 +4,12 @@ require_once ("../../dao/thongke.php");
 
 extract($_REQUEST);
 
-if (exist_param("btn_list")) {
-    $items = thongkehanghoa();
-    $VIEW_NAME = "list.php";
-} elseif (exist_param("btn_listbl")) {
+if (exist_param("btn_bieudo")) {
     $items = thongkebinhluan();
     $VIEW_NAME = "listbl.php";
 } else {
-    $items = thongkehanghoa();
-    $VIEW_NAME = "list.php";
+    $items = thongkebinhluan();
+    $VIEW_NAME = "listbl.php";
 }
 require_once "../layout.php";
 ?>

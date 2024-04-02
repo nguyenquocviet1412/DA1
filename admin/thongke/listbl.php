@@ -1,14 +1,12 @@
-<h1>thong ke</h1>
-<form action="index.php" method="post">
+<h1>thong ke binh luan</h1>
+<form action="blindex.php" method="post">
     <table class="table table-bordered rounded">
         <thead>
             <tr>
                 <th>ma</th>
                 <th>ten</th>
-                <th>so luong</th>
-                <th>gia cao nhat</th>
-                <th>gia thap nhat</th>
-                <th>gia trung binh</th>
+                <th>cu nhat</th>
+                <th>moi nhat</th>
             </tr>
         </thead>
         <tbody>
@@ -17,27 +15,25 @@
                 extract($value); ?>
                 <tr>
                     <td>
-                        <?= $id ?>
+                        <?= $id_sanpham ?>
                     </td>
                     <td>
                         <?= $name ?>
                     </td>
-                    <td>
+                    <!-- <td>
                         <?= $soluong ?>
+                    </td> -->
+                    <td>
+                        <?= $cunhat ?>
                     </td>
                     <td>
-                        <?= $giamin ?>
-                    </td>
-                    <td>
-                        <?= $giamax ?>
-                    </td>
-                    <td>
-                        <?= $giaavg ?>
+                        <?= $moinhat ?>
                     </td>
                 </tr>
             <?php } ?>
         </tbody>
 
     </table>
-    <a href="index.php?btn_listbl"><button type="submit" class="btn btn-primary">bảng thống kê</button></a>
+    <a href="index.php?btn_list"><button type="submit" class="btn btn-primary">bảng thống kê</button></a>
+    <a class="btn btn btn-primary" href="index.php?btn_list" role="button">Thêm mới</a>
 </form>
