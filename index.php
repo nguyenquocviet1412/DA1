@@ -156,9 +156,9 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $soluong = 1;
                 $ttien = $soluong * $price;
 
-                check_soluong($id_taikhoan, $id_sanpham,$id_size);
-                if($checksoluong>0){
-                    giohang_update_soluong($id_taikhoan, $id_sanpham,$id_size);
+                $checksoluong=check_soluong($id_taikhoan, $id_sanpham,$id_size);
+                if(is_array( $checksoluong)){
+                    giohang_update_soluong($id_taikhoan, $id_sanpham, $id_size);
                 }else{
                     giohang_insert($id_taikhoan, $id_sanpham, $name_sanpham, $price, $img, $soluong, $id_size);
                 }

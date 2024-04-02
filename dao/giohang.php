@@ -5,15 +5,15 @@
         pdo_query($sql);
         return pdo_query($sql);
     }
-    function check_soluong($id_taikhoan, $id_sanpham, $id_size){
-        $sql="SELECT * FROM giohang where id_taikhoan=$id_taikhoan ,id_sanpham=$id_sanpham,id_size=$id_size";
-        $sp = pdo_query_one($sql,$id_taikhoan, $id_sanpham, $id_size);
+    function check_soluong($id_taikhoan, $id_sanpham,$id_size){
+        $sql = "SELECT * from giohang where id_taikhoan='" . $id_taikhoan . "' AND id_sanpham='" . $id_sanpham . "' AND id_size='" . $id_size . "'";
+        $sp = pdo_query_one($sql);
         return $sp;
-    }
+}
     function giohang_update_soluong($id_taikhoan, $id_sanpham, $id_size){
-        $sql = "UPDATE giohang SET soluong = soluong + 1 WHERE id_taikhoan = $id_taikhoan and id_sanpham = $id_sanpham and id_size=$id_size";
+        $sql = "UPDATE giohang SET soluong=soluong+1 WHERE id_taikhoan=? AND id_sanpham=? AND id_size=?";
         pdo_execute($sql, $id_taikhoan, $id_sanpham, $id_size);
-    }
+}
     function giohang_insert($id_taikhoan, $id_sanpham, $name_sanpham, $price, $img, $soluong, $id_size)
     {
         $sql = "INSERT INTO giohang(id_taikhoan, id_sanpham, name_sanpham, price, img, soluong, id_size) VALUES(?,?,?,?,?,?,?)";

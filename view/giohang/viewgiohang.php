@@ -71,7 +71,7 @@
                 }
                 echo'<tr>
                         <td colspan="3">Tổng đơn hàng</td>
-                        <td>'.$tong.'</td>
+                        <td>'.$tong.'$</td>
                         <td>'.$tongsoluong.'</td>
                         <td><a href="index.php?act=delcart_idtaikhoan&id_taikhoan='.$id_taikhoan.'"><input type="button" value="Xóa" class="btn btn-danger"></a></td>
                     </tr>
