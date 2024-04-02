@@ -53,7 +53,7 @@
             </div>
 
             <div class="buy">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="index.php?act=viewcart">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="text-light" class="bi bi-bag"
                         viewBox="0 0 16 16">
                         <path

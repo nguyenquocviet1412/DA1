@@ -2,12 +2,12 @@
 ob_start();
 session_start();
 include "dao/pdo.php";
-require_once "dao/pdo.php";
 include "dao/sanpham.php";
 include "dao/danhmuc.php";
 include "dao/taikhoan.php";
 include "view/header.php";
 include "global.php";
+include "dao/giohang.php";
 
 if (!isset($_SESSION['mycart']))
     $_SESSION['mycart'] = [];
@@ -156,24 +156,33 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $soluong = 1;
                 $ttien = $soluong * $price;
 
-                $spgiohang = [$id_taikhoan, $id_sanpham, $name_sanpham, $price, $img, $soluong, $id_size];
-                array_push($_SESSION['mycart'], $spgiohang);
-
+                check_soluong($id_taikhoan, $id_sanpham,$id_size);
+                extract()
+                if($checksoluong>0){
+                    giohang_update_soluong($id_taikhoan, $id_sanpham,$id_size);
+                }else{
+                    giohang_insert($id_taikhoan, $id_sanpham, $name_sanpham, $price, $img, $soluong, $id_size);
+                }
+                    $listgiohang=load_giohang_taikhoan($id_taikhoan);
             }
             include "view/giohang/viewgiohang.php";
             break;
         case 'delcart':
             if (isset($_GET['idgiohang'])) {
-                array_slice($_SESSION['mycart'], $_GET['idgiohang'], 1);
-                header('Location: index.php');
-            } else {
-                $_SESSION['mycart'] = [];
+                $listgiohang=giohang_selectall();
+                include "view/giohang/viewgiohang.php";
+            // } else {
             }
+            header('Location: index.php?act=viewcart');
+            break;
+        case 'delcart_idtaikhoan':
+            giohang_delete_taikhoan($id_taikhoan);
+            $listgiohang=load_giohang_taikhoan($id_taikhoan);
             include "view/giohang/viewgiohang.php";
-            // header('Location: index.php?act=viewcart');
             break;
         case 'viewcart':
-
+            $listgiohang=load_giohang_taikhoan($id_taikhoan);
+            include "view/giohang/viewgiohang.php";
             break;
         case 'thoat':
             session_unset();

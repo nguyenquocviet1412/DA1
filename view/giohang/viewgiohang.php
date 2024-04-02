@@ -47,29 +47,33 @@
             <?php 
                 $tong=0;
                 $i=0;
-                foreach ($_SESSION['mycart'] as $cart) {
-                    $ttien=$cart[3] * $cart[5];
+                $tongsoluong=0;
+                foreach ($listgiohang as $gh) {
+                    extract($gh);
+                    $ttien=$soluong * $price;
                     $tong+=$ttien;
+                    $tongsoluong+=$soluong;
                     $xoasp='<a href="index.php?act=delcart&idgiohang='.$i.'"><input type="button" value="Xóa" class="btn btn-danger"></a>';
-                    if($cart[6]==1){
+                    if($id_size==1){
                         $size="chiết";
                     }else{
                         $size="full";
                     }
                     echo'<tr>
-                            <td><img src="'.$cart[4].'" height="80px"></td>
-                            <td>'.$cart[2].'</td>
+                            <td><img src="'.$img.'" height="80px"></td>
+                            <td>'.$name_sanpham.'</td>
                             <td>'.$size.'</td>
-                            <td>'.$cart[3].'$</td>
-                            <td>'.$cart[5].'</td>
+                            <td>'.$price.'$</td>
+                            <td>'.$soluong.'</td>
                             <td>'.$xoasp.'</td>
                         </tr>';
                         $i+=1;
                 }
                 echo'<tr>
-                        <td colspan="4">Tổng đơn hàng</td>
+                        <td colspan="3">Tổng đơn hàng</td>
                         <td>'.$tong.'</td>
-                        <td></td>
+                        <td>'.$tongsoluong.'</td>
+                        <td><a href="index.php?act=delcart_idtaikhoan&id_taikhoan='.$id_taikhoan.'"><input type="button" value="Xóa" class="btn btn-danger"></a></td>
                     </tr>
                 ';
             ?>
@@ -92,5 +96,5 @@
 
 <div class="sub p-2">
     <button type="submit" class="btn btn-primary">Dat hang</button>
-    <button type="submit" class="btn btn-primary">home</button>
+    <a href="index.php"><button type="submit" class="btn btn-primary">home</button></a>
 </div>

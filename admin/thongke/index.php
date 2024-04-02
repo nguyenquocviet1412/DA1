@@ -12,7 +12,7 @@ if (exist_param("btn_list")) {
     $VIEW_NAME = "listbl.php";
 } else {
     $items = thongkehanghoa();
-    $VIEW_NAME = "list.php";
+    $VIEW_NAME = "listbl.php";
 }
 require_once "../layout.php";
 ?>
