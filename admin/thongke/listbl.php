@@ -1,5 +1,5 @@
 <h1>thong ke binh luan</h1>
-<form action="blindex.php" method="post">
+<form action="index.php" method="post">
     <table class="table table-bordered rounded">
         <thead>
             <tr>
@@ -11,7 +11,6 @@
         </thead>
         <tbody>
             <?php foreach ($items as $key => $value) {
-
                 extract($value); ?>
                 <tr>
                     <td>
@@ -34,6 +33,5 @@
         </tbody>
 
     </table>
-    <a href="index.php?btn_list"><button type="submit" class="btn btn-primary">bảng thống kê</button></a>
-    <a class="btn btn btn-primary" href="index.php?btn_list" role="button">Thêm mới</a>
+    <a class="btn btn btn-primary" href="index.php?btn_list" role="button">Thong ke hang hoa</a>
 </form>
