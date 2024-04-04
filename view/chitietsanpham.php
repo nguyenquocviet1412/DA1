@@ -268,7 +268,6 @@
                                             value="Thêm vào giỏ hàng">
                                     </div>
                                 <?php } else { ?>
-                                </div>
                                 <div class="sub p-2">
                                     <input type="submit" class="btn btn-danger" name="themvaogiohang1"
                                         value="Thêm vào giỏ hàng"
