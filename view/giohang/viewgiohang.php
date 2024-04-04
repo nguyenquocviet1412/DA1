@@ -53,7 +53,7 @@
                     $ttien=$soluong * $price;
                     $tong+=$ttien;
                     $tongsoluong+=$soluong;
-                    $xoasp='<a href="index.php?act=delcart&idgiohang='.$i.'"><input type="button" value="Xóa" class="btn btn-danger"></a>';
+                    $xoasp='<a href="index.php?act=delcart&idgiohang='.$id_giohang.'"><input type="button" value="Xóa" class="btn btn-danger"></a>';
                     if($id_size==1){
                         $size="chiết";
                     }else{
@@ -64,7 +64,9 @@
                             <td>'.$name_sanpham.'</td>
                             <td>'.$size.'</td>
                             <td>'.$price.'$</td>
-                            <td>'.$soluong.'</td>
+                            <td>
+                                '.$soluong.'
+                            </td>
                             <td>'.$xoasp.'</td>
                         </tr>';
                         $i+=1;
