@@ -87,6 +87,12 @@
         font-size: 20px;
         padding: 0 5px;
     }
+    .original-price1 {
+        color: red;
+        font-weight: bold;
+        font-size: 25px;
+        margin: 0;
+    }
 
     .sale-price {
         color: red;
@@ -128,121 +134,161 @@
                         <img src="<?= $img ?>" alt="" class="item-img" width="400px" height="400px">
                     </div>
                     <div class="item-content col-6">
+                        <h2 class="item-title">
+                            <?php foreach ($danhmuc_sanpham as $key => $value) {
+                                if ($id_danhmuc == $value['id']) {
+                                    echo $value['name'];
+                                }
+                            }
+                            ?>
+                        </h2>
                         <h3 class="item-title">
                             <?= $name ?>
                         </h3>
-                        <p class=" h1 product-price">
-                            <?= $price ?>$
-                        </p>
+                        <span>
+                            
+                            <span class="original-price1">
+                                Full: <?= $price ?>$
+                            </span><br>
+                            
+                            
+                            <span class="original-price1">
+                                Chiết: <?= $price_chiet ?>$
+                            </span>
+                            
+                        </span>
+
+                        <div class="mb-3 mt-3 m-3">
+                            <input type="radio" class="btn-check" name="size" id="full" value="full" autocomplete="off"
+                                checked>
+                            <label class="btn btn-outline-danger" for="full">Full:
+                                <?= $price ?>
+                            </label>
+                            <?php if ($price_chiet > 0) { ?>
+                                <input type="radio" class="btn-check" name="size" id="chiet" autocomplete="off">
+                                <label class="btn btn-outline-danger" for="chiet" value="chiết">
+                                    Chiết:
+                                    <?= $price_chiet ?>
+                                </label>
+                            <?php } ?>
+                        </div>
                         <p class="item-text ">
                             Mô tả:
                             <?= $mota ?>
                         </p>
-                        <div class="mb-3 mt-3 m-3">
-                            <label for="size2">Full</label>
-                            <input type="radio" id="full" name="size" value="full" required>
-                            <?php if ($price_chiet > 0) { ?>
-                                | <label for="size1">Chiết
-                                    <?= $price_chiet ?>$
-                                </label>
-                                <input type="radio" id="chiet" name="size" value="chiết" required>
-                            <?php }
-        } else {
-            $giasau = sanpham_giamgia($price, $sale);
+                    <?php } else {
+            $salefull = sanpham_giamgia($price, $sale);
+            $salechiet = sanpham_giamgia($price_chiet, $sale);
             ?>
-                            <div class="item">
-                                <form action="index.php?act=themgiohang" method="post" class="flex-form col-12">
-                                    <div class="item-image flex col-6">
-                                        <img src="<?= $img ?>" alt="" class="item-img" width="400px" height="400px">
-                                    </div>
-                                    <div class="item-content col-6">
-                                        <h2 class="item-title">
-                                            <?php foreach ($danhmuc_sanpham as $key => $value) {
-                                                if ($id_danhmuc == $value['id']) {
-                                                    echo $value['name'];
-                                                }
+                        <div class="item">
+                            <form action="index.php?act=themgiohang" method="post" class="flex-form col-12">
+                                <div class="item-image flex col-6">
+                                    <img src="<?= $img ?>" alt="" class="item-img" width="400px" height="400px">
+                                </div>
+                                <div class="item-content col-6">
+                                    <h2 class="item-title">
+                                        <?php foreach ($danhmuc_sanpham as $key => $value) {
+                                            if ($id_danhmuc == $value['id']) {
+                                                echo $value['name'];
                                             }
-                                            ?>
-                                        </h2>
-                                        <h3 class="item-title">
-                                            <?= $name ?>
-                                        </h3>
-                                        <span>
-                                            <span class="sale-price">
-                                                <?= $giasau ?>$
-                                            </span>
-                                            <span class="original-price">
-                                                <?= $price ?>$
-                                            </span>
-                                            <span class="percent">
-                                                -
-                                                <?= $sale ?>%
-                                            </span>
-
+                                        }
+                                        ?>
+                                    </h2>
+                                    <h3 class="item-title">
+                                        <?= $name ?>
+                                    </h3>
+                                    <span>
+                                        <span class="sale-price">
+                                            Full:
+                                            <?= $salefull ?>$
                                         </span>
-                                        <div class="mb-3 mt-3 m-3">
-                                            <label for="size2">Full</label>
-                                            <input type="radio" id="full" name="size" value="full" required>
-                                            <?php if ($price_chiet > 0) { ?>
-                                                | <label for="size1">Chiết
-                                                    <?= $price_chiet ?>$
-                                                </label>
-                                                <input type="radio" id="chiet" name="size" value="chiết" required>
-                                            <?php } ?>
+                                        <span class="original-price">
+                                            <?= $price ?>$
+                                        </span>
+                                        <span class="percent">
+                                            -
+                                            <?= $sale ?>%
+                                        </span> <br>
+                                        <span class="sale-price">
+                                            Chiết:
+                                            <?= $salechiet ?>$
+                                        </span>
+                                        <span class="original-price">
+                                            <?= $price_chiet ?>$
+                                        </span>
+                                        <span class="percent">
+                                            -
+                                            <?= $sale ?>%
+                                        </span>
+                                    </span>
+                                    <div class="mb-3 mt-3 m-3">
+                                        <input type="radio" class="btn-check" name="size" id="full" value="full"
+                                            autocomplete="off">
+                                        <label class="btn btn-outline-danger" for="full">Full:
+                                            <?= $salefull ?>
+                                        </label>
+                                        <?php if ($price_chiet > 0) { ?>
+                                            <input type="radio" class="btn-check" name="size" id="chiet" autocomplete="off">
+                                            <label class="btn btn-outline-danger" for="chiet" value="chiết">
+                                                Chiết:
+                                                <?= $salechiet ?>
+                                            </label>
+                                        <?php } ?>
+                                    </div>
 
-                                        </div>
-                                        <p class="item-text ">
-                                            Mô tả:
-                                            <?= $mota ?>
-                                        </p>
+                                    <p class="item-text ">
+                                        Mô tả:
+                                        <?= $mota ?>
+                                    </p>
 
 
-                                    <?php }
+                                <?php }
         if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
             extract($_SESSION['user']);
             ?>
-                                        <div class="sub p-2">
-                                            <input type="hidden" name="id_taikhoan" value="<?= $id_taikhoan ?>">
-                                            <input type="hidden" name="id_sanpham" value="<?= $id_sanpham ?>">
-                                            <input type="hidden" name="name_sanpham" value="<?= $name ?>">
-                                            <?php if ($sale == "" || $sale == 0) { ?>
-                                                <input type="hidden" name="price" value="<?= $price ?>">
-                                            <?php } else { ?>
-                                                <input type="hidden" name="price" value="<?= $giasau ?>">
-                                            <?php } ?>
-                                            <input type="hidden" name="price_chiet" value="<?= $price_chiet ?>">
-                                            <input type="hidden" name="img" value="<?= $img ?>">
-                                            <input type="submit" class="btn btn-danger" name="themvaogiohang"
-                                                value="Thêm vào giỏ hàng">
-                                        </div>
-                                    <?php } else { ?>
-                                    </div>
                                     <div class="sub p-2">
-                                        <input type="submit" class="btn btn-danger" name="themvaogiohang1"
-                                            value="Thêm vào giỏ hàng"
-                                            onclick="return alert('Đăng nhập để thêm sản phẩm vào giỏ hàng!')">
+                                        <input type="hidden" name="id_taikhoan" value="<?= $id_taikhoan ?>">
+                                        <input type="hidden" name="id_sanpham" value="<?= $id_sanpham ?>">
+                                        <input type="hidden" name="name_sanpham" value="<?= $name ?>">
+                                        <?php if ($sale == "" || $sale == 0) { ?>
+                                            <input type="hidden" name="price" value="<?= $price ?>">
+                                            <input type="hidden" name="price_chiet" value="<?= $price_chiet ?>">
+                                        <?php } else { ?>
+                                            <input type="hidden" name="price" value="<?= $salefull ?>">
+                                            <input type="hidden" name="price_chiet" value="<?= $salechiet ?>">
+                                        <?php } ?>
+                                        <input type="hidden" name="img" value="<?= $img ?>">
+                                        <input type="submit" class="btn btn-danger" name="themvaogiohang"
+                                            value="Thêm vào giỏ hàng">
                                     </div>
-                                <?php } ?>
-                        </div>
+                                <?php } else { ?>
+                                </div>
+                                <div class="sub p-2">
+                                    <input type="submit" class="btn btn-danger" name="themvaogiohang1"
+                                        value="Thêm vào giỏ hàng"
+                                        onclick="return alert('Đăng nhập để thêm sản phẩm vào giỏ hàng!')">
+                                </div>
+                            <?php } ?>
                     </div>
                 </div>
-            </form>
         </div>
+        </form>
+    </div>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#binhluan").load("view/binhluan/binhluanform.php", {
-                    id_sanpham: <?= $id_sanpham ?>
-                });
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#binhluan").load("view/binhluan/binhluanform.php", {
+                id_sanpham: <?= $id_sanpham ?>
             });
-        </script>
+        });
+    </script>
 
-        <h3>Binh Luan</h3>
-        <div id="binhluan">
+    <h3>Bình Luận</h3>
+    <div id="binhluan">
 
-        </div>
+    </div>
 
     </div>
     <h3>Sản phẩm cùng hãng

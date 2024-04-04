@@ -170,7 +170,7 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_GET['idgiohang'])) {
                 $listgiohang=giohang_selectall();
                 include "view/giohang/viewgiohang.php";
-            // } else {
+            } else {
             }
             header('Location: index.php?act=viewcart');
             break;
