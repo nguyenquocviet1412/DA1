@@ -123,13 +123,13 @@
         if ($sale == "" || $sale == 0) {
             if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
                 extract($_SESSION['user']);
-                $giohang = "themgiohang";
+                $giohang1 = "themgiohang";
             } else {
-                $giohang = "chua_dn";
+                $giohang1 = "chua_dn";
             }
             ?>
             <div class="item">
-                <form action="index.php?act=<?= $giohang ?>" method="post" class="flex-form col-12">
+                <form action="index.php?act=<?= $giohang1 ?>" method="post" class="flex-form col-12">
                     <div class="item-image flex col-6">
                         <img src="<?= $img ?>" alt="" class="item-img" width="400px" height="400px">
                     </div>
@@ -179,9 +179,15 @@
                     <?php } else {
             $salefull = sanpham_giamgia($price, $sale);
             $salechiet = sanpham_giamgia($price_chiet, $sale);
+            if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
+                extract($_SESSION['user']);
+                $giohang1 = "themgiohang";
+            } else {
+                $giohang1 = "chua_dn";
+            }
             ?>
                         <div class="item">
-                            <form action="index.php?act=themgiohang" method="post" class="flex-form col-12">
+                            <form action="index.php?act=<?= $giohang1 ?>" method="post" class="flex-form col-12">
                                 <div class="item-image flex col-6">
                                     <img src="<?= $img ?>" alt="" class="item-img" width="400px" height="400px">
                                 </div>
@@ -271,8 +277,8 @@
                             <?php } ?>
                     </div>
                 </div>
+                </form>
         </div>
-        </form>
     </div>
 
 
