@@ -169,8 +169,9 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
         case 'delcart':
             if (isset($_GET['idgiohang'])) {
                 $listgiohang=giohang_selectall();
+                $id_giohang=$_GET['idgiohang'];
+                giohang_delete($id_giohang);
                 include "view/giohang/viewgiohang.php";
-            } else {
             }
             header('Location: index.php?act=viewcart');
             break;
