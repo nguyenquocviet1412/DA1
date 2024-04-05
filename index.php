@@ -236,6 +236,8 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $_SESSION['bill'] = bill_getinfo($id_bill);
                 $_SESSION['billct'] = bill_chitiet_getinfo($id_bill);
                 $listdonhang=load_giohang_idbill($id_bill);
+                giohang_delete_taikhoan($id_taikhoan);
+
             }
             include "view/giohang/billconfirm.php";
 
