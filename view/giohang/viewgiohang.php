@@ -65,7 +65,9 @@
                             <td>'.$size.'</td>
                             <td>'.$price.'$</td>
                             <td>
-                                '.$soluong.'
+                                <a href="index.php?act=giam_soluong&idgiohang='.$id_giohang.'"><input type="button" value="-" class="btn btn-danger"></a>
+                                <span>'.$soluong.'</span>
+                                <a href="index.php?act=tang_soluong&idgiohang='.$id_giohang.'"><input type="button" value="+" class="btn btn-danger"></a>
                             </td>
                             <td>'.$xoasp.'</td>
                         </tr>';

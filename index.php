@@ -9,9 +9,6 @@ include "view/header.php";
 include "global.php";
 include "dao/giohang.php";
 
-if (!isset($_SESSION['mycart']))
-    $_SESSION['mycart'] = [];
-
 $spnew = sanpham_selectall();
 $dsdm = danhmuc_selectall();
 $dstop10 = sanpham_selecttop10();
@@ -53,7 +50,18 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             include "view/dangnhap.php";
             break;
         case 'dangnhap':
+            unset($_SESSION['error']);
             if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
+                $error = [];
+                    if (empty($_POST["user"])) {
+                        $error[] = "Vui lòng nhập tên tài khoản";
+                    }
+                    if (empty($_POST["pass"])) {
+                        $error[] = "Vui lòng nhập mật khẩu";
+                    }
+                    if (count($error) >= 1) {
+                        $_SESSION['error'] = $error;
+                    } else {
                 $user = $_POST['user'];
                 $pass = $_POST['pass'];
                 $checkuser = checkuser($user, $pass);
@@ -65,7 +73,8 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                     $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
                 }
             }
-            include "view/taikhoan/dangky.php";
+            }
+            include "view/dangnhap.php";
             break;
         case 'trangdangky':
             include "view/taikhoan/dangky.php";
@@ -163,6 +172,7 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                     giohang_insert($id_taikhoan, $id_sanpham, $name_sanpham, $price, $img, $soluong, $id_size);
                 }
                     $listgiohang=load_giohang_taikhoan($id_taikhoan);
+                    $_SESSION['giohang']=$listgiohang;
             }
             include "view/giohang/viewgiohang.php";
             break;
@@ -183,6 +193,11 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
         case 'viewcart':
             $listgiohang=load_giohang_taikhoan($id_taikhoan);
             include "view/giohang/viewgiohang.php";
+            break;
+        case 'update_soluong':
+                giohang_tanggiam_soluong($id_giohang,$soluong);
+                $listgiohang=load_giohang_taikhoan($id_taikhoan);
+                include "view/giohang/viewgiohang.php";
             break;
         case 'thoat':
             session_unset();

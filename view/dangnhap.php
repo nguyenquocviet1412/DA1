@@ -58,13 +58,13 @@
         ?>
       <h1>Chào <?=$user?></h1>
         <img class="card-img-top rounded-circle"  src="<?=$avatar1?>" alt="Card image">
-        <h2 class="thongbao">
+        <h3 class="thongbao">
         <?php
         if (isset($thongbao) && ($thongbao != "")) {
           echo $thongbao;
         }
         ?>
-      </h2>
+      </h3>
         <form action="index.php?act=dangnhap" method="post">
         <div class="mb-3 m-3">
                   <label for="email" class="form-label">Email: <?=$email?></label>
@@ -87,13 +87,22 @@
       <?php }else{ ?>
 
       <img class="card-img-top rounded-circle" src="./img/images.jpg" alt="Card image">
-      <h2 class="thongbao">
+      <h3 class="thongbao">
         <?php
         if (isset($thongbao) && ($thongbao != "")) {
           echo $thongbao;
         }
         ?>
-      </h2>
+      </h3>
+      <ul>
+            <?php if(isset($_SESSION['error'])){
+                foreach ($_SESSION['error'] as $er){
+                    ?>
+                    <li style=" "><?php echo $er; ?></li>
+                    <?php
+                }
+            }?>
+        </ul>
       <form action="index.php?act=dangnhap" method="post">
         <div class="mb-3 mt-3 m-3">
           <label for="text" class="form-label">User:</label>

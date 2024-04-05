@@ -1,3 +1,4 @@
+
 <?php 
     function giohang_selectall()
     {
@@ -14,6 +15,10 @@
         $sql = "UPDATE giohang SET soluong=soluong+1 WHERE id_taikhoan=? AND id_sanpham=? AND id_size=?";
         pdo_execute($sql, $id_taikhoan, $id_sanpham, $id_size);
 }
+    function giohang_tanggiam_soluong($id_giohang,$soluong){
+        $sql = "UPDATE giohang SET soluong = $soluong WHERE id_giohang=$id_giohang";
+        pdo_execute($sql, $id_giohang,$soluong);
+    }
     function giohang_insert($id_taikhoan, $id_sanpham, $name_sanpham, $price, $img, $soluong, $id_size)
     {
         $sql = "INSERT INTO giohang(id_taikhoan, id_sanpham, name_sanpham, price, img, soluong, id_size) VALUES(?,?,?,?,?,?,?)";

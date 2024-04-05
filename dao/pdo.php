@@ -115,4 +115,5 @@ function checklogin()
     $_SESSION['REQUEST_URI'] = $_SERVER['REQUEST_URI'];
     header("location: /shop/site/taikhoan/dangnhap.php");
 }
+
 ?>
