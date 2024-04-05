@@ -8,6 +8,8 @@ include "dao/taikhoan.php";
 include "view/header.php";
 include "global.php";
 include "dao/giohang.php";
+include "dao/bill.php";
+include "dao/billchitiet.php";
 
 if (!isset($_SESSION['mycart']))
     $_SESSION['mycart'] = [];
@@ -156,20 +158,20 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $soluong = 1;
                 $ttien = $soluong * $price;
 
-                $checksoluong=check_soluong($id_taikhoan, $id_sanpham,$id_size);
-                if(is_array( $checksoluong)){
+                $checksoluong = check_soluong($id_taikhoan, $id_sanpham, $id_size);
+                if (is_array($checksoluong)) {
                     giohang_update_soluong($id_taikhoan, $id_sanpham, $id_size);
-                }else{
+                } else {
                     giohang_insert($id_taikhoan, $id_sanpham, $name_sanpham, $price, $img, $soluong, $id_size);
                 }
-                    $listgiohang=load_giohang_taikhoan($id_taikhoan);
+                $listgiohang = load_giohang_taikhoan($id_taikhoan);
             }
             include "view/giohang/viewgiohang.php";
             break;
         case 'delcart':
             if (isset($_GET['idgiohang'])) {
-                $listgiohang=giohang_selectall();
-                $id_giohang=$_GET['idgiohang'];
+                $listgiohang = giohang_selectall();
+                $id_giohang = $_GET['idgiohang'];
                 giohang_delete($id_giohang);
                 include "view/giohang/viewgiohang.php";
             }
@@ -177,16 +179,58 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             break;
         case 'delcart_idtaikhoan':
             giohang_delete_taikhoan($id_taikhoan);
-            $listgiohang=load_giohang_taikhoan($id_taikhoan);
+            $listgiohang = load_giohang_taikhoan($id_taikhoan);
             include "view/giohang/viewgiohang.php";
             break;
         case 'viewcart':
-            $listgiohang=load_giohang_taikhoan($id_taikhoan);
+            $listgiohang = load_giohang_taikhoan($id_taikhoan);
             include "view/giohang/viewgiohang.php";
             break;
         case 'thoat':
             session_unset();
             header('Location: index.php');
+            break;
+        // Đơn hàng
+        case 'bill':
+            $listgiohang = load_giohang_taikhoan($id_taikhoan);
+            include "view/giohang/bill.php";
+            break;
+        case 'billconfirm':
+            $idbill = null;
+            if (isset($_POST['dathang'])) {
+                if (isset($_SESSION['user']))
+                    $id_taikhoan = $_SESSION['user']['id_taikhoan'];
+                else
+                    $id_taikhoan = 0;
+
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $tel = $_POST['tel'];
+                $address = $_POST['address'];
+                $pttt = $_POST['pttt'];
+                $ngaydathang = date('d/m/Y');
+                $price_tong = tong_don_hang($id_kh);
+                $trangthai = "Đã đặt";
+                $payment = $_POST['pttt'];
+                $listgiohang = load_giohang_taikhoan($id_taikhoan);
+                $idbill = bill_insert($trangthai, $id_taikhoan, $ngaydathang, $price_tong, $payment);
+                // insert into cart : $session['mycart'] & $idbill
+                foreach ($listgiohang as $gh) {
+                    bill_chitiet_insert($idbill, $gh['0'], $gh['2'], $gh['1'], $gh[3], $gh[4]);
+                }
+
+                $_SESSION['bill'] = bill_getinfo($idbill);
+                $_SESSION['billct'] = bill_chitiet_getinfo($idbill);
+                
+            }
+            
+
+            include "view/giohang/billconfirm.php";
+
+            break;
+        case 'mybill':
+            $listbill = loadall_bill($_SESSION['user']['id_kh']);
+            include "views/cart/mybill.php";
             break;
         default:
             include "view/home.php";

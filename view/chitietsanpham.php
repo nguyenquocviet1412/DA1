@@ -87,6 +87,7 @@
         font-size: 20px;
         padding: 0 5px;
     }
+
     .original-price1 {
         color: red;
         font-weight: bold;
@@ -146,16 +147,18 @@
                             <?= $name ?>
                         </h3>
                         <span>
-                            
+
                             <span class="original-price1">
-                                Full: <?= $price ?>$
+                                Full:
+                                <?= $price ?>$
                             </span><br>
-                            
-                            
+
+
                             <span class="original-price1">
-                                Chiết: <?= $price_chiet ?>$
+                                Chiết:
+                                <?= $price_chiet ?>$
                             </span>
-                            
+
                         </span>
 
                         <div class="mb-3 mt-3 m-3">
@@ -271,8 +274,10 @@
                             <?php } ?>
                     </div>
                 </div>
+
         </div>
-        </form>
+    </div>
+    </form>
     </div>
 
 
