@@ -201,6 +201,9 @@ $dsdm = danhmuc_selectall();
                                     <li class="nav-item">
                                         <a class="nav-link" href="index.php?act=thoat">Thoát</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.php?act=donhang">Đơn hàng</a>
+                                    </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                             aria-expanded="false">

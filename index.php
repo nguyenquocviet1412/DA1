@@ -55,26 +55,26 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             unset($_SESSION['error']);
             if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
                 $error = [];
-                    if (empty($_POST["user"])) {
-                        $error[] = "Vui lòng nhập tên tài khoản";
-                    }
-                    if (empty($_POST["pass"])) {
-                        $error[] = "Vui lòng nhập mật khẩu";
-                    }
-                    if (count($error) >= 1) {
-                        $_SESSION['error'] = $error;
-                    } else {
-                $user = $_POST['user'];
-                $pass = $_POST['pass'];
-                $checkuser = checkuser($user, $pass);
-                if (is_array($checkuser)) {
-                    $_SESSION['user'] = $checkuser;
-                    //$thongbao="Bạn đã đăng nhập thành công!";
-                    header('Location: index.php');
-                } else {
-                    $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
+                if (empty($_POST["user"])) {
+                    $error[] = "Vui lòng nhập tên tài khoản";
                 }
-            }
+                if (empty($_POST["pass"])) {
+                    $error[] = "Vui lòng nhập mật khẩu";
+                }
+                if (count($error) >= 1) {
+                    $_SESSION['error'] = $error;
+                } else {
+                    $user = $_POST['user'];
+                    $pass = $_POST['pass'];
+                    $checkuser = checkuser($user, $pass);
+                    if (is_array($checkuser)) {
+                        $_SESSION['user'] = $checkuser;
+                        //$thongbao="Bạn đã đăng nhập thành công!";
+                        header('Location: index.php');
+                    } else {
+                        $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
+                    }
+                }
             }
             include "view/dangnhap.php";
             break;
@@ -173,8 +173,8 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 } else {
                     giohang_insert($id_taikhoan, $id_sanpham, $name_sanpham, $price, $img, $soluong, $id_size);
                 }
-                    $listgiohang=load_giohang_taikhoan($id_taikhoan);
-                    $_SESSION['giohang']=$listgiohang;
+                $listgiohang = load_giohang_taikhoan($id_taikhoan);
+                $_SESSION['giohang'] = $listgiohang;
             }
             include "view/giohang/viewgiohang.php";
             break;
@@ -197,22 +197,21 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             include "view/giohang/viewgiohang.php";
             break;
         case 'update_soluong':
-                giohang_tanggiam_soluong($id_giohang,$soluong);
-                $listgiohang=load_giohang_taikhoan($id_taikhoan);
-                include "view/giohang/viewgiohang.php";
+            giohang_tanggiam_soluong($id_giohang, $soluong);
+            $listgiohang = load_giohang_taikhoan($id_taikhoan);
+            include "view/giohang/viewgiohang.php";
             break;
-        
+
         // Đơn hàng
         case 'bill':
             $listgiohang = load_giohang_taikhoan($id_taikhoan);
             include "view/giohang/bill.php";
             break;
         case 'billconfirm':
-            $idbill = null;
             if (isset($_POST['dathang']) && ($_POST['dathang'])) {
-                if (isset($_SESSION['user']) && is_array($_SESSION['user'])){
+                if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
                     extract($_SESSION['user']);
-                }else{
+                } else {
                     $id_taikhoan = 0;
                 }
                 $hoten = $_POST['hoten'];
@@ -225,26 +224,24 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $trangthai = "Đã đặt";
                 $payment = $_POST['pttt'];
                 $listgiohang = load_giohang_taikhoan($id_taikhoan);
-                $idbill = bill_insert($trangthai, $id_taikhoan, $ngaydathang, $price_tong, $payment);
-                $lay_id_bill=bill_loadidbill($id_taikhoan);
+                bill_insert($trangthai, $id_taikhoan, $ngaydathang, $price_tong, $payment);
+                $lay_id_bill = bill_loadidbill($id_taikhoan);
                 extract($lay_id_bill);
-                // insert into cart : $session['mycart'] & $idbill
                 foreach ($listgiohang as $gh) {
                     bill_chitiet_insert($id_bill, $gh['2'], $gh['4'], $gh['6'], $gh[3], $gh[5], $gh[7]);
                 }
 
                 $_SESSION['bill'] = bill_getinfo($id_bill);
                 $_SESSION['billct'] = bill_chitiet_getinfo($id_bill);
-                $listdonhang=load_giohang_idbill($id_bill);
+                $listdonhang = load_giohang_idbill($id_bill);
                 giohang_delete_taikhoan($id_taikhoan);
 
             }
             include "view/giohang/billconfirm.php";
-
             break;
-        case 'mybill':
-            $listbill = loadall_bill($_SESSION['user']['id_kh']);
-            include "views/cart/mybill.php";
+        case 'donhang':
+            $listbill = loadall_bill($_SESSION['user']['id_taikhoan']);
+            include "view/giohang/donhang.php";
             break;
         case 'thoat':
             session_unset();
