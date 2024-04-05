@@ -53,7 +53,14 @@
             </div>
 
             <div class="buy">
+                <?php 
+                    if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
+                        extract($_SESSION['user']);
+                ?>
                 <a class="nav-link" href="index.php?act=viewcart">
+                <?php }else{?>
+                    <a class="nav-link" href="index.php?act=taikhoan" onclick="alert('Đăng nhập để xem giỏ hàng')">
+                <?php }?>
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="text-light" class="bi bi-bag"
                         viewBox="0 0 16 16">
                         <path
@@ -95,7 +102,6 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
 </div>
 </header>
 <main class="justify-content-center">
