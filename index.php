@@ -227,14 +227,15 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $listgiohang = load_giohang_taikhoan($id_taikhoan);
                 $idbill = bill_insert($trangthai, $id_taikhoan, $ngaydathang, $price_tong, $payment);
                 $lay_id_bill=bill_loadidbill($id_taikhoan);
+                extract($lay_id_bill);
                 // insert into cart : $session['mycart'] & $idbill
                 foreach ($listgiohang as $gh) {
-                    bill_chitiet_insert($lay_id_bill, $gh['2'], $gh['4'], $gh['6'], $gh[3], $gh[5]);
+                    bill_chitiet_insert($id_bill, $gh['2'], $gh['4'], $gh['6'], $gh[3], $gh[5], $gh[7]);
                 }
 
-                $_SESSION['bill'] = bill_getinfo($idbill);
-                $_SESSION['billct'] = bill_chitiet_getinfo($idbill);
-                
+                $_SESSION['bill'] = bill_getinfo($id_bill);
+                $_SESSION['billct'] = bill_chitiet_getinfo($id_bill);
+                $listdonhang=load_giohang_idbill($id_bill);
             }
             include "view/giohang/billconfirm.php";
 

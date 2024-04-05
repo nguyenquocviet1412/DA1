@@ -47,18 +47,18 @@
                 ?>
                 <tr>
                     <td>Người đặt hàng</td>
-                    <td><input type="text" name="hoten" value="<?= $hoten ?>" class="col-12"></td>
+                    <td><input type="text" name="hoten" value="<?= $hoten ?>" class="col-12" readonly></td>
                 </tr>
                 <tr>
                     <td>Địa chỉ</td>
-                    <td><input type="text" name="address" value="<?= $address ?>" class="col-12"></td>
+                    <td><input type="text" name="address" value="<?= $address ?>" class="col-12" readonly></td>
                 <tr>
                     <td>Email</td>
-                    <td><input type="email" name="email" value="<?= $email ?>" class="col-12"></td>
+                    <td><input type="email" name="email" value="<?= $email ?>" class="col-12" readonly></td>
                 </tr>
                 <tr>
                     <td>Điện thoại</td>
-                    <td><input type="text" name="tel" value="<?= $tel ?>" class="col-12"></td>
+                    <td><input type="text" name="tel" value="<?= $tel ?>" class="col-12" readonly></td>
                 </tr>
 
             </table>

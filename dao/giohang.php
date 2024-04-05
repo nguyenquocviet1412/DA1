@@ -53,6 +53,7 @@ function load_giohang_taikhoan($id_taikhoan)
     $sql = "SELECT*FROM giohang WHERE id_taikhoan=?";
     return pdo_query($sql, $id_taikhoan);
 }
+
 function tong_don_hang($list)
 {
     $tong = 0;

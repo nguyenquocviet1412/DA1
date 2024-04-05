@@ -20,13 +20,13 @@ function bill_delete($idbill)
     pdo_execute($sql, $idbill);
 }
 function bill_loadidbill($id_taikhoan){
-    $sql = "SELECT id_bill FROM bill WHERE id_taikhoan=? ORDER BY id_bill DESC LIMIT 1";
+    $sql = "SELECT * FROM bill WHERE id_taikhoan=? ORDER BY id_bill DESC LIMIT 1";
     return pdo_query_one($sql, $id_taikhoan);
 }
-function bill_getinfo($idbill)
+function bill_getinfo($id_bill)
 {
     $sql = "SELECT*FROM bill WHERE id_bill=?";
-    return pdo_query_one($sql, $idbill);
+    return pdo_query_one($sql, $id_bill);
 }
 
 function bill_update($idbill, $trangthai, $id_taikhoan, $ngaydathang, $price_tong, $payment)

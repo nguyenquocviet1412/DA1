@@ -1,5 +1,5 @@
-<?php 
-    var_dump($_SESSION['bill']);
+<?php
+var_dump($_SESSION['bill']);
 ?>
 <div class="row">
     <div class="row mb">
@@ -11,7 +11,7 @@
                 </div>
             </div>
             <?php
-            
+
             ?>
             <div class="row mb">
                 <div class="boxtitle">THÔNG TIN ĐƠN HÀNG</div>
@@ -20,39 +20,44 @@
                         <?= $id_bill ?>
                     </li>
                     <li>Ngày đặt hàng:
-                        <?= $bill['ngaydathang'] ?>
+                        <?= $ngaydathang ?>
                     </li>
                     <li>Tổng tiền của đơn hàng: $
-                        <?= $bill['total'] ?>
+                        <?= $price_tong ?>
                     </li>
                 </div>
             </div>
             <div class="row mb">
                 <div class="boxtitle">THÔNG TIN ĐẶT HÀNG</div>
+                <?php
+                if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
+                    extract($_SESSION['user']);
+                }
+                ?>
                 <div class="row boxcontent billform">
                     <table>
                         <tr>
                             <td>Người đặt hàng</td>
                             <td>
-                                <?= $bill['bill_name'] ?>
+                                <?= $hoten ?>
                             </td>
                         </tr>
                         <tr>
                             <td>Email</td>
                             <td>
-                                <?= $bill['bill_email'] ?>
+                                <?= $email ?>
                             </td>
                         </tr>
                         <tr>
                             <td>Số điện thoại</td>
                             <td>
-                                <?= $bill['bill_tel'] ?>
+                                <?= $tel ?>
                             </td>
                         </tr>
                         <tr>
                             <td>Địa chỉ</td>
                             <td>
-                                <?= $bill['bill_address'] ?>
+                                <?= $address ?>
                             </td>
                         </tr>
                     </table>
@@ -63,17 +68,17 @@
                 <div class="row boxcontent pttt">
                     <table>
                         <tr>
-                            <?php if ($bill['bill_pttt'] == 1): ?>
+                            <?php if ($payment == "Trực tiếp") : ?>
                                 <td>
-                                    <?= $bill['bill_pttt'] ?>. Trả tiền khi nhận hàng
+                                    <?= $payment ?>. Trả tiền khi nhận hàng
                                 </td>
-                            <?php elseif ($bill['bill_pttt'] == 2): ?>
+                            <?php elseif ($payment == "Chuyển khoản") : ?>
                                 <td>
-                                    <?= $bill['bill_pttt'] ?>. Chuyển khoản ngân hàng
+                                    <?= $payment ?>. Chuyển khoản ngân hàng
                                 </td>
-                            <?php elseif ($bill['bill_pttt'] == 3): ?>
+                            <?php elseif ($payment == "Online") : ?>
                                 <td>
-                                    <?= $bill['bill_pttt'] ?>. Thanh toán online
+                                    <?= $payment ?>. Thanh toán online
                                 </td>
                             <?php endif ?>
                         </tr>
@@ -83,10 +88,51 @@
             <div class="row mb">
                 <div class="boxtitle">CHI TIẾT GIỎ HÀNG</div>
                 <div class="row boxcontent cart">
-                    <table>
-                        <?php
-                        //   bill_chi_tiet($billct);
-                        ?>
+                    <table class="table table-bordered showsp">
+                        <thead>
+                            <tr>
+                                <th>Ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Size</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $tong = 0;
+                            $i = 0;
+                            $tongsoluong = 0;
+                            foreach ($listdonhang as $dh) {
+                                extract($dh);
+                                $ttien = $soluong * $price;
+                                $tong += $ttien;
+                                $tongsoluong += $soluong;
+                                if ($id_size == 1) {
+                                    $size = "chiết";
+                                } else {
+                                    $size = "full";
+                                }
+                                echo '<tr>
+                            <td><img src="' . $img_sanpham . '" height="80px"></td>
+                            <td>' . $name_sanpham . '</td>
+                            <td>' . $size . '</td>
+                            <td>' . $price . '$</td>
+                            <td>
+                                ' . $soluong . '
+                            </td>
+                        </tr>';
+                                $i += 1;
+                            }
+                            echo '<tr>
+                        <td colspan="3">Tổng đơn hàng</td>
+                        <td>' . $tong . '$</td>
+                        <td>' . $tongsoluong . '</td>
+                    </tr>
+                ';
+                            ?>
+
+                        </tbody>
                     </table>
                 </div>
             </div>
