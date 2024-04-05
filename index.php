@@ -173,12 +173,8 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 } else {
                     giohang_insert($id_taikhoan, $id_sanpham, $name_sanpham, $price, $img, $soluong, $id_size);
                 }
-<<<<<<< HEAD
                     $listgiohang=load_giohang_taikhoan($id_taikhoan);
                     $_SESSION['giohang']=$listgiohang;
-=======
-                $listgiohang = load_giohang_taikhoan($id_taikhoan);
->>>>>>> aae2cd4578c1af5ee87ce3154b9ead066bc0b2e2
             }
             include "view/giohang/viewgiohang.php";
             break;

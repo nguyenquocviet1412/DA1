@@ -44,7 +44,6 @@
             </tr>
         </thead>
         <tbody>
-<<<<<<< HEAD
             <?php 
                 $tong=0;
                 $i=0;
@@ -73,35 +72,7 @@
                             <td>'.$xoasp.'</td>
                         </tr>';
                         $i+=1;
-=======
-            <?php
-            $tong = 0;
-            $i = 0;
-            $tongsoluong = 0;
-            foreach ($listgiohang as $gh) {
-                extract($gh);
-                $ttien = $soluong * $price;
-                $tong += $ttien;
-                $tongsoluong += $soluong;
-                $xoasp = '<a href="index.php?act=delcart&idgiohang=' . $id_giohang . '"><input type="button" value="Xóa" class="btn btn-danger"></a>';
-                if ($id_size == 1) {
-                    $size = "chiết";
-                } else {
-                    $size = "full";
->>>>>>> aae2cd4578c1af5ee87ce3154b9ead066bc0b2e2
                 }
-                echo '<tr>
-                            <td><img src="' . $img . '" height="80px"></td>
-                            <td>' . $name_sanpham . '</td>
-                            <td>' . $size . '</td>
-                            <td>' . $price . '$</td>
-                            <td>
-                                ' . $soluong . '
-                            </td>
-                            <td>' . $xoasp . '</td>
-                        </tr>';
-                $i += 1;
-            }
             echo '<tr>
                         <td colspan="3">Tổng đơn hàng</td>
                         <td>' . $tong . '$</td>
