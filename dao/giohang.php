@@ -57,7 +57,7 @@ function tong_don_hang($list)
 {
     $tong = 0;
     foreach ($list as $list) {
-        $tong_tien = $list[3] * $list[4];
+        $tong_tien = (float)"$list[3]" * (float)"$list[4]";
         $tong += $tong_tien;
     }
     return $tong;

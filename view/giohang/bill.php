@@ -36,13 +36,10 @@
             <h3>THÔNG TIN USER</h3>
             <table class="table table-bordered col-6">
                 <?php
-                if (isset($_SESSION['user'])) {
-                    $name = $_SESSION['user']['hoten'];
-                    $address = $_SESSION['user']['address'];
-                    $email = $_SESSION['user']['email'];
-                    $tel = $_SESSION['user']['tel'];
-                } else {
-                    $name = "";
+                if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
+                    extract($_SESSION['user']);
+                  }else {
+                    $hoten = "";
                     $address = "";
                     $email = "";
                     $tel = "";
@@ -50,7 +47,7 @@
                 ?>
                 <tr>
                     <td>Người đặt hàng</td>
-                    <td><input type="text" name="name" value="<?= $name ?>" class="col-12"></td>
+                    <td><input type="text" name="hoten" value="<?= $hoten ?>" class="col-12"></td>
                 </tr>
                 <tr>
                     <td>Địa chỉ</td>
@@ -87,7 +84,6 @@
                         <th>Size</th>
                         <th>Giá</th>
                         <th>Số lượng</th>
-                        <th>action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -114,7 +110,6 @@
                             <td>
                                 ' . $soluong . '
                             </td>
-                            <td>' . $xoasp . '</td>
                         </tr>';
                         $i += 1;
                     }
@@ -122,7 +117,6 @@
                         <td colspan="3">Tổng đơn hàng</td>
                         <td>' . $tong . '$</td>
                         <td>' . $tongsoluong . '</td>
-                        <td><a href="index.php?act=delcart_idtaikhoan&id_taikhoan=' . $id_taikhoan . '"><input type="button" value="Xóa" class="btn btn-danger"></a></td>
                     </tr>
                 ';
                     ?>
@@ -132,7 +126,8 @@
             </table>
         </div>
         <div class="sub p-2">
-            <a class="btn btn-primary" href="index.php?act=billconfirm" name="dathang" role="button">Đặt hàng</a>
+            <input type="hidden" value="<?=$tong?>" name="tong">
+            <input type="submit" class="btn btn-primary" name="dathang" value="Đặt hàng">
         </div>
     </form>
 </main>

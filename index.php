@@ -201,10 +201,7 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $listgiohang=load_giohang_taikhoan($id_taikhoan);
                 include "view/giohang/viewgiohang.php";
             break;
-        case 'thoat':
-            session_unset();
-            header('Location: index.php');
-            break;
+        
         // Đơn hàng
         case 'bill':
             $listgiohang = load_giohang_taikhoan($id_taikhoan);
@@ -212,40 +209,43 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             break;
         case 'billconfirm':
             $idbill = null;
-            if (isset($_POST['dathang'])) {
-                if (isset($_SESSION['user']))
-                    $id_taikhoan = $_SESSION['user']['id_taikhoan'];
-                else
+            if (isset($_POST['dathang']) && ($_POST['dathang'])) {
+                if (isset($_SESSION['user']) && is_array($_SESSION['user'])){
+                    extract($_SESSION['user']);
+                }else{
                     $id_taikhoan = 0;
-
-                $name = $_POST['name'];
+                }
+                $hoten = $_POST['hoten'];
                 $email = $_POST['email'];
                 $tel = $_POST['tel'];
                 $address = $_POST['address'];
                 $pttt = $_POST['pttt'];
                 $ngaydathang = date('d/m/Y');
-                $price_tong = tong_don_hang($id_kh);
+                $price_tong = $_POST['tong'];
                 $trangthai = "Đã đặt";
                 $payment = $_POST['pttt'];
                 $listgiohang = load_giohang_taikhoan($id_taikhoan);
                 $idbill = bill_insert($trangthai, $id_taikhoan, $ngaydathang, $price_tong, $payment);
+                $lay_id_bill=bill_loadidbill($id_taikhoan);
                 // insert into cart : $session['mycart'] & $idbill
                 foreach ($listgiohang as $gh) {
-                    bill_chitiet_insert($idbill, $gh['0'], $gh['2'], $gh['1'], $gh[3], $gh[4]);
+                    bill_chitiet_insert($lay_id_bill, $gh['2'], $gh['4'], $gh['6'], $gh[3], $gh[5]);
                 }
 
                 $_SESSION['bill'] = bill_getinfo($idbill);
                 $_SESSION['billct'] = bill_chitiet_getinfo($idbill);
                 
             }
-            
-
             include "view/giohang/billconfirm.php";
 
             break;
         case 'mybill':
             $listbill = loadall_bill($_SESSION['user']['id_kh']);
             include "views/cart/mybill.php";
+            break;
+        case 'thoat':
+            session_unset();
+            header('Location: index.php');
             break;
         default:
             include "view/home.php";
