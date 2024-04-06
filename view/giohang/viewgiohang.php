@@ -32,6 +32,16 @@
 </style>
 <main class="justify-content-center col-12">
     <h3>Giỏ hàng</h3>
+    <h3 class="thongbao">
+        <?php
+        if (isset($thongbao) && ($thongbao != "")) {
+          echo $thongbao;
+        }
+        ?>
+      </h3>
+    <?php 
+        var_dump($listgiohang);
+    ?>
     <table class="table table-bordered showsp">
         <thead>
             <tr>

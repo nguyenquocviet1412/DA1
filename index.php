@@ -205,7 +205,12 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
         // Đơn hàng
         case 'bill':
             $listgiohang = load_giohang_taikhoan($id_taikhoan);
-            include "view/giohang/bill.php";
+            if($listgiohang!=[]){
+                include "view/giohang/bill.php";
+            }else{
+                $thongbao="Không thể đặt hàng khi không có sản phẩm!";
+                include "view/giohang/viewgiohang.php";
+            }
             break;
         case 'billconfirm':
             $idbill = null;
@@ -215,6 +220,7 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 }else{
                     $id_taikhoan = 0;
                 }
+                
                 $hoten = $_POST['hoten'];
                 $email = $_POST['email'];
                 $tel = $_POST['tel'];
@@ -224,7 +230,7 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $price_tong = $_POST['tong'];
                 $trangthai = "Đã đặt";
                 $payment = $_POST['pttt'];
-                $listgiohang = load_giohang_taikhoan($id_taikhoan);
+                
                 $idbill = bill_insert($trangthai, $id_taikhoan, $ngaydathang, $price_tong, $payment);
                 $lay_id_bill=bill_loadidbill($id_taikhoan);
                 extract($lay_id_bill);
@@ -237,7 +243,7 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $_SESSION['billct'] = bill_chitiet_getinfo($id_bill);
                 $listdonhang=load_giohang_idbill($id_bill);
                 giohang_delete_taikhoan($id_taikhoan);
-
+            
             }
             include "view/giohang/billconfirm.php";
 
