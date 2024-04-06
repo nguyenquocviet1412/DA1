@@ -34,17 +34,12 @@ function bill_update($idbill, $trangthai, $id_taikhoan, $ngaydathang, $price_ton
     $sql = "UPDATE bill SET id_bill=?, trangthai=?, id_taikhoan=?, ngaydathang=?, price_tong=?, payment=? WHERE id_bill=?";
     pdo_execute($sql, $idbill, $trangthai, $id_taikhoan, $ngaydathang, $price_tong, $payment, $idbill);
 }
-function loadall_bill($kyw = "", $id_tk = 0)
+function loadall_bill($id_taikhoan)
 {
-    $sql = "SELECT * FROM bill WHERE 1";
-    if ($id_tk > 0)
-        $sql .= " AND id_kh=$id_tk";
-    if ($kyw != "")
-        $sql .= " AND id_bill LIKE '%$kyw%'";
-    $sql .= " ORDER BY id_bill DESC";
-    $listbill = pdo_query($sql);
+    $sql = "SELECT * FROM bill WHERE id_taikhoan=?";
+    
+    $listbill = pdo_query($sql,$id_taikhoan);
     return $listbill;
 }
-
 
 ?>
