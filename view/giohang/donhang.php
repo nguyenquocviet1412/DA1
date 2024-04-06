@@ -23,7 +23,7 @@
             $i = 1;
             foreach ($listbill as $lb) {
                 extract($lb);
-                $xemdh='<a href="index.php?act=chitietdonhang&idbill='.$id_bill.'"><input type="button" value="chi tiết" class="btn btn-danger"></a>';
+                $xemdh='<a class="btn btn-primary" href="index.php?act=chitietdonhang&iddonhang='.$id_bill.'" role="button">chi tiết</a>';
                 echo '<tr>
                             <td>' . $i . '</td>
                             <td>' . $id_bill . '</td>

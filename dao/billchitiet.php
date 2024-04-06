@@ -32,7 +32,7 @@ function bill_chitiet_update($idbillchitiet, $idbill, $id_sanpham, $price, $solu
     pdo_execute($sql, $idbillchitiet, $idbill, $id_sanpham, $price, $soluong, $name_sanpham, $img_sanpham, $idbillchitiet);
 }
 
-function load_giohang_idbill($id_bill)
+function load_donhang_idbill($id_bill)
 {
     $sql = "SELECT*FROM bill_chitiet WHERE id_bill=?";
     return pdo_query($sql, $id_bill);

@@ -63,5 +63,8 @@ function tong_don_hang($list)
     }
     return $tong;
 }
+function tang_soluong(){
+    
+}
 
 ?>

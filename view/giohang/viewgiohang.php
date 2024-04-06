@@ -75,9 +75,9 @@
                             <td>'.$size.'</td>
                             <td>'.$price.'$</td>
                             <td>
-                                <a href="index.php?act=giam_soluong&idgiohang='.$id_giohang.'"><input type="button" value="-" class="btn btn-danger"></a>
-                                <span>'.$soluong.'</span>
-                                <a href="index.php?act=tang_soluong&idgiohang='.$id_giohang.'"><input type="button" value="+" class="btn btn-danger"></a>
+                                <a href="index.php?act=giam_soluong&idgiohang='.$id_giohang.'" class="btn btn-danger">-</a>
+                                <input type="text" with="50px" style="with: 50px;" disabled value="'.$soluong.'" >
+                                <a href="index.php?act=tang_soluong&idgiohang='.$id_giohang.'" class="btn btn-success">+</a> 
                             </td>
                             <td>'.$xoasp.'</td>
                         </tr>';

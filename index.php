@@ -46,8 +46,10 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             } else {
                 include "view/home.php";
             }
-
             break;
+
+        //Tài khoản
+
         case 'taikhoan':
             include "view/dangnhap.php";
             break;
@@ -150,6 +152,9 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             }
             include "view/dangnhap.php";
             break;
+
+        //Giỏ hàng
+
         case 'themgiohang':
             if (isset($_POST['themvaogiohang']) && ($_POST['themvaogiohang'])) {
                 $id_taikhoan = $_POST['id_taikhoan'];
@@ -201,8 +206,18 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             $listgiohang = load_giohang_taikhoan($id_taikhoan);
             include "view/giohang/viewgiohang.php";
             break;
-
+        case 'tang_soluong':
+            tang_soluong($id_giohang);
+            $listgiohang = load_giohang_taikhoan($id_taikhoan);
+            include "view/giohang/viewgiohang.php";
+            break;
+        case 'giam_soluong':
+            giohang_tanggiam_soluong($id_giohang, $soluong);
+            $listgiohang = load_giohang_taikhoan($id_taikhoan);
+            include "view/giohang/viewgiohang.php";
+            break;
         // Đơn hàng
+
         case 'bill':
             $listgiohang = load_giohang_taikhoan($id_taikhoan);
             if($listgiohang!=[]){
@@ -239,7 +254,7 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
 
                 $_SESSION['bill'] = bill_getinfo($id_bill);
                 $_SESSION['billct'] = bill_chitiet_getinfo($id_bill);
-                $listdonhang = load_giohang_idbill($id_bill);
+                $listdonhang = load_donhang_idbill($id_bill);
                 giohang_delete_taikhoan($id_taikhoan);
             
             }
@@ -250,13 +265,14 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             include "view/giohang/donhang.php";
             break;
         case 'chitietdonhang':
-            if(isset($_GET['idbill'])){
-                $id_bill = $_GET['idbill'];
-                $listdohangchitiet = load_giohang_idbill($id_bill);
+            if(isset($_GET['iddonhang'])){
+                $idbill = $_GET['iddonhang'];
+                $listdonhangchitiet = load_donhang_idbill($idbill);
                 include "view/giohang/chitietdonhang.php";
-            }
+            }else{
             $thongbao="Đơn hàng không tồn tại!";
             header('Location: index.php?act=donhang');
+            }
             break;
         case 'thoat':
             session_unset();

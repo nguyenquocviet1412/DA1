@@ -15,7 +15,7 @@
         <tbody>
             <?php
             $i = 1;
-            foreach ($listdohangchitiet as $lb) {
+            foreach ($listdonhangchitiet as $lb) {
                 extract($lb);
                 if ($id_size == 1) {
                     $size = "chiết";
