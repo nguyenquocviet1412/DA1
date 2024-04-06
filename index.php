@@ -249,6 +249,15 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             $listbill = loadall_bill($_SESSION['user']['id_taikhoan']);
             include "view/giohang/donhang.php";
             break;
+        case 'chitietdonhang':
+            if(isset($_GET['idbill'])){
+                $id_bill = $_GET['idbill'];
+                $listdohangchitiet = load_giohang_idbill($id_bill);
+                include "view/giohang/chitietdonhang.php";
+            }
+            $thongbao="Đơn hàng không tồn tại!";
+            header('Location: index.php?act=donhang');
+            break;
         case 'thoat':
             session_unset();
             header('Location: index.php');
