@@ -63,8 +63,13 @@ function tong_don_hang($list)
     }
     return $tong;
 }
-function tang_soluong(){
-    
+function tang_soluong($id_giohang){
+    $sql = "UPDATE giohang SET soluong=soluong+1 WHERE id_giohang=?";
+    pdo_execute($sql, $id_giohang);
+}
+function giam_soluong($id_giohang){
+    $sql = "UPDATE giohang SET soluong=soluong-1 WHERE id_giohang=?";
+    pdo_execute($sql, $id_giohang);
 }
 
 ?>

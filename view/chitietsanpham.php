@@ -280,7 +280,6 @@
                     </div>
                 </div>
                 </form>
-        </div>
     </div>
 
 
@@ -293,8 +292,8 @@
         });
     </script>
 
-    <h3>Bình Luận</h3>
-    <div id="binhluan">
+    
+    <div class="" id="binhluan">
 
     </div>
 
@@ -303,7 +302,7 @@
         <?php extract($sp_cung_loai);
         echo $name; ?>
     </h3>
-    <div class="spcungloai">
+    <div class="spcungloai col-10">
         <?php
         foreach ($sp_cung_loai as $sp_cung_loai) {
             extract($sp_cung_loai);

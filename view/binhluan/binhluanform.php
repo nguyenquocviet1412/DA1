@@ -55,7 +55,7 @@ $dsbl = binhluan_selectby_hanghoa($id_sanpham);
         .boxcontent2 {
             border-left: 1px #CCC solid;
             border-right: 1px #CCC solid;
-            background-color: #EEE;
+            background-color: white;
             overflow: auto;
             max-height: 300px;
         }
@@ -74,7 +74,7 @@ $dsbl = binhluan_selectby_hanghoa($id_sanpham);
 <!-- </head> -->
 
 <!-- <body> -->
-    <div class="row">
+    <!-- <div class="row"> -->
         <div class="boxtitle">BÌNH LUẬN</div>
         <div class="boxcontent2 binhluan">
             <table>
@@ -126,7 +126,7 @@ $dsbl = binhluan_selectby_hanghoa($id_sanpham);
 
         ?>
 
-    </div>
+    <!-- </div> -->
 
 <!-- </body>
 

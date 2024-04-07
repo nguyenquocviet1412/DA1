@@ -1,6 +1,4 @@
-<?php
-var_dump($_SESSION['bill']);
-?>
+
 <div class="row">
     <div class="row mb">
         <div class="boxleft mr">

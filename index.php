@@ -71,9 +71,10 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                     $checkuser = checkuser($user, $pass);
                     if (is_array($checkuser)) {
                         $_SESSION['user'] = $checkuser;
-                        //$thongbao="Bạn đã đăng nhập thành công!";
+                        $s="onclick='return alert('Đăng nhập thành công')'";
                         header('Location: index.php');
                     } else {
+                        $s="";
                         $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
                     }
                 }
@@ -207,14 +208,18 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             include "view/giohang/viewgiohang.php";
             break;
         case 'tang_soluong':
-            tang_soluong($id_giohang);
-            $listgiohang = load_giohang_taikhoan($id_taikhoan);
-            include "view/giohang/viewgiohang.php";
+            if(isset($_GET['idgiohang'])){
+                $id_giohang=$_GET['idgiohang'];
+                tang_soluong($id_giohang);
+            }
+            header('Location: index.php?act=viewcart');
             break;
         case 'giam_soluong':
-            giohang_tanggiam_soluong($id_giohang, $soluong);
-            $listgiohang = load_giohang_taikhoan($id_taikhoan);
-            include "view/giohang/viewgiohang.php";
+            if(isset($_GET['idgiohang'])&&$_GET['soluong']>1){
+                $id_giohang=$_GET['idgiohang'];
+                giam_soluong($id_giohang);
+            }
+            header('Location: index.php?act=viewcart');
             break;
         // Đơn hàng
 

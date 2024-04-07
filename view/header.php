@@ -172,6 +172,7 @@ $dsdm = danhmuc_selectall();
         <div class="row">
             <header>
                 <a href="index.php" style="text-decoration: none;">
+               
                     <h1 class="name text-danger" style="text-align: center;">Shop</h1>
                 </a>
                 <?php
