@@ -38,7 +38,7 @@
                 <?php
                 if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
                     extract($_SESSION['user']);
-                  }else {
+                } else {
                     $hoten = "";
                     $address = "";
                     $email = "";
@@ -47,18 +47,18 @@
                 ?>
                 <tr>
                     <td>Người đặt hàng</td>
-                    <td><input type="text" name="hoten" value="<?= $hoten ?>" class="col-12" readonly></td>
+                    <td><input type="text" name="hoten" value="<?= $hoten ?>" class="form-control col-12"></td>
                 </tr>
                 <tr>
                     <td>Địa chỉ</td>
-                    <td><input type="text" name="address" value="<?= $address ?>" class="col-12" readonly></td>
+                    <td><input type="text" name="address" value="<?= $address ?>" class="form-control col-12"></td>
                 <tr>
                     <td>Email</td>
-                    <td><input type="email" name="email" value="<?= $email ?>" class="col-12" readonly></td>
+                    <td><input type="email" name="email" value="<?= $email ?>" class="form-control col-12"></td>
                 </tr>
                 <tr>
                     <td>Điện thoại</td>
-                    <td><input type="text" name="tel" value="<?= $tel ?>" class="col-12" readonly></td>
+                    <td><input type="text" name="tel" value="<?= $tel ?>" class="form-control col-12"></td>
                 </tr>
 
             </table>
@@ -69,9 +69,9 @@
             <h3>PHƯƠNG THỨC THANH TOÁN</h3>
             <div class="m-2">
                 <input type="radio" name="pttt" value="Trực tiếp" checked>Trả tiền khi nhận hàng
-                <input type="radio" name="pttt" value="Chuyển khoản" class="ml-5">Chuyển khoản ngân hàng
-                <input type="radio" name="pttt" value="Online" class="ml-5">Thanh toán online
+                <input type="radio" name="pttt" value="Chuyển khoản" class="ms-5">Chuyển khoản ngân hàng
             </div>
+            
         </div>
 
         <div class="giohang">
@@ -126,7 +126,7 @@
             </table>
         </div>
         <div class="sub p-2">
-            <input type="hidden" value="<?=$tong?>" name="tong">
+            <input type="hidden" value="<?= $tong ?>" name="tong">
             <input type="submit" class="btn btn-primary" name="dathang" value="Đặt hàng">
         </div>
     </form>

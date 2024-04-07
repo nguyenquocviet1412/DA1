@@ -54,14 +54,15 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             include "view/dangnhap.php";
             break;
         case 'dangnhap':
-            unset($_SESSION['error']);
+            $error = [];
+            // unset($_SESSION['error']);
             if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
-                $error = [];
+                
                 if (empty($_POST["user"])) {
-                    $error[] = "Vui lòng nhập tên tài khoản";
+                    $error['user'] = "*Vui lòng nhập tên tài khoản";
                 }
                 if (empty($_POST["pass"])) {
-                    $error[] = "Vui lòng nhập mật khẩu";
+                    $error['pass'] = "*Vui lòng nhập mật khẩu";
                 }
                 if (count($error) >= 1) {
                     $_SESSION['error'] = $error;
@@ -71,11 +72,10 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                     $checkuser = checkuser($user, $pass);
                     if (is_array($checkuser)) {
                         $_SESSION['user'] = $checkuser;
-                        $s="onclick='return alert('Đăng nhập thành công')'";
                         header('Location: index.php');
                     } else {
-                        $s="";
-                        $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
+                        $thongbao['1'] = "Tài khoản không tồn tại!";
+                        $thongbao['2']="Vui lòng kiểm tra hoặc đăng kí!";
                     }
                 }
             }

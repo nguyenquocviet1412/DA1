@@ -162,6 +162,7 @@ $dsdm = danhmuc_selectall();
 
         .thongbao {
             color: red;
+            text-align: center;
         }
     </style>
 </head>
