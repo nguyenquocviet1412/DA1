@@ -5,7 +5,7 @@ function pdo_connection()
     $host = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "duan1";
+    $dbname = "du-an-1";
 
     try {
         // Chuỗi kết nối
