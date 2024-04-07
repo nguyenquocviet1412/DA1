@@ -1,32 +1,36 @@
-<h1>thong ke binh luan</h1>
-<form action="index" method="post">
+<h1>thong ke</h1>
+<form action="index.php" method="post">
     <table class="table table-bordered rounded">
         <thead>
             <tr>
                 <th>ma</th>
                 <th>ten</th>
-                <th>cu nhat</th>
-                <th>moi nhat</th>
+                <th>tong tien</th>
+                <th>ten san pham</th>
+                <th>so luong san pham</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($items as $key => $value) {
+                 var_dump($value);
+
                 extract($value); ?>
+                
                 <tr>
                     <td>
-                        <?= $id_sanpham ?>
+                        <?= $id ?>
                     </td>
                     <td>
-                        <?= $name ?>
+                        <?= $user ?>
                     </td>
                     <td>
-                        <?= $soluong ?>
+                        <?= $tongtien ?>
                     </td>
                     <td>
-                        <?= $cunhat ?>
+                        <?= $tensanpham ?>
                     </td>
                     <td>
-                        <?= $moinhat ?>
+                        <?= $soluongsanpham ?>
                     </td>
                 </tr>
             <?php } ?>
@@ -34,5 +38,5 @@
 
     </table>
     <a class="btn btn btn-primary" href="index.php?btn_list" role="button">thong ke don hang</a>
-    <a class="btn btn btn-primary" href="index.php?btn_list" role="button">Thong ke hang hoa</a>
+    <a class="btn btn btn-primary" href="index.php?btn_listbl" role="button">thong ke binh luan</a>
 </form>

@@ -25,4 +25,17 @@ function thongkebinhluan()
     HAVING soluong > 0";
     return pdo_query($sql);
 }
+
+function thongkedonhang()
+{
+    $sql = "SELECT tk.id, tk.user,
+    SUM(dh.tongtien) AS tongtien,
+    dh.name_sanpham AS tensanpham,
+    COUNT(dh.name_sanpham) AS soluongsanpham
+    FROM bill_chitiet dh
+    JOIN taikhoan tk ON dh.id_taikhoan = tk.id
+    GROUP BY tk.id, tk.user, dh.name_sanpham";
+
+    return pdo_query($sql);
+}
 ?>

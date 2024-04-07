@@ -10,7 +10,11 @@ if (exist_param("btn_list")) {
 } elseif (exist_param("btn_listbl")) {
     $items = thongkebinhluan();
     $VIEW_NAME = "listbl.php";
-} else {
+} elseif(exist_param("btn_listhd")) {
+    $items = thongkedonhang();
+    $VIEW_NAME = "listhd.php";
+}
+else {
     $items = thongkehanghoa();
     $VIEW_NAME = "list.php";
 }

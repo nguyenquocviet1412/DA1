@@ -28,7 +28,7 @@
                     <a class="nav-link text-primary" href="../../admin/thongke/">Thống kê</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary" href="#">quan li gio hang</a>
+                    <a class="nav-link text-primary" href="../../admin/qldh/">quan li gio hang</a>
                 </li>
         </div>
     </div>

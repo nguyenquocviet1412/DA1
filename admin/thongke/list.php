@@ -5,7 +5,7 @@
             <tr>
                 <th>ma</th>
                 <th>ten</th>
-                <th>so luong</th>
+                <th>tongtien</th>
                 <th>gia cao nhat</th>
                 <th>gia thap nhat</th>
                 <th>gia trung binh</th>
@@ -39,5 +39,6 @@
         </tbody>
 
     </table>
+    <a class="btn btn btn-primary" href="index.php?btn_listdh" role="button">thong ke don hang</a>
     <a class="btn btn btn-primary" href="index.php?btn_listbl" role="button">thong ke binh luan</a>
 </form>
