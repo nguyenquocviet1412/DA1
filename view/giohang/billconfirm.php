@@ -1,87 +1,54 @@
-
 <div class="row">
     <div class="row mb">
         <div class="boxleft mr">
             <div class="row mb">
                 <div class="row boxcontent" style="text-align: center;">
                     <h2>Cám ơn quý khách đã đặt hàng !</h2>
+                    <h2>THÔNG TIN ĐƠN HÀNG</h2>
                 </div>
             </div>
             <?php
-
+            if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
+                extract($_SESSION['user']);
+            }
             ?>
             <div class="row mb">
-                <div class="boxtitle">THÔNG TIN ĐƠN HÀNG</div>
-                <div class="row boxcontent" style="text-align: center;">
-                    <li>Mã đơn hàng:
-                        <?= $id_bill ?>
-                    </li>
-                    <li>Ngày đặt hàng:
-                        <?= $ngaydathang ?>
-                    </li>
-                    <li>Tổng tiền của đơn hàng: $
-                        <?= $price_tong ?>
-                    </li>
-                </div>
-            </div>
-            <div class="row mb">
-                <div class="boxtitle">THÔNG TIN ĐẶT HÀNG</div>
-                <?php
-                if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
-                    extract($_SESSION['user']);
-                }
-                ?>
                 <div class="row boxcontent billform">
-                    <table>
+                    <table class="table table-bordered">
                         <tr>
-                            <td>Người đặt hàng</td>
-                            <td>
-                                <?= $hoten ?>
+                            <td class="col-4">Người đặt hàng: <?= $hoten ?></td>
+                            <td class="col-4">Mã đơn hàng: <?= $id_bill ?></td>
+                        </tr>
+                        <tr>
+                            <td class="col-4">Số điện thoại: <?= $tel ?></td>
+                            <td class="col-4">Ngày đặt: <?= $ngaydathang ?>
                             </td>
                         </tr>
                         <tr>
-                            <td>Email</td>
-                            <td>
-                                <?= $email ?>
-                            </td>
+                            <td class="col-4">Email: <?= $email ?></td>
+                            <td class="col-4">TỔNG TIỀN: <?= $price_tong ?></td>
                         </tr>
                         <tr>
-                            <td>Số điện thoại</td>
-                            <td>
-                                <?= $tel ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Địa chỉ</td>
-                            <td>
-                                <?= $address ?>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="row mb">
-                <div class="boxtitle">PHƯƠNG THỨC THANH TOÁN</div>
-                <div class="row boxcontent pttt">
-                    <table>
-                        <tr>
-                            <?php if ($payment == "Trực tiếp") : ?>
+                            <td class="col-4">Địa chỉ: <?= $address ?></td>
+                            <?php if ($payment == "Trực tiếp"): ?>
                                 <td>
                                     <?= $payment ?>. Trả tiền khi nhận hàng
                                 </td>
-                            <?php elseif ($payment == "Chuyển khoản") : ?>
+                            <?php elseif ($payment == "Chuyển khoản"): ?>
                                 <td>
                                     <?= $payment ?>. Chuyển khoản ngân hàng
                                 </td>
-                            <?php elseif ($payment == "Online") : ?>
+                            <?php elseif ($payment == "Online"): ?>
                                 <td>
                                     <?= $payment ?>. Thanh toán online
                                 </td>
                             <?php endif ?>
+                            </td>
                         </tr>
                     </table>
                 </div>
             </div>
+            
             <div class="row mb">
                 <div class="boxtitle">CHI TIẾT GIỎ HÀNG</div>
                 <div class="row boxcontent cart">
