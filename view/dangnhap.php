@@ -115,10 +115,10 @@
             <div class="err"><?= $error['pass'] ?? '' ?></div>
           </div>
           <div class="form-check mb-3 m-3">
-            <a href="index.php?act=trangdangky" class="text-decoration-none">Đăng ký tài khoản</a><br>
+            <a href="index.php?act=trangdangky" class="text-decoration-none" >Đăng ký tài khoản</a><br>
             <a href="#" class="text-decoration-none">quen mat khau</a><br>
           </div>
-          <input type="submit" name="dangnhap" value="Đăng nhập" class="btn btn-primary m-3">
+          <input type="submit" name="dangnhap" value="Đăng nhập" class="btn btn-primary m-3" <?php echo (!isset($error['user']) && !isset($error['pass'])) ? 'onclick="alert(\'Đăng nhập thành công\')"' : ''; ?>>
           <a href="index.php"><input type="button" value="Home" class="btn btn-primary m-3"></a>
         </form>
       <?php } ?>
