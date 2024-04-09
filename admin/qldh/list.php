@@ -15,17 +15,28 @@
         <tbody>
             <?php foreach ($items as $key => $value) {
                 extract($value);
-                $xemdh='<a class="btn btn-primary" href="index.php?act=chitietdonhang&iddonhang='.$id_bill.'" role="button">chi tiết</a>';
-                ?>
+                $trangthaimoi = "Đang giao";
+                $date = new DateTime($ngaydathang);
+                $interval = new DateInterval('P3D'); // Cộng thêm 2 ngày
+                date_add($date, $interval);
+                $ngaynhan=date_format($date, 'Y-m-d');
+                $xemdh = '<a class="btn btn-primary" href="index.php?act=chitietdonhang&iddonhang=' . $id_bill . '" role="button">chi tiết</a>';
+            ?>
                 <tr>
                     <td>
                         <?= $id_bill ?>
                     </td>
                     <td>
-                        <?= $trangthai ?>
+                        <?php if ($trangthai == "Đã đặt") { ?>
+                            <a href="index.php?btn_dathang&id_bill=<?= $id_bill ?>&trangthai=<?= $trangthaimoi ?>">Xác nhận giao hàng</a>
+                        <?php } else if ($trangthai == "Đang giao") {
+                            echo "Đang giao";
+                        }elseif($trangthai=="Đã nhận hàng"){
+                            echo $trangthai;
+                        } ?>
                     </td>
                     <td>
-                        <?= $id_taikhoan?>
+                        <?= $id_taikhoan ?>
                     </td>
                     <td>
                         <?= $ngaydathang ?>
@@ -37,10 +48,19 @@
                         <?= $payment ?>
                     </td>
                     <td>
-                        <?= $ngayhoanthanh ?>
+                        <?php
+                        if ($trangthai == "Đã đặt") {
+                            echo "Dự kiến 3 ngày sau khi đơn hàng đã được xử lý";
+                        } elseif ($trangthai == "Đang giao") {
+
+                            echo $ngaynhan . " (dự kiến)";
+                        }elseif($trangthai=="Đã nhận hàng"){
+                            echo $ngayhoanthanh;
+                        }
+                        ?>
                     </td>
                     <td>
-                        <?= $xemdh?>
+                        <?= $xemdh ?>
                     </td>
                 </tr>
             <?php } ?>

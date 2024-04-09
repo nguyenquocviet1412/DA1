@@ -279,6 +279,17 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
             header('Location: index.php?act=donhang');
             }
             break;
+        case 'nhanhang':
+            if(isset($_GET['id_bill'])){
+                $id_bill=$_GET['id_bill'];
+                $trangthaimoi="Đã nhận hàng";
+                $today= date("Y-m-d");
+                bill_update_trangthai($trangthaimoi,$id_bill);
+                bill_update_ngayhoanthanh($today,$id_bill);
+            }
+            $listbill = loadall_bill($_SESSION['user']['id_taikhoan']);
+            include "view/giohang/donhang.php";
+            break;
         case 'thoat':
             session_unset();
             header('Location: index.php');

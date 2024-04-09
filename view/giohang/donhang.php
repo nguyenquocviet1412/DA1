@@ -24,17 +24,48 @@
             foreach ($listbill as $lb) {
                 extract($lb);
                 $xemdh='<a class="btn btn-primary" href="index.php?act=chitietdonhang&iddonhang='.$id_bill.'" role="button">chi tiết</a>';
-                echo '<tr>
-                            <td>' . $i . '</td>
-                            <td>' . $id_bill . '</td>
-                            <td>' . $ngaydathang . '</td>
-                            <td>' . $ngaydathang . '</td>
-                            <td>' . $trangthai . '</td>
+                ?>
+                        <tr>
+                            <td><?=$i?></td>
+                            <td><?=$id_bill?></td>
+                            <td><?=$ngaydathang ?></td>
                             <td>
-                                '.$xemdh.'
+                                <?php
+                                if($trangthai=="Đã đặt"){
+                                    echo "Dự kiến 3 ngày sau khi đơn hàng đã được xử lý";
+                                }elseif($trangthai=="Đang giao"){
+                                    $date = new DateTime(''.$ngaydathang.'');
+                                    $date->modify('+3 day');
+                                    echo $date->format('Y-m-d')." (dự kiến)";
+                                }elseif($trangthai=="Đã nhận hàng"){
+                                    echo $ngayhoanthanh;
+                                }
+                                ?>
                             </td>
-                            
-                        </tr>';
+                            <td>
+                                <?php
+                                if($trangthai=="Đã đặt"){
+                                    echo $trangthai;
+                                }elseif($trangthai=="Đang giao"){
+                                    $today= date("Y-m-d");
+                                    $date1 = new DateTime(''.$ngaydathang.'');
+                                    $date1->modify('+3 day');
+                                    $ngaynhan=$date1->format('Y-m-d');
+                                    if (strtotime($today) < strtotime($ngaynhan)) {
+                                        echo "Dự kiến 3 ngày sau khi đơn hàng đã được xử lý";
+                                    }elseif(strtotime($today) <= strtotime($ngaynhan)){
+                                    echo '
+                                        <a href="index.php?act=nhanhang&id_bill='.$id_bill.'">Đang giao (Xác nhận đã nhận hàng)</a>
+                                    ';}
+                                }else{
+                                    echo $trangthai;
+                                }
+                                ?>
+                            </td>
+                            <td><?=$xemdh?></td>
+            
+                        </tr>
+                <?php
                 $i += 1;
             }
             ?>

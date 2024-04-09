@@ -18,8 +18,8 @@ if (exist_param("btn_list")) {
     $VIEW_NAME = "list.php";
 } elseif (exist_param("btn_update")) {
     $id = $_POST['id'];
-    $fullname=$_POST['fullname'];
     $user = $_POST['user'];
+    $hoten = $_POST['hoten'];
     $pass = $_POST['pass'];
     $email = $_POST['email'];
     $address = $_POST['address'];

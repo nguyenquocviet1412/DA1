@@ -41,5 +41,14 @@ function loadall_bill($id_taikhoan)
     $listbill = pdo_query($sql,$id_taikhoan);
     return $listbill;
 }
-
+function bill_update_trangthai($trangthaimoi,$id_bill)
+{
+    $sql = "UPDATE bill SET trangthai=? WHERE id_bill=?";
+    pdo_execute($sql, $trangthaimoi,$id_bill);
+}
+function bill_update_ngayhoanthanh($ngayhoanthanh,$id_bill)
+{
+    $sql = "UPDATE bill SET ngayhoanthanh=? WHERE id_bill=?";
+    pdo_execute($sql, $ngayhoanthanh,$id_bill);
+}
 ?>

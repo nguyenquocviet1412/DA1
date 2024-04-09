@@ -8,7 +8,7 @@
         </div>
         <div class="col-6 my-2">
             <label class="fw-bold">HỌ TÊN</label>
-            <input type="text" name="fullname" id="" class="form-control" value="<?= $hoten ?>">
+            <input type="text" name="hoten" id="" class="form-control" value="<?= $hoten ?>">
         </div>
 
     </div>
