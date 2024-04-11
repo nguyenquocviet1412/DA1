@@ -20,7 +20,7 @@
                 $interval = new DateInterval('P3D'); // Cộng thêm 2 ngày
                 date_add($date, $interval);
                 $ngaynhan=date_format($date, 'Y-m-d');
-                $xemdh = '<a class="btn btn-primary" href="index.php?act=chitietdonhang&iddonhang=' . $id_bill . '" role="button">chi tiết</a>';
+                $xemdh = '<a class="btn btn-primary" href="index.php?btn_listct&iddonhang=' . $id_bill . '" role="button">chi tiết</a>';
             ?>
                 <tr>
                     <td>
@@ -66,5 +66,4 @@
             <?php } ?>
         </tbody>
     </table>
-    <a class="btn btn-primary" href="index.php" role="button">Thêm mới</a>
 </form>

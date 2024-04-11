@@ -53,7 +53,7 @@
                                     $ngaynhan=$date1->format('Y-m-d');
                                     if (strtotime($today) < strtotime($ngaynhan)) {
                                         echo "Dự kiến 3 ngày sau khi đơn hàng đã được xử lý";
-                                    }elseif(strtotime($today) <= strtotime($ngaynhan)){
+                                    }elseif(strtotime($today) >= strtotime($ngaynhan)){
                                     echo '
                                         <a href="index.php?act=nhanhang&id_bill='.$id_bill.'">Đang giao (Xác nhận đã nhận hàng)</a>
                                     ';}
