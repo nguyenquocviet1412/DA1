@@ -21,7 +21,7 @@
                         </tr>
                         <tr>
                             <td class="col-4">Số điện thoại: <?= $tel ?></td>
-                            <td class="col-4">Ngày đặt: <?= $ngaydathang ?>
+                            <td class="col-4">Ngày đặt: <?= $ngaydathangnew ?>
                             </td>
                         </tr>
                         <tr>
@@ -32,16 +32,14 @@
                             <td class="col-4">Địa chỉ: <?= $address ?></td>
                             <?php if ($payment == "Trực tiếp"): ?>
                                 <td>
-                                    <?= $payment ?>. Trả tiền khi nhận hàng
+                                    Trả tiền khi nhận hàng
                                 </td>
                             <?php elseif ($payment == "Chuyển khoản"): ?>
                                 <td>
-                                    <?= $payment ?>. Chuyển khoản ngân hàng
+                                    Chuyển khoản ngân hàng <br>
+                                    <img src="upload/QR.jpg" alt="" width="100" height="143.6">
                                 </td>
-                            <?php elseif ($payment == "Online"): ?>
-                                <td>
-                                    <?= $payment ?>. Thanh toán online
-                                </td>
+                                
                             <?php endif ?>
                             </td>
                         </tr>
@@ -50,7 +48,7 @@
             </div>
             
             <div class="row mb">
-                <div class="boxtitle">CHI TIẾT GIỎ HÀNG</div>
+                <p class="h4">CHI TIẾT ĐƠN HÀNG</p>
                 <div class="row boxcontent cart">
                     <table class="table table-bordered showsp">
                         <thead>

@@ -69,7 +69,7 @@
             <h3>PHƯƠNG THỨC THANH TOÁN</h3>
             <div class="m-2">
                 <input type="radio" name="pttt" value="Trực tiếp" checked>Trả tiền khi nhận hàng
-                <input type="radio" name="pttt" value="Chuyển khoản" class="ms-5">Chuyển khoản ngân hàng
+                <input type="radio" name="pttt" value="Chuyển khoản" class="ms-5">Chuyển khoản ngân hàng 
             </div>
             
         </div>

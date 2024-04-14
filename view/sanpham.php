@@ -26,7 +26,7 @@
     .product-list.active {
         display: block;
         transform: scaleY(0);
-        transform-origin:left;
+        transform-origin: left;
         transition: transform 1s ease-out;
     }
 
@@ -34,37 +34,22 @@
     .category:hover .product-list {
         display: block;
         transform: scaleY(1);
-    }   
-
+    }
 </style>
-</style>
-<div class="category">
-    <h3 class="category-title">danh mục</h3>
-    <ul class="product-list">
-        <?php
-            foreach ($dsdm as $dm) {
-                extract($dm);
-                $linkdm = "index.php?act=sanpham&iddm=" . $id;
-                echo '<li class="product">
-                        <a href="' . $linkdm . '">' . $name . '</a>
-                    </li>';
-            }
-        ?>
-    </ul>
-</div>
 <div class="row justify-content-center">
-                        <div class="col-6 p-3">
-                            <div class="input-group">
-                            <form action="index.php?act=sanpham" method="post" class="flex">
-                                <input type="text" name="kyw" class="form-control col-8" placeholder="Search for..." aria-label="Search for..." size="40">
-                                <input class="btn btn-outline-secondary" type="submit" name="timkiem" value="Tìm kiếm">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+    <div class="col-6 p-3">
+        <div class="input-group">
+            <form action="index.php?act=sanpham" method="post" class="flex">
+                <input type="text" name="kyw" class="form-control col-8" placeholder="Search for..."
+                    aria-label="Search for..." size="40">
+                <input class="btn btn-outline-secondary" type="submit" name="timkiem" value="Tìm kiếm">
+            </form>
+        </div>
+    </div>
+</div>
 
 
-                    <div class="baner img-thumbnail p-3">
+<div class="baner img-thumbnail p-3">
     <div class="icon">
         <ul class="nav justify-content-end">
             <div class="user">
@@ -79,20 +64,20 @@
             </div>
 
             <div class="buy">
-            <?php 
-                    if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
-                        extract($_SESSION['user']);
-                ?>
-                <a class="nav-link" href="index.php?act=viewcart">
-                <?php }else{?>
-                    <a class="nav-link" href="index.php?act=taikhoan" onclick="alert('Đăng nhập để xem giỏ hàng')">
-                <?php }?>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="text-light" class="bi bi-bag"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
-                    </svg>
-                </a>
+                <?php
+                if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
+                    extract($_SESSION['user']);
+                    ?>
+                    <a class="nav-link" href="index.php?act=viewcart">
+                    <?php } else { ?>
+                        <a class="nav-link" href="index.php?act=taikhoan" onclick="alert('Đăng nhập để xem giỏ hàng')">
+                        <?php } ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="text-light"
+                            class="bi bi-bag" viewBox="0 0 16 16">
+                            <path
+                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                        </svg>
+                    </a>
             </div>
 
         </ul>
@@ -136,10 +121,10 @@
     <p class="h2 m-3">Sản phẩm
         <strong>
             <?php
-            if (isset ($tendm) && ($tendm != "")) {
+            if (isset($tendm) && ($tendm != "")) {
                 echo 'hãng ' . $tendm;
             }
-            if (isset ($kyw) && ($kyw != "")) {
+            if (isset($kyw) && ($kyw != "")) {
                 echo 'có tên: ' . $kyw;
             }
             ?>

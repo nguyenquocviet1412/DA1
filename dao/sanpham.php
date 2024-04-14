@@ -80,13 +80,12 @@ function sanpham_giamgia($price, $sale)
 
 
 
-function loadall_sanpham($kyw="",$iddm=0){
-    $sql="select * from sanpham where 1";
+function loadall_sanpham($kyw="",$iddm){
     if($kyw!=""){
-        $sql.=" and name like '%".$kyw."%'";
+        $sql="select * from sanpham where 1 and name like '%".$kyw."%'";
     }
     if($iddm>0){
-        $sql.=" and id_danhmuc ='".$iddm."'";
+        $sql="select * from danhmuc where id=".$iddm;
     }
     $sql.=" order by id_sanpham desc";
     $listsanpham=pdo_query($sql);

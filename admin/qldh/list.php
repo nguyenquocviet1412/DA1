@@ -4,12 +4,12 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>TRANG THAI</th>
-                <th>IDTAIKHOAN</th>
-                <th>NGAYDATHANG</th>
-                <th>TONG</th>
-                <th>PAYMENT</th>
-                <th>NGAYHOANTHANH</th>
+                <th>TRẠNG THÁI</th>
+                <th>ID TÀI KHOẢN</th>
+                <th>NGÀY ĐẶT HÀNG</th>
+                <th>TỔNG</th>
+                <th>PTTT</th>
+                <th>NGÀY HOÀN THÀNH</th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +19,9 @@
                 $date = new DateTime($ngaydathang);
                 $interval = new DateInterval('P3D'); // Cộng thêm 2 ngày
                 date_add($date, $interval);
-                $ngaynhan=date_format($date, 'Y-m-d');
-                $xemdh = '<a class="btn btn-primary" href="index.php?btn_listct&iddonhang=' . $id_bill . '" role="button">chi tiết</a>';
+                $ngaynhan=date_format($date, 'd/m/Y');
+                $ngaydathangnew = date('d/m/Y', strtotime($ngaydathang));
+                $xemdh = '<a class="btn btn-primary text-decoration-none" href="index.php?btn_listct&iddonhang=' . $id_bill . '" role="button">chi tiết</a>';
             ?>
                 <tr>
                     <td>
@@ -28,7 +29,7 @@
                     </td>
                     <td>
                         <?php if ($trangthai == "Đã đặt") { ?>
-                            <a href="index.php?btn_dathang&id_bill=<?= $id_bill ?>&trangthai=<?= $trangthaimoi ?>">Xác nhận giao hàng</a>
+                            <a class="text-decoration-none" href="index.php?btn_dathang&id_bill=<?= $id_bill ?>&trangthai=<?= $trangthaimoi ?>">Xác nhận giao hàng</a>
                         <?php } else if ($trangthai == "Đang giao") {
                             echo "Đang giao";
                         }elseif($trangthai=="Đã nhận hàng"){
@@ -39,7 +40,7 @@
                         <?= $id_taikhoan ?>
                     </td>
                     <td>
-                        <?= $ngaydathang ?>
+                        <?= $ngaydathangnew ?>
                     </td>
                     <td>
                         <?= $price_tong ?>

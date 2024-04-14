@@ -15,7 +15,7 @@ $spnew = sanpham_selectall();
 $dsdm = danhmuc_selectall();
 $dstop10 = sanpham_selecttop10();
 
-if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
+if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
         case 'sanpham':
@@ -245,14 +245,16 @@ if ((isset($_GET['act'])) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $tel = $_POST['tel'];
                 $address = $_POST['address'];
                 $pttt = $_POST['pttt'];
-                $ngaydathang = date('d/m/Y');
+                $ngaydathang = date('Y/m/d');
                 $price_tong = $_POST['tong'];
                 $trangthai = "Đã đặt";
                 $payment = $_POST['pttt'];
                 $listgiohang = load_giohang_taikhoan($id_taikhoan);
                 bill_insert($trangthai, $id_taikhoan, $ngaydathang, $price_tong, $payment);
                 $lay_id_bill = bill_loadidbill($id_taikhoan);
+                var_dump($lay_id_bill);
                 extract($lay_id_bill);
+                $ngaydathangnew=date('d/m/Y',strtotime($ngaydathang));
                 foreach ($listgiohang as $gh) {
                     bill_chitiet_insert($id_bill, $gh['2'], $gh['4'], $gh['6'], $gh[3], $gh[5], $gh[7]);
                 }
