@@ -15,7 +15,7 @@
     </div>
     <div class="mb-3 mt-3">
         <label for="text" class="form-label">Tên sản phẩm:</label>
-        <input type="text" class="form-control" id="" name="name" value="<?= $name ?>">
+        <input type="text" class="form-control" id="" name="name" value="<?= $namesp ?>">
     </div>
     <div class="mb-3 mt-3">
         <label for="text" class="form-label">Giá:</label>

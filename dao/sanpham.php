@@ -10,7 +10,7 @@ function sanpham_selectall()
 
 function sanpham_insert($name, $price, $img, $mota, $price_chiet, $sale, $id_danhmuc)
 {
-    $sql = "INSERT INTO sanpham(name, price, img, mota, price_chiet, sale, id_danhmuc) VALUES(?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO sanpham(namesp, price, img, mota, price_chiet, sale, id_danhmuc) VALUES(?,?,?,?,?,?,?)";
     pdo_execute($sql, $name, $price, $img, $mota, $price_chiet, $sale, $id_danhmuc);
 }
 
@@ -33,17 +33,13 @@ function sanpham_getinfo($id)
 }
 function sanpham_selectby_loai($id_danhmuc)
 {
-    $sql = "SELECT*FROM sanpham WHERE id_danhmuc=?";
+    $sql = "SELECT*FROM sanpham WHERE id_danhmuc=? ORDER BY id_sanpham DESC";
     return pdo_query($sql, $id_danhmuc);
 }
-function sanpham_select_keyword($keyword)
-{
-    $sql = "SELECT*FROM sanpham sp JOIN danhmuc dm ON dm.id=sp.id_danhmuc WHERE dm.name LIKE ? OR sp.name LIKE ? ";
-    return pdo_query($sql, '%' . $keyword . '%', '%' . $keyword . '%');
-}
+
 function sanpham_update($id, $name, $price, $img, $mota, $price_chiet, $sale, $id_danhmuc)
 {
-    $sql = "UPDATE sanpham SET id_sanpham=?,name=?,price=?,img=?,mota=?,price_chiet=?,sale=?,id_danhmuc=? WHERE id_sanpham=?";
+    $sql = "UPDATE sanpham SET id_sanpham=?,namesp=?,price=?,img=?,mota=?,price_chiet=?,sale=?,id_danhmuc=? WHERE id_sanpham=?";
     pdo_execute($sql, $id, $name, $price, $img, $mota, $price_chiet, $sale, $id_danhmuc, $id);
 }
 function sanpham_exist($id)
@@ -54,6 +50,11 @@ function sanpham_exist($id)
 function sanpham_tangsoluotxem($id)
 {
     $sql = "UPDATE sanpham SET luotxem=luotxem+1 WHERE id_sanpham=?";
+    pdo_execute($sql, $id);
+}
+function sanpham_tangsoluotban($id)
+{
+    $sql = "UPDATE sanpham SET luotban=luotban+1 WHERE id_sanpham=?";
     pdo_execute($sql, $id);
 }
 function sanpham_selecttop10()
@@ -78,19 +79,23 @@ function sanpham_giamgia($price, $sale)
     return $giasau;
 }
 
-
-
-function loadall_sanpham($kyw="",$iddm){
-    if($kyw!=""){
-        $sql="select * from sanpham where 1 and name like '%".$kyw."%'";
-    }
-    if($iddm>0){
-        $sql="select * from danhmuc where id=".$iddm;
-    }
-    $sql.=" order by id_sanpham desc";
-    $listsanpham=pdo_query($sql);
-    return $listsanpham;
+function loadall_sanpham($kyw)
+{
+    $sql = "SELECT*FROM sanpham sp JOIN danhmuc dm ON dm.id=sp.id_danhmuc WHERE dm.name LIKE ? OR sp.namesp LIKE ? ";
+    return pdo_query($sql, '%' . $kyw . '%', '%' . $kyw . '%');
 }
+
+// function loadall_sanpham($kyw="",$iddm){
+//     if($kyw!=""){
+//         $sql="select * from sanpham where 1 and name like '%".$kyw."%'";
+//     }
+//     if($iddm>0){
+//         $sql="select * from danhmuc where id=".$iddm;
+//     }
+//     $sql.=" order by id_sanpham desc";
+//     $listsanpham=pdo_query($sql);
+//     return $listsanpham;
+// }
 
 function load_ten_dm($iddm){
     if($iddm>0){

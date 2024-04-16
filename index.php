@@ -18,22 +18,6 @@ $dstop10 = sanpham_selecttop10();
 if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
-        case 'sanpham':
-            if (isset($_POST['kyw']) && ($_POST['kyw'] != "")) {
-                $kyw = $_POST['kyw'];
-            } else {
-                $kyw = "";
-            }
-            if (isset($_GET['iddm']) && ($_GET['iddm'] > 0)) {
-                $iddm = $_GET['iddm'];
-
-            } else {
-                $iddm = 0;
-            }
-            $dssp = loadall_sanpham($kyw, $iddm);
-            $tendm = load_ten_dm($iddm);
-            include "view/sanpham.php";
-            break;
         case 'sanphamct':
 
             if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
@@ -57,7 +41,7 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
             $error = [];
             // unset($_SESSION['error']);
             if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
-                
+
                 if (empty($_POST["user"])) {
                     $error['user'] = "*Vui lòng nhập tên tài khoản";
                 }
@@ -75,7 +59,7 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
                         header('Location: index.php');
                     } else {
                         $thongbao['1'] = "Tài khoản không tồn tại!";
-                        $thongbao['2']="Vui lòng kiểm tra hoặc đăng kí!";
+                        $thongbao['2'] = "Vui lòng kiểm tra hoặc đăng kí!";
                     }
                 }
             }
@@ -208,15 +192,15 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
             include "view/giohang/viewgiohang.php";
             break;
         case 'tang_soluong':
-            if(isset($_GET['idgiohang'])){
-                $id_giohang=$_GET['idgiohang'];
+            if (isset($_GET['idgiohang'])) {
+                $id_giohang = $_GET['idgiohang'];
                 tang_soluong($id_giohang);
             }
             header('Location: index.php?act=viewcart');
             break;
         case 'giam_soluong':
-            if(isset($_GET['idgiohang'])&&$_GET['soluong']>1){
-                $id_giohang=$_GET['idgiohang'];
+            if (isset($_GET['idgiohang']) && $_GET['soluong'] > 1) {
+                $id_giohang = $_GET['idgiohang'];
                 giam_soluong($id_giohang);
             }
             header('Location: index.php?act=viewcart');
@@ -225,10 +209,10 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
 
         case 'bill':
             $listgiohang = load_giohang_taikhoan($id_taikhoan);
-            if($listgiohang!=[]){
+            if ($listgiohang != []) {
                 include "view/giohang/bill.php";
-            }else{
-                $thongbao="Không thể đặt hàng khi không có sản phẩm!";
+            } else {
+                $thongbao = "Không thể đặt hàng khi không có sản phẩm!";
                 include "view/giohang/viewgiohang.php";
             }
             break;
@@ -239,7 +223,7 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
                 } else {
                     $id_taikhoan = 0;
                 }
-                
+
                 $hoten = $_POST['hoten'];
                 $email = $_POST['email'];
                 $tel = $_POST['tel'];
@@ -252,18 +236,19 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $listgiohang = load_giohang_taikhoan($id_taikhoan);
                 bill_insert($trangthai, $id_taikhoan, $ngaydathang, $price_tong, $payment);
                 $lay_id_bill = bill_loadidbill($id_taikhoan);
-                var_dump($lay_id_bill);
                 extract($lay_id_bill);
-                $ngaydathangnew=date('d/m/Y',strtotime($ngaydathang));
+                $ngaydathangnew = date('d/m/Y', strtotime($ngaydathang));
                 foreach ($listgiohang as $gh) {
                     bill_chitiet_insert($id_bill, $gh['2'], $gh['4'], $gh['6'], $gh[3], $gh[5], $gh[7]);
+                    sanpham_tangsoluotban($gh['2']);
                 }
 
                 $_SESSION['bill'] = bill_getinfo($id_bill);
                 $_SESSION['billct'] = bill_chitiet_getinfo($id_bill);
                 $listdonhang = load_donhang_idbill($id_bill);
                 giohang_delete_taikhoan($id_taikhoan);
-            
+                
+
             }
             include "view/giohang/billconfirm.php";
             break;
@@ -272,22 +257,22 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
             include "view/giohang/donhang.php";
             break;
         case 'chitietdonhang':
-            if(isset($_GET['iddonhang'])){
+            if (isset($_GET['iddonhang'])) {
                 $idbill = $_GET['iddonhang'];
                 $listdonhangchitiet = load_donhang_idbill($idbill);
                 include "view/giohang/chitietdonhang.php";
-            }else{
-            $thongbao="Đơn hàng không tồn tại!";
-            header('Location: index.php?act=donhang');
+            } else {
+                $thongbao = "Đơn hàng không tồn tại!";
+                header('Location: index.php?act=donhang');
             }
             break;
         case 'nhanhang':
-            if(isset($_GET['id_bill'])){
-                $id_bill=$_GET['id_bill'];
-                $trangthaimoi="Đã nhận hàng";
-                $today= date("Y-m-d");
-                bill_update_trangthai($trangthaimoi,$id_bill);
-                bill_update_ngayhoanthanh($today,$id_bill);
+            if (isset($_GET['id_bill'])) {
+                $id_bill = $_GET['id_bill'];
+                $trangthaimoi = "Đã nhận hàng";
+                $today = date("Y-m-d");
+                bill_update_trangthai($trangthaimoi, $id_bill);
+                bill_update_ngayhoanthanh($today, $id_bill);
             }
             $listbill = loadall_bill($_SESSION['user']['id_taikhoan']);
             include "view/giohang/donhang.php";
@@ -300,6 +285,14 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
             include "view/home.php";
             break;
     }
+} else if (isset($_GET['kyw']) && ($_GET['kyw']) && ($_GET['kyw'] != "")) {
+    $kyw = $_GET['kyw'];
+    $dssp = loadall_sanpham($kyw);
+    include "view/sanpham.php";
+} else if (isset($_GET['iddm']) && ($_GET['iddm']) && ($_GET['iddm'] != "")) {
+    $iddm = $_GET['iddm'];
+    $dssp = sanpham_selectby_loai($iddm);
+    include "view/sanpham.php";
 } else {
     include "view/home.php";
 }

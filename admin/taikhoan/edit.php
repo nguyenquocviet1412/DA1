@@ -74,6 +74,5 @@
     </div>
     <button class="btn btn-primary" name="btn_update">Cập nhật</button>
     <button type="reset" class="btn btn-primary">Nhập lại</button>
-    <a class="btn btn-primary" href="index.php" role="button">Thêm mới</a>
     <a class="btn btn-primary" href="index.php?btn_list" role="button">Danh sách</a>
 </form>

@@ -54,12 +54,10 @@
 
                     <td>
                         <a class="btn btn-primary" href="index.php?btn_edit&id=<?= $id_taikhoan ?>" role="button">Sửa</a>
-                        <a onclick="return confirm('Xoá?')" class="btn btn-primary"
-                            href="index.php?btn_delete&id=<?= $id_taikhoan ?>" role="button">Xoá</a>
+                        <a onclick="return confirm('Xoá?')" class="btn btn-primary" href="index.php?btn_delete&id=<?= $id_taikhoan ?>" role="button">Xoá</a>
                     </td>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
-    <a class="btn btn-primary" href="index.php" role="button">Thêm mới</a>
 </form>

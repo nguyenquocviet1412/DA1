@@ -25,14 +25,18 @@
         display: block;
         transform: scaleY(1);
     }
+
+    a.linksp {
+        color: black;
+        text-decoration: none;
+    }
 </style>
 <div class="row justify-content-center">
     <div class="col-6 p-3">
         <div class="input-group">
-            <form action="index.php?act=sanpham" method="post" class="flex">
-                <input type="text" name="kyw" class="form-control col-8" placeholder="Search for..."
-                    aria-label="Search for..." size="40">
-                <input class="btn btn-outline-secondary" type="submit" name="timkiem" value="Tìm kiếm">
+            <form action="index.php" class="flex">
+                <input type="text" name="kyw" class="form-control col-8" placeholder="Search for..." size="40">
+                <input class="btn btn-outline-secondary" type="submit" value="Tìm kiếm">
             </form>
         </div>
     </div>
@@ -53,50 +57,64 @@
             </div>
 
             <div class="buy">
-                <?php 
-                    if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
-                        extract($_SESSION['user']);
-                ?>
-                <a class="nav-link" href="index.php?act=viewcart">
-                <?php }else{?>
-                    <a class="nav-link" href="index.php?act=taikhoan" onclick="alert('Đăng nhập để xem giỏ hàng')">
-                <?php }?>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="text-light" class="bi bi-bag"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
-                    </svg>
-                </a>
+                <?php
+                if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
+                    extract($_SESSION['user']);
+                    ?>
+                    <a class="nav-link" href="index.php?act=viewcart">
+                    <?php } else { ?>
+                        <a class="nav-link" href="index.php?act=taikhoan" onclick="alert('Đăng nhập để xem giỏ hàng')">
+                        <?php } ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="text-light"
+                            class="bi bi-bag" viewBox="0 0 16 16">
+                            <path
+                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                        </svg>
+                    </a>
             </div>
 
         </ul>
     </div>
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-        </div>
+    <?php
+    // Đường dẫn đến thư mục chứa ảnh
+    $dir = "upload/slide/";
+
+    // Mảng để lưu trữ đường dẫn của các ảnh
+    $imagePaths = [];
+
+    // Kiểm tra xem thư mục tồn tại không
+    if (is_dir($dir)) {
+        // Mở thư mục
+        if ($dh = opendir($dir)) {
+            // Đọc tất cả các tệp trong thư mục
+            while (($file = readdir($dh)) !== false) {
+                // Loại bỏ các tệp không cần thiết
+                if (!in_array($file, array('.', '..', '.DS_Store'))) {
+                    // Tạo đường dẫn đầy đủ của ảnh và thêm vào mảng
+                    $imagePaths[] = $dir . $file;
+                }
+            }
+            // Đóng thư mục
+            closedir($dh);
+        }
+    }
+    // In ra mảng đường dẫn của các ảnh
+    // print_r($imagePaths);
+    ?>
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="img/nuochoa.jpg" class="d-block w-100" alt="..." height="400px">
-            </div>
-            <div class="carousel-item">
-                <img src="img/images.jpg" class="d-block w-100" alt="..." height="400px">
-            </div>
-            <div class="carousel-item">
-                <img src="img/bn 4.jpg" class="d-block w-100" alt="..." height="400px">
-            </div>
+            <?php foreach ($imagePaths as $img) { ?>
+                <div class="carousel-item active">
+                    <img src="<?= $img ?>" class="d-block w-100" alt="..." height="400px">
+                </div>
+            <?php } ?>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
@@ -105,7 +123,7 @@
 </div>
 </header>
 <main class="justify-content-center">
-    <p class="h2 m-3">Danh sach sp</p>
+    <p class="h2 m-3">Danh sách sản phẩm</p>
     <div class="row justify-content-center">
         <!-- <div class="row"> -->
         <?php
@@ -114,15 +132,20 @@
             extract($sp);
             $linksp = "index.php?act=sanphamct&idsp=" . $id_sanpham;
             $hinh = $img_path . $img;
+            if ($price_chiet == 0) {
+                $echo = "<p class='product-price'>Chiết: Hết size</p>";
+            } else {
+                $echo = "<p class='product-price'>Chiết: $price_chiet $</p>";
+            }
             echo '
             <div class="col-2">
                 <div class="product justify-content-center">
-                    <img src="' . $hinh . '" alt="Product Image">
+                    <a class="linksp" href="' . $linksp . '"><img src="' . $hinh . '" alt="Product Image"></a>
                     <div class="product-details p-2">
-                        <h3 class="product-title">' . $name . '</h3>
-                        <p class="product-price">' . $price . ' $</p>
-                        <p>Đã bán:5</p>
-                        <a href="' . $linksp . '"><button class="btn btn-dark">Xem chi tiet</button></a>
+                        <a class="linksp" href="' . $linksp . '"><h3 class="product-title">' . $namesp . '</h3></a>
+                        <p class="product-price">Full: ' . $price . '$</p>
+                        ' . $echo . '
+                        <p>Đã bán:' . $luotban . '</p>
                     </div>
                 </div>
             </div>

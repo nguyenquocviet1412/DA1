@@ -34,7 +34,7 @@
                         ?>
                     </td>
                     <td>
-                        <?= $name ?>
+                        <?= $namesp ?>
                     </td>
                     <td>
                         <?= $price ?>

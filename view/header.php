@@ -107,7 +107,7 @@ $dsdm = danhmuc_selectall();
 
         .product img {
             width: 100%;
-            height: auto;
+            height: 132px;
 
         }
 
@@ -215,7 +215,7 @@ $dsdm = danhmuc_selectall();
                                             <?php
                                             foreach ($dsdm as $dm) {
                                                 extract($dm);
-                                                $linkdm = "index.php?act=sanpham&iddm=" . $id;
+                                                $linkdm = "index.php?iddm=" . $id;
                                                 echo '<li><a class="dropdown-item" href="' . $linkdm . '">' . $name . '</a></li>';
                                             }
                                             ?>
@@ -248,7 +248,7 @@ $dsdm = danhmuc_selectall();
                                             <?php
                                             foreach ($dsdm as $dm) {
                                                 extract($dm);
-                                                $linkdm = "index.php?act=sanpham&iddm=" . $id;
+                                                $linkdm = "index.php?iddm=" . $id;
                                                 echo '<li><a class="dropdown-item" href="' . $linkdm . '">' . $name . '</a></li>';
                                             }
                                             ?>

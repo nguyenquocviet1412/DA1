@@ -36,7 +36,7 @@ function binhluan_exist($id){
     return pdo_query_value($sql, $id);
 }
 function binhluan_selectby_hanghoa($id_sanpham){
-    $sql="SELECT b.* , s.name FROM binhluan b JOIN sanpham s ON b.id_sanpham=s.id_sanpham WHERE b.id_sanpham    =? ORDER BY ngaybinhluan DESC";
+    $sql="SELECT b.* , s.namesp FROM binhluan b JOIN sanpham s ON b.id_sanpham=s.id_sanpham WHERE b.id_sanpham    =? ORDER BY ngaybinhluan DESC";
     return pdo_query($sql, $id_sanpham);
 }
 function binhluan_selectby_taikhoan($id_taikhoan){
