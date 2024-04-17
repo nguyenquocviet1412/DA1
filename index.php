@@ -240,7 +240,7 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $ngaydathangnew = date('d/m/Y', strtotime($ngaydathang));
                 foreach ($listgiohang as $gh) {
                     bill_chitiet_insert($id_bill, $gh['2'], $gh['4'], $gh['6'], $gh[3], $gh[5], $gh[7]);
-                    sanpham_tangsoluotban($gh['2']);
+                    sanpham_tangsoluotban($gh['6'],$gh['2']);
                 }
 
                 $_SESSION['bill'] = bill_getinfo($id_bill);

@@ -204,7 +204,7 @@
                                         ?>
                                 </h2>
                                 <h3 class="item-title">
-                                    <?= $name ?>
+                                    <?= $namesp ?>
                                 </h3>
                                 <span>
                                     <span class="sale-price">
@@ -258,7 +258,7 @@
                                 <div class="sub p-2">
                                     <input type="hidden" name="id_taikhoan" value="<?= $id_taikhoan ?>">
                                     <input type="hidden" name="id_sanpham" value="<?= $id_sanpham ?>">
-                                    <input type="hidden" name="name_sanpham" value="<?= $name ?>">
+                                    <input type="hidden" name="name_sanpham" value="<?= $namesp ?>">
                                     <?php if ($sale == "" || $sale == 0) { ?>
                                     <input type="hidden" name="price" value="<?= $price ?>">
                                     <input type="hidden" name="price_chiet" value="<?= $price_chiet ?>">
@@ -304,10 +304,10 @@
     </h3>
     <div class="spcungloai col-10">
         <?php
-        foreach ($sp_cung_loai as $sp_cung_loai) {
-            extract($sp_cung_loai);
+        foreach ($sp_cung_loai as $spcl) {
+            extract($spcl);
             $linksp = "index.php?act=sanphamct&idsp=" . $id;
-            echo '<li><a href="' . $linksp . '">' . $name . '</a></li>';
+            echo '<li><a href="' . $linksp . '">' . $namesp . '</a></li>';
         }
         ?>
     </div>

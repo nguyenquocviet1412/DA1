@@ -52,10 +52,10 @@ function sanpham_tangsoluotxem($id)
     $sql = "UPDATE sanpham SET luotxem=luotxem+1 WHERE id_sanpham=?";
     pdo_execute($sql, $id);
 }
-function sanpham_tangsoluotban($id)
+function sanpham_tangsoluotban($luotban,$id)
 {
-    $sql = "UPDATE sanpham SET luotban=luotban+1 WHERE id_sanpham=?";
-    pdo_execute($sql, $id);
+    $sql = "UPDATE sanpham SET luotban=luotban + ? WHERE id_sanpham=?";
+    pdo_execute($sql,$luotban, $id);
 }
 function sanpham_selecttop10()
 {
