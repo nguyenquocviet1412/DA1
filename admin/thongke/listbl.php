@@ -3,10 +3,11 @@
     <table class="table table-bordered rounded">
         <thead>
             <tr>
-                <th>ma</th>
-                <th>ten</th>
-                <th>cu nhat</th>
-                <th>moi nhat</th>
+                <th>Mã</th>
+                <th>Tên</th>
+                <th>Số lượt bình luận</th>
+                <th>Cũ nhất</th>
+                <th>Mới nhất</th>
             </tr>
         </thead>
         <tbody>
@@ -17,7 +18,7 @@
                         <?= $id_sanpham ?>
                     </td>
                     <td>
-                        <?= $name ?>
+                        <?= $namesp ?>
                     </td>
                     <td>
                         <?= $soluong ?>
