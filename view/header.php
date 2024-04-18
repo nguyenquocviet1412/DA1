@@ -173,7 +173,7 @@ $dsdm = danhmuc_selectall();
         <div class="row">
             <header>
                 <a href="index.php" style="text-decoration: none;">
-               
+
                     <h1 class="name text-danger" style="text-align: center;">Shop</h1>
                 </a>
                 <?php
@@ -195,7 +195,7 @@ $dsdm = danhmuc_selectall();
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">News</a>
                                     </li>
-                                    <?php if (isset($role) && $role == 1) { ?>
+                                    <?php if (isset($role) && ($role == 1 || $role == 2)) { ?>
                                         <li class="nav-item">
                                             <a class="nav-link" href="admin/danhmuc">Admin</a>
                                         </li>

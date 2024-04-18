@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +24,11 @@
 <body>
     <div class=" col-12 container">
         <div class="title bg-dark text-light p-2 mb-2">
-            <h1>Admin</h1>
+        <?php if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
+                echo "<h1 class='text-uppercase'>".$_SESSION['user']['user']."</h1>";
+            }else {
+                header("location: /DA1/index.php");
+            } ?>
         </div>
         <?php require "../menu.php" ?>
         <?php include $VIEW_NAME ?>
@@ -31,7 +36,6 @@
             <p class="h2 text-center text-light">Copyright &copy; 2020</p>
         </div>
     </div>
-
 </body>
 
 </html>
