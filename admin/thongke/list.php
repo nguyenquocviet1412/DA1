@@ -41,4 +41,5 @@
     </table>
     <a class="btn btn btn-primary" href="index.php?btn_listdh" role="button">thong ke don hang</a>
     <a class="btn btn btn-primary" href="index.php?btn_listbl" role="button">thong ke binh luan</a>
+    <a class="btn btn btn-primary" href="index.php?btn_listspyt" role="button">thong ke san pham yeu thich</a>
 </form>
