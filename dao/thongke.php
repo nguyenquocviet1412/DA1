@@ -48,10 +48,9 @@ function thongke_taikhoan_donhang()
 
     return pdo_query($sql);
 }
-function sanpham()
+function sanpham_yeuthich()
 {
-    $sql = "SELECT * FROM sanpham ORDER BY id_sanpham DESC";
-    pdo_query($sql);
+    $sql = "SELECT *FROM sanpham WHERE luotban>=10 ORDER BY luotban DESC limit 0,10";
     return pdo_query($sql);
 }
 ?>
