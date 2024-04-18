@@ -124,7 +124,7 @@
 </header>
 <main class="justify-content-center">
     <p class="h2 m-3">Danh sách sản phẩm</p>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" >
         <!-- <div class="row"> -->
         <?php
         $i = 0;
@@ -142,7 +142,7 @@
                 <div class="product justify-content-center">
                     <a class="linksp" href="' . $linksp . '"><img src="' . $hinh . '" alt="Product Image"></a>
                     <div class="product-details p-2">
-                        <a class="linksp" href="' . $linksp . '"><h3 class="product-title">' . $namesp . '</h3></a>
+                        <a class="linksp" href="' . $linksp . '"><h3 class="product-title" style="height: 80px;">' . $namesp . '</h3></a>
                         <p class="product-price">Full: ' . $price . '$</p>
                         ' . $echo . '
                         <p>Đã bán:' . $luotban . '</p>

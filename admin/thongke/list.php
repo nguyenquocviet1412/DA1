@@ -3,12 +3,12 @@
     <table class="table table-bordered rounded">
         <thead>
             <tr>
-                <th>ma</th>
-                <th>ten</th>
-                <th>tongtien</th>
-                <th>gia cao nhat</th>
-                <th>gia thap nhat</th>
-                <th>gia trung binh</th>
+                <th>Mã</th>
+                <th>Tên Hãng</th>
+                <th>Số lượng sản phẩm</th>
+                <th>Giá cao nhất</th>
+                <th>Giá thấp nhất</th>
+                <th>Giá trung bình</th>
             </tr>
         </thead>
         <tbody>

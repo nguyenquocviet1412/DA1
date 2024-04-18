@@ -38,4 +38,14 @@ function thongkedonhang()
 
     return pdo_query($sql);
 }
+
+function thongke_taikhoan_donhang()
+{
+    $sql = "SELECT taikhoan.*, bill.*, bill_chitiet.*
+    FROM taikhoan
+    JOIN bill ON taikhoan.id_taikhoan = bill.id_taikhoan
+    JOIN bill_chitiet ON bill.id_bill = bill_chitiet.id_bill";
+
+    return pdo_query($sql);
+}
 ?>

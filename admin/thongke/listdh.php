@@ -3,34 +3,32 @@
     <table class="table table-bordered rounded">
         <thead>
             <tr>
-                <th>ma</th>
-                <th>ten</th>
-                <th>tong tien</th>
+                <th>Avatar</th>
+                <th>User</th>
+                <th>Tổng tiền</th>
                 <th>ten san pham</th>
                 <th>so luong san pham</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($items as $key => $value) {
-                 var_dump($value);
-
                 extract($value); ?>
                 
                 <tr>
                     <td>
-                        <?= $id ?>
+                        <img src="../../upload/<?= $avatar?>" style="width: 50px; height: 50px; " alt="Product">
                     </td>
                     <td>
                         <?= $user ?>
                     </td>
                     <td>
-                        <?= $tongtien ?>
+                        <?= $price_tong ?>
                     </td>
                     <td>
-                        <?= $tensanpham ?>
+                        <?= $name_sanpham ?>
                     </td>
                     <td>
-                        <?= $soluongsanpham ?>
+                        <?= $soluong ?>
                     </td>
                 </tr>
             <?php } ?>

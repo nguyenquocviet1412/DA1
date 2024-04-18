@@ -144,7 +144,7 @@
                             ?>
                     </h2>
                     <h3 class="item-title">
-                        <?= $name ?>
+                        <?= $namesp ?>
                     </h3>
                     <span>
 
@@ -232,12 +232,12 @@
                                 </span>
                                 <div class="mb-3 mt-3 m-3">
                                     <input type="radio" class="btn-check" name="size" id="full" value="full"
-                                        autocomplete="off">
+                                        autocomplete="off" required>
                                     <label class="btn btn-outline-danger" for="full">Full:
                                         <?= $salefull ?>
                                     </label>
                                     <?php if ($price_chiet > 0) { ?>
-                                    <input type="radio" class="btn-check" name="size" id="chiet" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="size" id="chiet" autocomplete="off" required>
                                     <label class="btn btn-outline-danger" for="chiet" value="chiết">
                                         Chiết:
                                         <?= $salechiet ?>
@@ -299,14 +299,18 @@
 
     </div>
     <h3>Sản phẩm cùng hãng
-        <?php extract($sp_cung_loai);
-        echo $name; ?>
+    <?php foreach ($danhmuc_sanpham as $key => $value) {
+                                            if ($id_danhmuc == $value['id']) {
+                                                echo $value['name'];
+                                            }
+                                        }
+                                        ?>
     </h3>
     <div class="spcungloai col-10">
         <?php
         foreach ($sp_cung_loai as $spcl) {
             extract($spcl);
-            $linksp = "index.php?act=sanphamct&idsp=" . $id;
+            $linksp = "index.php?act=sanphamct&idsp=" . $id_sanpham;
             echo '<li><a href="' . $linksp . '">' . $namesp . '</a></li>';
         }
         ?>

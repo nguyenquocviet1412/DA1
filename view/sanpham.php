@@ -144,7 +144,7 @@
                 <div class="product justify-content-center">
                     <img src="' . $hinh . '" alt="Product Image">
                     <div class="product-details p-2">
-                        <h3 class="product-title">' . $namesp . '</h3>
+                        <h3 class="product-title" style="height: 80px;">' . $namesp . '</h3>
                         <p class="product-price">' . $price . ' $</p>
                         <p>Đã bán:5</p>
                         <a href="' . $linksp . '"><button class="btn btn-dark">Xem chi tiet</button></a>

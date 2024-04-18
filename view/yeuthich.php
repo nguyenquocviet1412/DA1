@@ -11,7 +11,7 @@
                 <div class="product_top10">
                 <a href="' . $linksp . '"><img src="' . $img . '" alt="Product Image"></a>
                     <div class="product-details">
-                        <p>' . $name . '</p>
+                        <p>' . $namesp . '</p>
                     </div>
                 </div>
             </div>
