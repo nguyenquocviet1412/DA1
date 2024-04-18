@@ -13,31 +13,31 @@ function thongkehanghoa()
     return pdo_query($sql);
 }
 
-function thongkebinhluan()
-{
-    $sql = "SELECT sp.id_sanpham, sp.namesp,
-     COUNT(*) soluong, 
-     MIN(bl.ngaybinhluan) cunhat, 
-     MAX(bl.ngaybinhluan) moinhat 
-     FROM binhluan bl
-    JOIN sanpham sp ON bl.id_sanpham = sp.id_sanpham
-    GROUP BY sp.id_sanpham, sp.namesp
-    HAVING soluong > 0";
-    return pdo_query($sql);
-}
+// function thongkebinhluan()
+// {
+//     $sql = "SELECT sp.id_sanpham, sp.namesp,
+//      COUNT(*) soluong, 
+//      MIN(bl.ngaybinhluan) cunhat, 
+//      MAX(bl.ngaybinhluan) moinhat 
+//      FROM binhluan bl
+//     JOIN sanpham sp ON bl.id_sanpham = sp.id_sanpham
+//     GROUP BY sp.id_sanpham, sp.namesp
+//     HAVING soluong > 0";
+//     return pdo_query($sql);
+// }
 
-function thongkedonhang()
-{
-    $sql = "SELECT tk.id, tk.user,
-    SUM(dh.tongtien) AS tongtien,
-    dh.name_sanpham AS tensanpham,
-    COUNT(dh.name_sanpham) AS soluongsanpham
-    FROM bill_chitiet dh
-    JOIN taikhoan tk ON dh.id_taikhoan = tk.id
-    GROUP BY tk.id, tk.user, dh.name_sanpham";
+// function thongkedonhang()
+// {
+//     $sql = "SELECT tk.id, tk.user,
+//     SUM(dh.tongtien) AS tongtien,
+//     dh.name_sanpham AS tensanpham,
+//     COUNT(dh.name_sanpham) AS soluongsanpham
+//     FROM bill_chitiet dh
+//     JOIN taikhoan tk ON dh.id_taikhoan = tk.id
+//     GROUP BY tk.id, tk.user, dh.name_sanpham";
 
-    return pdo_query($sql);
-}
+//     return pdo_query($sql);
+// }
 
 function thongke_taikhoan_donhang()
 {
@@ -46,6 +46,12 @@ function thongke_taikhoan_donhang()
     JOIN bill ON taikhoan.id_taikhoan = bill.id_taikhoan
     JOIN bill_chitiet ON bill.id_bill = bill_chitiet.id_bill";
 
+    return pdo_query($sql);
+}
+function sanpham()
+{
+    $sql = "SELECT * FROM sanpham ORDER BY id_sanpham DESC";
+    pdo_query($sql);
     return pdo_query($sql);
 }
 ?>

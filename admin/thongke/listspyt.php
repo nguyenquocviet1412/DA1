@@ -3,11 +3,10 @@
     <table class="table table-bordered rounded">
         <thead>
             <tr>
-                <th>Avatar</th>
-                <th>User</th>
-                <th>Tổng tiền</th>
-                <th>ten san pham</th>
-                <th>so luong san pham</th>
+                <th>sanpham</th>
+                <th>hinh anh</th>
+                <th>mota</th>
+                <th>luot ban</th>
             </tr>
         </thead>
         <tbody>
@@ -16,19 +15,16 @@
                 
                 <tr>
                     <td>
-                        <img src="../../upload/<?= $avatar?>" style="width: 50px; height: 50px; " alt="Product">
+                        <?= $namesp ?> $
                     </td>
                     <td>
-                        <?= $user ?>
+                        <img src="../../upload/<?= $img?>" style="width: 50px; height: 50px; " alt="Product">
                     </td>
                     <td>
-                        <?= $price_tong ?> $
+                        <?= $mota ?>
                     </td>
                     <td>
-                        <?= $name_sanpham ?>
-                    </td>
-                    <td>
-                        <?= $soluong ?>
+                        <?= $luotban ?>
                     </td>
                 </tr>
             <?php } ?>
