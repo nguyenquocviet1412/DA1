@@ -34,9 +34,9 @@
 <div class="row justify-content-center">
     <div class="col-6 p-3">
         <div class="input-group">
-            <form action="index.php" class="flex">
+            <form action="index.php?act=sanpham" class="flex" method="post">
                 <input type="text" name="kyw" class="form-control col-8" placeholder="Search for..." size="40">
-                <input class="btn btn-outline-secondary" type="submit" value="Tìm kiếm">
+                <input class="btn btn-outline-secondary" type="submit" value="Tìm kiếm" name="timkiem">
             </form>
         </div>
     </div>

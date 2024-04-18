@@ -121,12 +121,12 @@
     <p class="h2 m-3">Sản phẩm
         <strong>
             <?php
-            // if (isset($tendm) && ($tendm != "")) {
-            //     echo 'hãng ' . $tendm;
-            // }
-            // if (isset($kyw) && ($kyw != "")) {
-            //     echo 'có tên: ' . $kyw;
-            // }
+            if (isset($tendm) && ($tendm != "")) {
+                echo 'hãng ' . $tendm;
+            }
+            if (isset($kyw) && ($kyw != "")) {
+                echo 'có tên: ' . $kyw;
+            }
             ?>
         </strong>
 
