@@ -1,116 +1,116 @@
 <style>
-.container {
-    background-color: rgb(255, 255, 255);
-    width: 100%;
-}
+    .container {
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+    }
 
-.baner {
-    background-image: url("img/bn\ 4.jpg");
-    height: 400px;
-    width: 100%;
-}
+    .baner {
+        background-image: url("img/bn\ 4.jpg");
+        height: 400px;
+        width: 100%;
+    }
 
-/* showsp*/
-.showsp {
-    border: 1px solid #000000;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 10px;
+    /* showsp*/
+    .showsp {
+        border: 1px solid #000000;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        padding: 10px;
 
-}
+    }
 
-.binhluan {
-    border: 1px solid #000000;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 10px;
-    height: 300px;
-}
+    .binhluan {
+        border: 1px solid #000000;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        padding: 10px;
+        height: 300px;
+    }
 
-.thanhbl {
-    margin-top: 20px;
-}
+    .thanhbl {
+        margin-top: 20px;
+    }
 
-.listbl {
-    border: 1px solid #000000;
-    height: 200px;
-    border-radius: 5px;
-}
+    .listbl {
+        border: 1px solid #000000;
+        height: 200px;
+        border-radius: 5px;
+    }
 
-.spcungloai {
-    border: 1px solid #000000;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 10px;
-    height: 200px;
-}
+    .spcungloai {
+        border: 1px solid #000000;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        padding: 10px;
+        height: 200px;
+    }
 
-.item {
-    display: flex;
-    padding: 10px;
-    ;
-}
+    .item {
+        display: flex;
+        padding: 10px;
+        ;
+    }
 
-.product-price {
-    font-size: 1.1rem;
-    color: #ef0606;
-    margin-top: 5px;
-    font-size: 40px;
-}
+    .product-price {
+        font-size: 1.1rem;
+        color: #ef0606;
+        margin-top: 5px;
+        font-size: 40px;
+    }
 
 
-/* top 10 */
-.product_top10 img {
-    max-width: 100px;
-    height: auto;
-}
+    /* top 10 */
+    .product_top10 img {
+        max-width: 100px;
+        height: auto;
+    }
 
-.content {
-    margin-left: 600px;
-}
+    .content {
+        margin-left: 600px;
+    }
 
-.user {
-    margin-top: -82px;
-}
+    .user {
+        margin-top: -82px;
+    }
 
-.buy {
-    margin-top: -82px;
-}
+    .buy {
+        margin-top: -82px;
+    }
 
-.video {
-    display: flex;
-}
+    .video {
+        display: flex;
+    }
 
-.original-price {
-    text-decoration: line-through;
-    color: black;
-    font-size: 20px;
-    padding: 0 5px;
-}
+    .original-price {
+        text-decoration: line-through;
+        color: black;
+        font-size: 20px;
+        padding: 0 5px;
+    }
 
-.original-price1 {
-    color: red;
-    font-weight: bold;
-    font-size: 25px;
-    margin: 0;
-}
+    .original-price1 {
+        color: red;
+        font-weight: bold;
+        font-size: 25px;
+        margin: 0;
+    }
 
-.sale-price {
-    color: red;
-    font-weight: bold;
-    font-size: 25px;
-    margin: 0;
-}
+    .sale-price {
+        color: red;
+        font-weight: bold;
+        font-size: 25px;
+        margin: 0;
+    }
 
-.percent {
-    color: red;
-    font-size: 20px;
-}
+    .percent {
+        color: red;
+        font-size: 20px;
+    }
 
-.flex-form {
-    display: flex;
-    justify-content: space-between;
-}
+    .flex-form {
+        display: flex;
+        justify-content: space-between;
+    }
 </style>
 
 <main class="">
@@ -129,56 +129,56 @@
                 $giohang1 = "chua_dn";
             }
             ?>
-        <div class="item">
-            <form action="index.php?act=<?= $giohang1 ?>" method="post" class="flex-form col-12">
-                <div class="item-image flex col-6">
-                    <img src="<?= $img ?>" alt="" class="item-img" width="400px" height="400px">
-                </div>
-                <div class="item-content col-6">
-                    <h2 class="item-title">
-                        <?php foreach ($danhmuc_sanpham as $key => $value) {
+            <div class="item">
+                <form action="index.php?act=<?= $giohang1 ?>" method="post" class="flex-form col-12">
+                    <div class="item-image flex col-6">
+                        <img src="<?= $img ?>" alt="" class="item-img" width="400px" height="400px">
+                    </div>
+                    <div class="item-content col-6">
+                        <h2 class="item-title">
+                            <?php foreach ($danhmuc_sanpham as $key => $value) {
                                 if ($id_danhmuc == $value['id']) {
                                     echo $value['name'];
                                 }
                             }
                             ?>
-                    </h2>
-                    <h3 class="item-title">
-                        <?= $namesp ?>
-                    </h3>
-                    <span>
+                        </h2>
+                        <h3 class="item-title">
+                            <?= $namesp ?>
+                        </h3>
+                        <span>
 
-                        <span class="original-price1">
-                            Full:
-                            <?= $price ?>$
-                        </span><br>
+                            <span class="original-price1">
+                                Full:
+                                <?= $price ?>$
+                            </span><br>
 
 
-                        <span class="original-price1">
-                            Chiết:
-                            <?= $price_chiet ?>$
+                            <span class="original-price1">
+                                Chiết:
+                                <?= $price_chiet ?>$
+                            </span>
+
                         </span>
 
-                    </span>
-
-                    <div class="mb-3 mt-3 m-3">
-                        <input type="radio" class="btn-check" name="size" id="full" value="full" autocomplete="off"
-                            checked>
-                        <label class="btn btn-outline-danger" for="full">Full:
-                            <?= $price ?>
-                        </label>
-                        <?php if ($price_chiet > 0) { ?>
-                        <input type="radio" class="btn-check" name="size" id="chiet" autocomplete="off">
-                        <label class="btn btn-outline-danger" for="chiet" value="chiết">
-                            Chiết:
-                            <?= $price_chiet ?>
-                        </label>
-                        <?php } ?>
-                    </div>
-                    <p class="item-text ">
-                        Mô tả:
-                        <?= $mota ?>
-                    </p>
+                        <div class="mb-3 mt-3 m-3">
+                            <input type="radio" class="btn-check" name="size" id="full" value="full" autocomplete="off"
+                                checked>
+                            <label class="btn btn-outline-danger" for="full">Full:
+                                <?= $price ?>$
+                            </label>
+                            <?php if ($price_chiet > 0) { ?>
+                                <input type="radio" class="btn-check" name="size" id="chiet" autocomplete="off">
+                                <label class="btn btn-outline-danger" for="chiet" value="chiết">
+                                    Chiết:
+                                    <?= $price_chiet ?>$
+                                </label>
+                            <?php } ?>
+                        </div>
+                        <p class="item-text ">
+                            Mô tả:
+                            <?= $mota ?>
+                        </p>
                     <?php } else {
             $salefull = sanpham_giamgia($price, $sale);
             $salechiet = sanpham_giamgia($price_chiet, $sale);
@@ -189,93 +189,94 @@
                 $giohang1 = "chua_dn";
             }
             ?>
-                    <div class="item">
-                        <form action="index.php?act=<?= $giohang1 ?>" method="post" class="flex-form col-12">
-                            <div class="item-image flex col-6">
-                                <img src="<?= $img ?>" alt="" class="item-img" width="400px" height="400px">
-                            </div>
-                            <div class="item-content col-6">
-                                <h2 class="item-title">
-                                    <?php foreach ($danhmuc_sanpham as $key => $value) {
+                        <div class="item">
+                            <form action="index.php?act=<?= $giohang1 ?>" method="post" class="flex-form col-12">
+                                <div class="item-image flex col-6">
+                                    <img src="<?= $img ?>" alt="" class="item-img" width="400px" height="400px">
+                                </div>
+                                <div class="item-content col-6">
+                                    <h2 class="item-title">
+                                        <?php foreach ($danhmuc_sanpham as $key => $value) {
                                             if ($id_danhmuc == $value['id']) {
                                                 echo $value['name'];
                                             }
                                         }
                                         ?>
-                                </h2>
-                                <h3 class="item-title">
-                                    <?= $namesp ?>
-                                </h3>
-                                <span>
-                                    <span class="sale-price">
-                                        Full:
-                                        <?= $salefull ?>$
+                                    </h2>
+                                    <h3 class="item-title">
+                                        <?= $namesp ?>
+                                    </h3>
+                                    <span>
+                                        <span class="sale-price">
+                                            Full:
+                                            <?= $salefull ?>$
+                                        </span>
+                                        <span class="original-price">
+                                            <?= $price ?>$
+                                        </span>
+                                        <span class="percent">
+                                            -
+                                            <?= $sale ?>%
+                                        </span> <br>
+                                        <span class="sale-price">
+                                            Chiết:
+                                            <?= $salechiet ?>$
+                                        </span>
+                                        <span class="original-price">
+                                            <?= $price_chiet ?>$
+                                        </span>
+                                        <span class="percent">
+                                            -
+                                            <?= $sale ?>%
+                                        </span>
                                     </span>
-                                    <span class="original-price">
-                                        <?= $price ?>$
-                                    </span>
-                                    <span class="percent">
-                                        -
-                                        <?= $sale ?>%
-                                    </span> <br>
-                                    <span class="sale-price">
-                                        Chiết:
-                                        <?= $salechiet ?>$
-                                    </span>
-                                    <span class="original-price">
-                                        <?= $price_chiet ?>$
-                                    </span>
-                                    <span class="percent">
-                                        -
-                                        <?= $sale ?>%
-                                    </span>
-                                </span>
-                                <div class="mb-3 mt-3 m-3">
-                                    <input type="radio" class="btn-check" name="size" id="full" value="full"
-                                        autocomplete="off" required>
-                                    <label class="btn btn-outline-danger" for="full">Full:
-                                        <?= $salefull ?>
-                                    </label>
-                                    <?php if ($price_chiet > 0) { ?>
-                                    <input type="radio" class="btn-check" name="size" id="chiet" autocomplete="off" required>
-                                    <label class="btn btn-outline-danger" for="chiet" value="chiết">
-                                        Chiết:
-                                        <?= $salechiet ?>
-                                    </label>
-                                    <?php } ?>
-                                </div>
+                                    <div class="mb-3 mt-3 m-3">
+                                        <input type="radio" class="btn-check" name="size" id="full" value="full"
+                                            autocomplete="off" checked>
+                                        <label class="btn btn-outline-danger" for="full">Full:
+                                            <?= $salefull ?>$
+                                        </label>
+                                        <?php if ($price_chiet > 0) { ?>
+                                            <input type="radio" class="btn-check" name="size" id="chiet" autocomplete="off"
+                                                required>
+                                            <label class="btn btn-outline-danger" for="chiet" value="chiết">
+                                                Chiết:
+                                                <?= $salechiet ?>$
+                                            </label>
+                                        <?php } ?>
+                                    </div>
 
-                                <p class="item-text ">
-                                    Mô tả:
-                                    <?= $mota ?>
-                                </p>
+                                    <p class="item-text ">
+                                        Mô tả:
+                                        <?= $mota ?>
+                                    </p>
 
 
                                 <?php }
         if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
             extract($_SESSION['user']);
             ?>
-                                <div class="sub p-2">
-                                    <input type="hidden" name="id_taikhoan" value="<?= $id_taikhoan ?>">
-                                    <input type="hidden" name="id_sanpham" value="<?= $id_sanpham ?>">
-                                    <input type="hidden" name="name_sanpham" value="<?= $namesp ?>">
-                                    <?php if ($sale == "" || $sale == 0) { ?>
-                                    <input type="hidden" name="price" value="<?= $price ?>">
-                                    <input type="hidden" name="price_chiet" value="<?= $price_chiet ?>">
-                                    <?php } else { ?>
-                                    <input type="hidden" name="price" value="<?= $salefull ?>">
-                                    <input type="hidden" name="price_chiet" value="<?= $salechiet ?>">
-                                    <?php } ?>
-                                    <input type="hidden" name="img" value="<?= $img ?>">
-                                    <input type="submit" class="btn btn-danger" name="themvaogiohang"
-                                        value="Thêm vào giỏ hàng">
-                                </div>
+                                    <div class="sub p-2">
+                                        <input type="hidden" name="id_taikhoan" value="<?= $id_taikhoan ?>">
+                                        <input type="hidden" name="id_sanpham" value="<?= $id_sanpham ?>">
+                                        <input type="hidden" name="name_sanpham" value="<?= $namesp ?>">
+                                        <?php if ($sale == "" || $sale == 0) { ?>
+                                            <input type="hidden" name="price" value="<?= $price ?>">
+                                            <input type="hidden" name="price_chiet" value="<?= $price_chiet ?>">
+                                        <?php } else { ?>
+                                            <input type="hidden" name="price" value="<?= $salefull ?>">
+                                            <input type="hidden" name="price_chiet" value="<?= $salechiet ?>">
+                                        <?php } ?>
+                                        <input type="hidden" name="img" value="<?= $img ?>">
+                                        <input type="submit" class="btn btn-danger" name="themvaogiohang"
+                                            value="Thêm vào giỏ hàng">
+                                    </div>
                                 <?php } else { ?>
-                                <div class="sub p-2">
-                                    <input type="submit" class="btn btn-danger" name="themvaogiohang1"
-                                        value="Thêm vào giỏ hàng"
-                                        onclick="return alert('Đăng nhập để thêm sản phẩm vào giỏ hàng!')">
-                                </div>
+                                    <div class="sub p-2">
+                                        <input type="submit" class="btn btn-danger" name="themvaogiohang1"
+                                            value="Thêm vào giỏ hàng"
+                                            onclick="return alert('Đăng nhập để thêm sản phẩm vào giỏ hàng!')">
+                                    </div>
                                 <?php } ?>
                             </div>
                     </div>
@@ -285,11 +286,11 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
-        $(document).ready(function() {
-            $("#binhluan").load("view/binhluan/binhluanform.php", {
-                id_sanpham: <?= $id_sanpham ?>
+            $(document).ready(function () {
+                $("#binhluan").load("view/binhluan/binhluanform.php", {
+                    id_sanpham: <?= $id_sanpham ?>
+                });
             });
-        });
         </script>
 
 
@@ -299,21 +300,32 @@
 
     </div>
     <h3>Sản phẩm cùng hãng
-    <?php foreach ($danhmuc_sanpham as $key => $value) {
-                                            if ($id_danhmuc == $value['id']) {
-                                                echo $value['name'];
-                                            }
-                                        }
-                                        ?>
+        <?php foreach ($danhmuc_sanpham as $key => $value) {
+            if ($id_danhmuc == $value['id']) {
+                echo $value['name'];
+            }
+        }
+        ?>
     </h3>
     <div class="spcungloai col-10">
         <?php
         foreach ($sp_cung_loai as $spcl) {
             extract($spcl);
             $linksp = "index.php?act=sanphamct&idsp=" . $id_sanpham;
-            echo '<li><a href="' . $linksp . '">' . $namesp . '</a></li>';
+            $img = $img_path . $img;
+            echo '
+            <div class="col-1 m-2">
+                <div class="product_top10">
+                <a href="' . $linksp . '"><img src="' . $img . '" alt="Product Image"></a>
+                    <div class="product-details">
+                        <p>' . $namesp . '</p>
+                    </div>
+                </div>
+            </div>
+        ';
         }
         ?>
+
     </div>
 </main>
 
