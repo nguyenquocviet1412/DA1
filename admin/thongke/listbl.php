@@ -34,6 +34,6 @@
         </tbody>
 
     </table>
-    <a class="btn btn btn-primary" href="index.php?btn_list" role="button">thong ke don hang</a>
+    <a class="btn btn btn-primary" href="index.php?btn_listdh" role="button">thong ke don hang</a>
     <a class="btn btn btn-primary" href="index.php?btn_list" role="button">Thong ke hang hoa</a>
 </form>
