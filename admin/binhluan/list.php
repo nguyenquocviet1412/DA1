@@ -3,12 +3,12 @@
     <table class="table table-bordered rounded">
         <thead>
             <tr>
-                <th>id</th>
-                <th>noi dung</th>
-                <th>tai khoan</th>
-                <th>san pham</th>
-                <th>ngay</th>
-                <th>action</th>
+                <th>ID</th>
+                <th>Nội dung</th>
+                <th>ID khách hàng</th>
+                <th>Sản phẩm</th>
+                <th>Ngày</th>
+                <th>Action</th>
             </tr>
 
         </thead>
