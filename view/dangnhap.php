@@ -5,14 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>taikhoan</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <style>
     * {
       margin: 0;
@@ -59,7 +54,7 @@
       if (isset($_SESSION['user'])) {
         extract($_SESSION['user']);
         $avatar1 = $img_path . $avatar;
-        ?>
+      ?>
         <h1>Chào <?= $user ?></h1>
         <img class="card-img-top rounded-circle" src="<?= $avatar1 ?>" alt="Card image">
         <h3 class="thongbao">
@@ -115,7 +110,7 @@
             <div class="err"><?= $error['pass'] ?? '' ?></div>
           </div>
           <div class="form-check mb-3 m-3">
-            <a href="index.php?act=trangdangky" class="text-decoration-none" >Đăng ký tài khoản</a><br>
+            <a href="index.php?act=trangdangky" class="text-decoration-none">Đăng ký tài khoản</a><br>
             <a href="#" class="text-decoration-none">Quên mật khẩu</a><br>
           </div>
           <input type="submit" name="dangnhap" value="Đăng nhập" class="btn btn-primary m-3" <?php echo (!isset($error['user']) && !isset($error['pass'])) ? 'onclick="alert(\'Đăng nhập thành công\')"' : ''; ?>>

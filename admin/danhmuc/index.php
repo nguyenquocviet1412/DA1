@@ -6,10 +6,19 @@ if (exist_param("btn_list")) {
     $items = danhmuc_selectall();
     $VIEW_NAME = "list.php";
 } else if (exist_param("btn_insert")) {
+    $error =[];
+    if (empty($_POST["name"])) {
+        $error['name'] = "Bạn chưa nhập tên hãng nước hoa";
+    }
+    if (count($error) >= 1) {
+        $_SESSION['error'] = $error;
+    } else {
     $name = $_POST['name'];
     danhmuc_insert($name);
     $items = danhmuc_selectall();
+    }
     $VIEW_NAME = "add.php";
+    unset($_SESSION["error"]);
 } else if (exist_param("btn_edit")) {
     $id = $_REQUEST['id'];
     $danhmucinfo = danhmuc_getinfo($id);

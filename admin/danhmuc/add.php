@@ -8,6 +8,7 @@
     <div class="mb-3">
         <label for="text" class="form-label">Tên danh mục:</label>
         <input type="text" class="form-control" id="" name="name">
+        <div class="err"><?= $error['name'] ?? ''; ?></div>
     </div>
     <div class="sub p-2">
         <button name="btn_insert" class="btn btn-primary">Thêm</button>
