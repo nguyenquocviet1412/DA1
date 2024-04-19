@@ -30,7 +30,7 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
             }else{
                 $iddm=0;
             }
-            $dssp=loadall_sanpham($kyw,$iddm);
+            $dssp=loadall_sanpham($kyw);
                 $tendm=load_ten_dm($iddm);
                 include "view/sanpham.php";
             break;
@@ -80,12 +80,38 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
                 }
             }
             include "view/dangnhap.php";
+            unset($_SESSION['error']);
             break;
         case 'trangdangky':
             include "view/taikhoan/dangky.php";
             break;
         case 'dangky':
+            $error = [];
             if (isset($_POST['dangky']) && ($_POST['dangky'])) {
+                if (empty($_POST["email"])) {
+                    $error['email'] = "*Vui lòng nhập email";
+                }
+                if (empty($_POST["hoten"])) {
+                    $error['hoten'] = "*Vui lòng nhập Họ và tên";
+                }
+                if (empty($_POST["user"])) {
+                    $error['user'] = "*Vui lòng nhập tên user";
+                }
+                if (empty($_POST["pass"])) {
+                    $error['pass'] = "*Vui lòng nhập pass";
+                }
+                if (empty($_POST["address"])) {
+                    $error['address'] = "*Vui lòng nhập địa chỉ";
+                }
+                if (empty($_POST["tel"])) {
+                    $error['tel'] = "*Vui lòng nhập số điện thoại";
+                }
+                if (!isset($_FILES["avatar"])) {
+                    $error['avatar'] = "*Vui lòng chọn ảnh";
+                }
+                if (count($error) >= 1) {
+                    $_SESSION['error'] = $error;
+                } else {
                 $email = $_POST['email'];
                 $hoten = $_POST['hoten'];
                 $user = $_POST['user'];
@@ -99,7 +125,9 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
 
                 taikhoan_insert($hoten, $user, $pass, $email, $address, $tel, $avatar, $gender, $role);
                 // $thongbao = "Đã đăng kí thành công!!";
+                unset($_SESSION['error']);
                 header("location: index.php?act=taikhoan");
+                }
             }
             include "view/taikhoan/dangky.php";
             break;
@@ -107,7 +135,32 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
             include "view/taikhoan/capnhattaikhoan.php";
             break;
         case 'capnhattaikhoan':
+            $error = [];
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                if (empty($_POST["email"])) {
+                    $error['email'] = "*Vui lòng nhập email";
+                }
+                if (empty($_POST["hoten"])) {
+                    $error['hoten'] = "*Vui lòng nhập Họ và tên";
+                }
+                if (empty($_POST["user"])) {
+                    $error['user'] = "*Vui lòng nhập tên user";
+                }
+                if (empty($_POST["pass"])) {
+                    $error['pass'] = "*Vui lòng nhập pass";
+                }
+                if (empty($_POST["address"])) {
+                    $error['address'] = "*Vui lòng nhập địa chỉ";
+                }
+                if (empty($_POST["tel"])) {
+                    $error['tel'] = "*Vui lòng nhập số điện thoại";
+                }
+                if (!isset($_FILES["avatar"])) {
+                    $error['avatar'] = "*Vui lòng chọn ảnh";
+                }
+                if (count($error) >= 1) {
+                    $_SESSION['error'] = $error;
+                } else {
                 $email = $_POST['email'];
                 $hoten = $_POST['hoten'];
                 $user = $_POST['user'];
@@ -126,12 +179,29 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
                 taikhoan_update($id_taikhoan, $hoten, $user, $pass, $email, $address, $tel, $avatar, $gender, $role);
                 $thongbao = "Đã cập nhật thành công!!";
                 $_SESSION['user'] = checkuser($user, $pass);
+                unset($_SESSION['error']);
                 header('Location: index.php?act=capnhattaikhoan');
+            }
             }
             include "view/taikhoan/capnhattaikhoan.php";
             break;
         case 'quenmk':
+            $error = [];
             if (isset($_POST['guiemail']) && ($_POST['guiemail'])) {
+                if (empty($_POST["email"])) {
+                    $error['email'] = "*Vui lòng nhập email";
+                }
+                if (empty($_POST["tel"])) {
+                    $error['tel'] = "*Vui lòng nhập số điện thoại";
+                }
+                $phoneNumber = $_POST['tel']; // Thay thế bằng số điện thoại cần kiểm tra từ form
+                if (validatePhoneNumber($phoneNumber)) {
+                } else {
+                    $error['tel2']="*Số điện thoại không hợp lệ";
+                }
+                if (count($error) >= 1) {
+                    $_SESSION['error'] = $error;
+                } else {
                 $email = $_POST['email'];
                 $tel = $_POST['tel'];
 
@@ -145,7 +215,9 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
                     $thongbao = "Số điện thoại không tồn tại";
                 }
             }
+            }
             include "view/taikhoan/quenmk.php";
+            unset($_SESSION['error']);
             break;
         case 'chua_dn':
             if (isset($_POST['chua_dn']) && ($_POST['chua_dn'])) {

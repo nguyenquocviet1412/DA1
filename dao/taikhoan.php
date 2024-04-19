@@ -70,4 +70,15 @@ function checktel($tel)
     $sp = pdo_query_one($sql);
     return $sp;
 }
+function validatePhoneNumber($phoneNumber) {
+    // Biểu thức chính quy kiểm tra số điện thoại Việt Nam
+    $pattern = '/^(0[1-9])+([0-9]{9})$/';
+    if (preg_match($pattern, $phoneNumber)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 ?>

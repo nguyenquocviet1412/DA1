@@ -64,35 +64,42 @@
         <div class="mb-3 mt-3 m-3">
           <label for="text" class="form-label">Họ và tên:</label>
           <input type="text" class="form-control" id="" name="hoten">
+          <div class="err"><?= $error['hoten'] ?? '' ?></div>
         </div>
         <div class="mb-3 mt-3 m-3">
           <label for="text" class="form-label">User:</label>
           <input type="text" class="form-control" id="" name="user">
+          <div class="err"><?= $error['user'] ?? '' ?></div>
         </div>
 
         <div class="mb-3 m-3">
           <label for="pwd" class="form-label">Password:</label>
           <input type="password" class="form-control" id="" name="pass">
+          <div class="err"><?= $error['pass'] ?? '' ?></div>
         </div>
 
         <div class="mb-3 m-3">
           <label for="email" class="form-label">Email:</label>
           <input type="email" class="form-control" id="" name="email">
+          <div class="err"><?= $error['email'] ?? '' ?></div>
         </div>
 
         <div class="mb-3 mt-3 m-3">
           <label for="text" class="form-label">Address:</label>
           <input type="text" class="form-control" id="" name="address">
+          <div class="err"><?= $error['address'] ?? '' ?></div>
         </div>
 
         <div class="mb-3 mt-3 m-3">
           <label for="text" class="form-label">Tell:</label>
           <input type="text" class="form-control" id="" name="tel">
+          <div class="err"><?= $error['tel'] ?? '' ?></div>
         </div>
 
         <div class="mb-3 mt-3 m-3">
           <label for="file" class="form-label">Ảnh đại diện:</label>
           <input type="file" class="form-control" name="avatar">
+          <div class="err"><?= $error['avatar'] ?? '' ?></div>
         </div>
 
         <div class="mb-3 mt-3 m-3">
@@ -104,7 +111,9 @@
           <input type="radio" id="other" name="gender" value="Khác" required>
         </div>
 
-        <input type="submit" value="Đăng ký" name="dangky" class="btn btn-primary m-3" onclick="return alert('Đã đăng kí thàng công')">
+        <input type="submit" value="Đăng ký" name="dangky" class="btn btn-primary m-3"<?php 
+          if((!isset($error['hoten']) && !isset($error['user']) && !isset($error['pass']) && !isset($error['email']) && !isset($error['pass']) && !isset($error['address']) && !isset($error['tel']) && !isset($error['avatar']))){
+        ?> onclick="return alert('Đã đăng kí thàng công')"><?php }?>
         <a href="index.php"><input type="button" value="Home" class="btn btn-primary m-3"></a>
       </form>
     </div>

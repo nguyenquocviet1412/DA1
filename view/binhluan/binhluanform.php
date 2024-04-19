@@ -70,6 +70,9 @@ $dsbl = binhluan_selectby_hanghoa($id_sanpham);
             border-bottom: 1px #CCC solid;
             margin-top: -20px;
         }
+        .err {
+      color: red;
+    }
     </style>
 <!-- </head> -->
 
@@ -105,8 +108,9 @@ $dsbl = binhluan_selectby_hanghoa($id_sanpham);
                 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                     <input type="hidden" name="id_sanpham" value="<?= $id_sanpham ?>">
 
-                    <input type="text" name="noidung">
+                    <input type="text" name="noidung" required>
                     <input type="submit" name="guibinhluan" value="Gửi bình luận">
+                    <div class="err"><?= $error['noidung'] ?? '' ?></div>
                 </form>
             <?php } else { ?>
                 <p style=color:red;>Bạn phải đăng nhập để bình luận!</p>
@@ -114,7 +118,14 @@ $dsbl = binhluan_selectby_hanghoa($id_sanpham);
         </div>
 
         <?php
+        $error = [];
         if (isset($_POST['guibinhluan']) && ($_POST['guibinhluan'])) {
+            if (empty($_POST['noidung'])) {
+                $error['noidung'] = "*Vui lòng nhập nội dung";
+            }
+            if (count($error) >= 1) {
+                $_SESSION['error'] = $error;
+            } else {
             $noidung = $_POST['noidung'];
             $id_sanpham = $_POST['id_sanpham'];
             $id_taikhoan = $_SESSION['user']['id_taikhoan'];
@@ -122,8 +133,10 @@ $dsbl = binhluan_selectby_hanghoa($id_sanpham);
             $ngaybinhluan = date('d/m/Y h:i:s ');
             binhluan_insert($noidung, $id_sanpham, $id_taikhoan, $ngaybinhluan);
             header("Location: " . $_SERVER['HTTP_REFERER']);
+            }
+            header("Location: ../../index.php?act=sanphamct&idsp=".$id_sanpham." " );
+            
         }
-
         ?>
 
     <!-- </div> -->

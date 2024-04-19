@@ -35,6 +35,9 @@
         padding: 20px;
         margin-left: 170px;
       }
+      .err {
+      color: red;
+    }
   </style>
 </head>
 <body>
@@ -64,11 +67,14 @@
                 <div class="mb-3 m-3">
                   <label for="email" class="form-label">Email:</label>
                   <input type="email" class="form-control" id="" name="email" >
+                  <div class="err"><?= $error['email'] ?? '' ?></div>
                 </div>
 
                 <div class="mb-3 mt-3 m-3">
                   <label for="text" class="form-label">Tell:</label>
                   <input type="text" class="form-control" id="" name="tel" >
+                  <div class="err"><?= $error['tel'] ?? '' ?></div>
+                  <div class="err"><?= $error['tel2'] ?? '' ?></div>
                 </div>
                 
                 <input type="submit" value="Gửi" name="guiemail" class="btn btn-primary m-3">

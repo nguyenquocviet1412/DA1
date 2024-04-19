@@ -82,38 +82,51 @@
 
         </ul>
     </div>
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-        </div>
+    <?php
+    // Đường dẫn đến thư mục chứa ảnh
+    $dir = "upload/slide/";
+
+    // Mảng để lưu trữ đường dẫn của các ảnh
+    $imagePaths = [];
+
+    // Kiểm tra xem thư mục tồn tại không
+    if (is_dir($dir)) {
+        // Mở thư mục
+        if ($dh = opendir($dir)) {
+            // Đọc tất cả các tệp trong thư mục
+            while (($file = readdir($dh)) !== false) {
+                // Loại bỏ các tệp không cần thiết
+                if (!in_array($file, array('.', '..', '.DS_Store'))) {
+                    // Tạo đường dẫn đầy đủ của ảnh và thêm vào mảng
+                    $imagePaths[] = $dir . $file;
+                }
+            }
+            // Đóng thư mục
+            closedir($dh);
+        }
+    }
+    // In ra mảng đường dẫn của các ảnh
+    // print_r($imagePaths);
+    ?>
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="img/nuochoa.jpg" class="d-block w-100" alt="..." height="400px">
-            </div>
-            <div class="carousel-item">
-                <img src="img/images.jpg" class="d-block w-100" alt="..." height="400px">
-            </div>
-            <div class="carousel-item">
-                <img src="img/bn 4.jpg" class="d-block w-100" alt="..." height="400px">
-            </div>
+            <?php foreach ($imagePaths as $img) { ?>
+                <div class="carousel-item active">
+                    <img src="<?= $img ?>" class="d-block w-100" alt="..." height="400px">
+                </div>
+            <?php } ?>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
 </div>
 </nav>
 </header>
@@ -121,7 +134,9 @@
     <p class="h2 m-3">Sản phẩm
         <strong>
             <?php
-            if (isset($tendm) && ($tendm != "")) {
+            if(isset($_GET['iddm'])&&($_GET['iddm']>0)){
+                $iddm=$_GET['iddm'];
+                $tendm=load_ten_dm($iddm);
                 echo 'hãng ' . $tendm;
             }
             if (isset($kyw) && ($kyw != "")) {
@@ -146,7 +161,7 @@
                     <div class="product-details p-2">
                         <h3 class="product-title" style="height: 80px;">' . $namesp . '</h3>
                         <p class="product-price">' . $price . ' $</p>
-                        <p>Đã bán:5</p>
+                        <p>Đã bán:' . $luotban . '</p>
                         <a href="' . $linksp . '"><button class="btn btn-dark">Xem chi tiet</button></a>
                     </div>
                 </div>

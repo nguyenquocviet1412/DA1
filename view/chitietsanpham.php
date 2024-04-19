@@ -111,10 +111,20 @@
     display: flex;
     justify-content: space-between;
 }
+.err {
+      color: red;
+    }
 </style>
 
 <main class="">
     <h3>Chi tiết sản phẩm</h3>
+    <?php 
+    if (isset($_SESSION['error'])) {
+        var_dump($_SESSION['error']);
+    }
+        
+    ?>
+    <div class="err"><?= $error['noidung'] ?? '' ?></div>
     <div class="showsp">
 
         <?php
@@ -295,6 +305,7 @@
 
         <div class="" id="binhluan">
 
+            <div class="err"><?= $error['noidung'] ?? '' ?></div>
         </div>
 
     </div>

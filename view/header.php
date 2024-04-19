@@ -164,6 +164,9 @@ $dsdm = danhmuc_selectall();
             color: red;
             text-align: center;
         }
+        .err {
+      color: red;
+    }
     </style>
 </head>
 
