@@ -72,7 +72,7 @@ function checktel($tel)
 }
 function validatePhoneNumber($phoneNumber) {
     // Biểu thức chính quy kiểm tra số điện thoại Việt Nam
-    $pattern = '/^(0[1-9])+([0-9]{9})$/';
+    $pattern = '/^(0[1-9])+([0-9]{8})$/';
     if (preg_match($pattern, $phoneNumber)) {
         return true;
     } else {

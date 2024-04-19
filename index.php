@@ -197,6 +197,7 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
                 }
                 $phoneNumber = $_POST['tel']; // Thay thế bằng số điện thoại cần kiểm tra từ form
                 if (validatePhoneNumber($phoneNumber)) {
+                    
                 } else {
                     $error['tel2']="*Số điện thoại không hợp lệ";
                 }
