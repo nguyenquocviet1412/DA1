@@ -54,26 +54,39 @@
 
         </div>
         <div class="row">
+            <script>
+                // Vô hiệu hóa tất cả input radio có name là 'role' trừ input radio có giá trị '1'
+                function disableRadio() {
+                    var radios = document.querySelectorAll('input[type=radio][name="role"]');
+                    radios.forEach(function (radio) {
+                        if (radio.value !== '1') {
+                            radio.disabled = true;
+                        }
+                    });
+                }
+                // Gọi hàm disableRadio khi trang được tải
+            </script>
             <?php if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
                 if ($_SESSION['user']['role'] !== 2) {
-                    $s = "disabled";
+                    echo "<script>window.onload = disableRadio;</script>";
                 }
             } ?>
+
             <div class="col-6 my-2">
                 <label class="fw-bold">VAI TRÒ</label>
                 <div class="radio">
-                    <input type="radio" name="role" id="admin" value="1" <?= $role ? 'checked' : '' ?> <?=$s??""?>>
+                    <input type="radio" name="role" id="admin" value="1" <?= $role ? 'checked' : '' ?> <?= $s ?? "" ?>>
                     <label for="no_activate">Admin</label>
-                    <input type="radio" name="role" id="user" value="0" <?= !$role ? 'checked' : '' ?> <?=$s??""?>>
+                    <input type="radio" name="role" id="user" value="0" <?= !$role ? 'checked' : '' ?> <?= $s ?? "" ?>>
                     <label for="activate">Khách hàng</label>
+                    <input type="hidden" name="rolecu" value="<?= $role ?>">
                 </div>
             </div>
             <div class="col-6 my-2">
                 <label class="fw-bold">HÌNH ẢNH</label>
                 <input type="hidden" name="avatarcu" value="<?= $avatar ?>">
                 <input type="file" name="avatar" id="" class="form-control">
-                (
-                <?= $avatar ?>)
+                (<?= $avatar ?>)
             </div>
         </div>
 
