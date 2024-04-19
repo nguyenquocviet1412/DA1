@@ -8,7 +8,7 @@ if (exist_param("btn_list")) {
 } else if (exist_param("btn_insert")) {
     $error =[];
     if (empty($_POST["name"])) {
-        $error['name'] = "Bạn chưa nhập tên hãng nước hoa";
+        $error['name'] = "<h4>Bạn chưa nhập tên hãng nước hoa</h4>";
     }
     if (count($error) >= 1) {
         $_SESSION['error'] = $error;

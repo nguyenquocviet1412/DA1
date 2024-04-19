@@ -18,10 +18,12 @@
     <div class="mb-3 mt-3">
         <label for="text" class="form-label">Tên sản phẩm:</label>
         <input type="text" class="form-control" id="" name="name">
+        <div class="err"><?= $error['name'] ?? ''; ?></div>
     </div>
     <div class="mb-3 mt-3">
         <label for="text" class="form-label">Giá:</label>
         <input type="text" class="form-control" id="" name="price">
+        <div class="err"><?= $error['price'] ?? ''; ?></div>
     </div>
     <div class="mb-3 mt-3">
         <label for="text" class="form-label">Giá chiết:</label>
