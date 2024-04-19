@@ -41,8 +41,8 @@
         border: 1px solid #000000;
         border-radius: 5px;
         margin-bottom: 20px;
-        padding: 10px;
-        height: 200px;
+        padding: 20px;
+        height: 300px;
     }
 
     .item {
@@ -113,6 +113,9 @@
 }
 .err {
       color: red;
+    }
+    .flex{
+         display: flex;
     }
 </style>
 
@@ -318,14 +321,14 @@
         }
         ?>
     </h3>
-    <div class="spcungloai col-10">
+    <div class="spcungloai flex col-11">
         <?php
         foreach ($sp_cung_loai as $spcl) {
             extract($spcl);
             $linksp = "index.php?act=sanphamct&idsp=" . $id_sanpham;
             $img = $img_path . $img;
             echo '
-            <div class="col-1 m-2">
+            <div class="col-1 m-3">
                 <div class="product_top10">
                 <a href="' . $linksp . '"><img src="' . $img . '" alt="Product Image"></a>
                     <div class="product-details">
