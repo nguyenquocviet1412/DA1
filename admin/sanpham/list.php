@@ -1,9 +1,10 @@
 <h1>DANH SÁCH HÀNG HOÁ</h1>
 <form action="index.php" method="post">
+    <a class="btn btn btn-primary my-3" href="index.php" role="button">Thêm mới</a>
+
     <table class="table table-bordered rounded">
         <thead>
             <tr>
-                <th></th>
                 <th>MÃ HÀNG</th>
                 <th>HÃNG</th>
                 <th>TÊN HÀNG</th>
@@ -21,7 +22,6 @@
                 extract($value);
                 ?>
                 <tr>
-                    <td><input type="checkbox" name="id[]" id="" value="<?= $id ?>"></td>
                     <td>
                         <?= $id_sanpham ?>
                     </td>
@@ -61,6 +61,5 @@
             <?php } ?>
         </tbody>
     </table>
-    <a class="btn btn btn-primary" href="index.php" role="button">Thêm mới</a>
 
 </form>

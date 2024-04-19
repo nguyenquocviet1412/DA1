@@ -35,14 +35,18 @@
         display: block;
         transform: scaleY(1);
     }
+    a.linksp {
+        color: black;
+        text-decoration: none;
+    }
 </style>
 <div class="row justify-content-center">
     <div class="col-6 p-3">
         <div class="input-group">
-            <form action="index.php?act=sanpham" method="post" class="flex">
+            <form action="index.php" class="flex">
                 <input type="text" name="kyw" class="form-control col-8" placeholder="Search for..."
                     aria-label="Search for..." size="40">
-                <input class="btn btn-outline-secondary" type="submit" name="timkiem" value="Tìm kiếm">
+                <input class="btn btn-outline-secondary" type="submit" value="Tìm kiếm">
             </form>
         </div>
     </div>
@@ -134,13 +138,18 @@
     <p class="h2 m-3">Sản phẩm
         <strong>
             <?php
+<<<<<<< HEAD
             if(isset($_GET['iddm'])&&($_GET['iddm']>0)){
                 $iddm=$_GET['iddm'];
                 $tendm=load_ten_dm($iddm);
                 echo 'hãng ' . $tendm;
+=======
+            if (isset($tendm) && ($tendm != "")) {
+                echo $tendm;
+>>>>>>> 8f3e485d5b090f26cd7d7f3ef2d7e3b3f0dc93e8
             }
             if (isset($kyw) && ($kyw != "")) {
-                echo 'có tên: ' . $kyw;
+                echo $kyw;
             }
             ?>
         </strong>
@@ -154,15 +163,27 @@
             extract($sp);
             $linksp = "index.php?act=sanphamct&idsp=" . $id_sanpham;
             $hinh = $img_path . $img;
+            if ($price_chiet == 0) {
+                $echo = "<p class='product-price'>Chiết: Hết size</p>";
+            } else {
+                $echo = "<p class='product-price'>Chiết: $price_chiet $</p>";
+            }
             echo '
             <div class="col-2">
                 <div class="product justify-content-center">
-                    <img src="' . $hinh . '" alt="Product Image">
+                    <a class="linksp" href="' . $linksp . '"><img src="' . $hinh . '" alt="Product Image"></a>
                     <div class="product-details p-2">
+<<<<<<< HEAD
                         <h3 class="product-title" style="height: 80px;">' . $namesp . '</h3>
                         <p class="product-price">' . $price . ' $</p>
                         <p>Đã bán:' . $luotban . '</p>
                         <a href="' . $linksp . '"><button class="btn btn-dark">Xem chi tiet</button></a>
+=======
+                        <a class="linksp" href="' . $linksp . '"><h3 class="product-title" style="height: 80px;">' . $namesp . '</h3></a>
+                        <p class="product-price">Full: ' . $price . '$</p>
+                        ' . $echo . '
+                        <p>Đã bán:' . $luotban . '</p>
+>>>>>>> 8f3e485d5b090f26cd7d7f3ef2d7e3b3f0dc93e8
                     </div>
                 </div>
             </div>

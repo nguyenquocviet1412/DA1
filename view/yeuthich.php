@@ -1,7 +1,7 @@
 <aside class="justify-content-center">
     <p class="h2 m-3">Top sản phẩm được yêu thích</p>
     <div class="row">
-    <?php
+        <?php
         foreach ($dstop10 as $sp) {
             extract($sp);
             $linksp = "index.php?act=sanphamct&idsp=" . $id_sanpham;
@@ -16,8 +16,8 @@
                 </div>
             </div>
         ';
-    }
-    ?>
+        }
+        ?>
 
     </div>
 </aside>

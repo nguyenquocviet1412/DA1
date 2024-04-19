@@ -5,7 +5,6 @@
             <tr>
                 <th>ID</th>
                 <th>USER</th>
-                <th>PASS</th>
                 <th>EMAIL</th>
                 <th>ADDRESS</th>
                 <th>TEL</th>
@@ -25,9 +24,7 @@
                     <td>
                         <?= $user ?>
                     </td>
-                    <td>
-                        <?= $pass ?>
-                    </td>
+                    
                     <td>
                         <?= $email ?>
                     </td>
@@ -46,6 +43,8 @@
                     <td>
                         <?php if ($role == 1) {
                             echo "Admin";
+                        } elseif ($role == 2) {
+                            echo "Super admin";
                         } else {
                             echo "User";
                         }
@@ -54,7 +53,8 @@
 
                     <td>
                         <a class="btn btn-primary" href="index.php?btn_edit&id=<?= $id_taikhoan ?>" role="button">Sửa</a>
-                        <a onclick="return confirm('Xoá?')" class="btn btn-primary" href="index.php?btn_delete&id=<?= $id_taikhoan ?>" role="button">Xoá</a>
+                        <a onclick="return confirm('Xoá?')" class="btn btn-primary"
+                            href="index.php?btn_delete&id=<?= $id_taikhoan ?>" role="button">Xoá</a>
                     </td>
                 </tr>
             <?php } ?>

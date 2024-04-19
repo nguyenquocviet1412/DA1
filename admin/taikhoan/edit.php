@@ -12,6 +12,7 @@
         </div>
 
     </div>
+
     <div class="row">
         <div class="col-6 my-2">
             <label class="fw-bold">EMAIL</label>
@@ -53,12 +54,17 @@
 
         </div>
         <div class="row">
+            <?php if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
+                if ($_SESSION['user']['role'] !== 2) {
+                    $s = "disabled";
+                }
+            } ?>
             <div class="col-6 my-2">
                 <label class="fw-bold">VAI TRÒ</label>
                 <div class="radio">
-                    <input type="radio" name="role" id="admin" value="1" <?= $role ? 'checked' : '' ?>>
+                    <input type="radio" name="role" id="admin" value="1" <?= $role ? 'checked' : '' ?> <?=$s??""?>>
                     <label for="no_activate">Admin</label>
-                    <input type="radio" name="role" id="user" value="0" <?= !$role ? 'checked' : '' ?>>
+                    <input type="radio" name="role" id="user" value="0" <?= !$role ? 'checked' : '' ?> <?=$s??""?>>
                     <label for="activate">Khách hàng</label>
                 </div>
             </div>
