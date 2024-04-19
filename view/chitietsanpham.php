@@ -107,18 +107,12 @@
         font-size: 20px;
     }
 
-<<<<<<< HEAD
 .flex-form {
     display: flex;
     justify-content: space-between;
 }
 .err {
       color: red;
-=======
-    .flex-form {
-        display: flex;
-        justify-content: space-between;
->>>>>>> 8f3e485d5b090f26cd7d7f3ef2d7e3b3f0dc93e8
     }
 </style>
 

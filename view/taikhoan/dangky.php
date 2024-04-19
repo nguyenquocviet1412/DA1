@@ -113,7 +113,7 @@
 
         <input type="submit" value="Đăng ký" name="dangky" class="btn btn-primary m-3"<?php 
           if((!isset($error['hoten']) && !isset($error['user']) && !isset($error['pass']) && !isset($error['email']) && !isset($error['pass']) && !isset($error['address']) && !isset($error['tel']) && !isset($error['avatar']))){
-        ?> onclick="return alert('Đã đăng kí thàng công')"><?php }?>
+        ?> onclick="return alert('Đã đăng kí thàng công')" <?php }else{?>onclick="return alert('thông tin đăng ký không phù hợp')"<?php }?> >
         <a href="index.php"><input type="button" value="Home" class="btn btn-primary m-3"></a>
       </form>
     </div>

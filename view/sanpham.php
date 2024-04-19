@@ -138,15 +138,10 @@
     <p class="h2 m-3">Sản phẩm
         <strong>
             <?php
-<<<<<<< HEAD
             if(isset($_GET['iddm'])&&($_GET['iddm']>0)){
                 $iddm=$_GET['iddm'];
                 $tendm=load_ten_dm($iddm);
                 echo 'hãng ' . $tendm;
-=======
-            if (isset($tendm) && ($tendm != "")) {
-                echo $tendm;
->>>>>>> 8f3e485d5b090f26cd7d7f3ef2d7e3b3f0dc93e8
             }
             if (isset($kyw) && ($kyw != "")) {
                 echo $kyw;
@@ -173,17 +168,10 @@
                 <div class="product justify-content-center">
                     <a class="linksp" href="' . $linksp . '"><img src="' . $hinh . '" alt="Product Image"></a>
                     <div class="product-details p-2">
-<<<<<<< HEAD
-                        <h3 class="product-title" style="height: 80px;">' . $namesp . '</h3>
-                        <p class="product-price">' . $price . ' $</p>
-                        <p>Đã bán:' . $luotban . '</p>
-                        <a href="' . $linksp . '"><button class="btn btn-dark">Xem chi tiet</button></a>
-=======
                         <a class="linksp" href="' . $linksp . '"><h3 class="product-title" style="height: 80px;">' . $namesp . '</h3></a>
                         <p class="product-price">Full: ' . $price . '$</p>
                         ' . $echo . '
                         <p>Đã bán:' . $luotban . '</p>
->>>>>>> 8f3e485d5b090f26cd7d7f3ef2d7e3b3f0dc93e8
                     </div>
                 </div>
             </div>

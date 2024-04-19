@@ -18,7 +18,6 @@ $dstop10 = sanpham_selecttop10();
 if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
-<<<<<<< HEAD
         case 'sanpham':
             if(isset($_POST['kyw'])&&($_POST['kyw']!="")){
                 $kyw=$_POST['kyw'];
@@ -35,8 +34,6 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
                 $tendm=load_ten_dm($iddm);
                 include "view/sanpham.php";
             break;
-=======
->>>>>>> 8f3e485d5b090f26cd7d7f3ef2d7e3b3f0dc93e8
         case 'sanphamct':
 
             if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
@@ -182,8 +179,9 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
                 taikhoan_update($id_taikhoan, $hoten, $user, $pass, $email, $address, $tel, $avatar, $gender, $role);
                 $thongbao = "Đã cập nhật thành công!!";
                 $_SESSION['user'] = checkuser($user, $pass);
-                unset($_SESSION['error']);
+                
                 header('Location: index.php?act=capnhattaikhoan');
+                unset($_SESSION['error']);
             }
             }
             include "view/taikhoan/capnhattaikhoan.php";
