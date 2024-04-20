@@ -56,7 +56,15 @@
   <div class="container1">
     <div class="card" style="width:600px;height: 400px;">
       <h1>Quên mật khẩu</h1>
-      <h2 class="text-center"><?=$thongbao?></h2>
+      <?php
+      if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
+        extract($_SESSION['user']);
+      }
+        if (isset($thongbao) && ($thongbao != "")) {
+          echo '<h2 class="text-center">'.$thongbao.'</h2>';
+        }
+        ?>
+      
       <form action="index.php?act=quenmk" method="post" enctype="multipart/form-data">
         <div class="mb-3 m-3">
           <label for="email" class="form-label">Email:</label>
@@ -70,7 +78,7 @@
           <div class="err"><?= $error['tel'] ?? '' ?></div>
           <div class="err"><?= $error['tel2'] ?? '' ?></div>
         </div>
-
+        <input type="hidden" name="id_taikhoan" value="<?= $id_taikhoan ?>">
         <input type="submit" value="Gửi" name="guiemail" class="btn btn-primary m-3">
         <a class="btn btn-primary m-3" href="index.php" role="button">Home</a>
       </form>
