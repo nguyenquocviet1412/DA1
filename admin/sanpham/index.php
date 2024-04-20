@@ -9,9 +9,13 @@ if (exist_param("btn_list")) {
     $VIEW_NAME = "list.php";
 } else if (exist_param("btn_insert")) {
     $error =[];
-    if (empty($_POST["name, price,"])) {
+    if (empty($_POST["name"])) {
         $error['name'] = "<h4>Vui lòng nhập tên sản phẩm</h4>";
+        $danhmuc_sanpham = danhmuc_selectall();
+        
+    }elseif (empty($_POST["price"])) {
         $error['price'] = "<h4>Vui lòng nhập giá</h4>";
+        $danhmuc_sanpham = danhmuc_selectall();
     }
     if (count($error) >= 1) {
         $_SESSION["error"] = $error;
@@ -27,8 +31,9 @@ if (exist_param("btn_list")) {
     sanpham_insert($name, $price, $img, $mota, $price_chiet, $sale, $iddm);
     $items = sanpham_selectall();
     }
-    $VIEW_NAME = "add.php";
     unset($_SESSION["error"]);
+    $VIEW_NAME = "add.php";
+    
 } else if (exist_param("btn_edit")) {
     $id = $_REQUEST['id'];
     $sanphaminfo = sanpham_getinfo($id);

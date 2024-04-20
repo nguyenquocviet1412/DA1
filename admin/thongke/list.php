@@ -1,4 +1,4 @@
-<h1>thong ke</h1>
+<h1>Thống kê</h1>
 <form action="index.php" method="post">
     <table class="table table-bordered rounded">
         <thead>
@@ -39,7 +39,7 @@
         </tbody>
 
     </table>
-    <a class="btn btn btn-info" href="index.php?btn_list" role="button">thong ke danh muc</a>
-    <a class="btn btn btn-primary" href="index.php?btn_listdh" role="button">thong ke don hang</a>
-    <a class="btn btn btn-primary" href="index.php?btn_listspyt" role="button">thong ke san pham yeu thich</a>
+    <a class="btn btn btn-info" href="index.php?btn_list" role="button">Thống kê danh mục</a>
+    <a class="btn btn btn-primary" href="index.php?btn_listdh" role="button">Thống kê đơn hàng</a>
+    <a class="btn btn btn-primary" href="index.php?btn_listspyt" role="button">Thống kê sản phẩm yêu thích</a>
 </form>

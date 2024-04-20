@@ -123,7 +123,7 @@
     <h3>Chi tiết sản phẩm</h3>
     <?php 
     if (isset($_SESSION['error'])) {
-        var_dump($_SESSION['error']);
+        
     }
         
     ?>

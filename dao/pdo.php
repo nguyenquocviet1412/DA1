@@ -25,7 +25,7 @@ function pdo_execute($sql)
         $conn = pdo_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
-        echo "Cập nhật thành công";
+        // echo "Cập nhật thành công";
     } catch (PDOException $e) {
         echo "Lỗi thực thi";
         throw $e;

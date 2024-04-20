@@ -34,7 +34,7 @@ function bill_chitiet_update($idbillchitiet, $idbill, $id_sanpham, $price, $solu
 
 function load_donhang_idbill($id_bill)
 {
-    $sql = "SELECT*FROM bill_chitiet WHERE id_bill=?";
+    $sql = "SELECT*FROM bill_chitiet WHERE id_bill=? ORDER BY id_sanpham ASC";
     return pdo_query($sql, $id_bill);
 }
 ?>

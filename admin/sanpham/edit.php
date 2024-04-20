@@ -1,7 +1,7 @@
 <form action="index.php" method="post" enctype="multipart/form-data">
     <div class="mb-3 mt-3">
         <label for="text" class="form-label">ID danh mục:</label>
-        <select name="iddm" id="">
+        <select name="iddm" id="" class="form-select">
             <?php foreach ($danhmuc_sanpham as $key => $value) {
                 $s = ($id_danhmuc == $value['id']) ? "selected" : "";
                 echo "<option value='{$value['id']}' $s > {$value['name']} </option>";

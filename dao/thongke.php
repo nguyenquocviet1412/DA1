@@ -26,31 +26,30 @@ function thongkehanghoa()
 //     return pdo_query($sql);
 // }
 
-// function thongkedonhang()
-// {
-//     $sql = "SELECT tk.id, tk.user,
-//     SUM(dh.tongtien) AS tongtien,
-//     dh.name_sanpham AS tensanpham,
-//     COUNT(dh.name_sanpham) AS soluongsanpham
-//     FROM bill_chitiet dh
-//     JOIN taikhoan tk ON dh.id_taikhoan = tk.id
-//     GROUP BY tk.id, tk.user, dh.name_sanpham";
-
-//     return pdo_query($sql);
-// }
-
 function thongke_taikhoan_donhang()
 {
-    $sql = "SELECT taikhoan.*, bill.*, bill_chitiet.*
-    FROM taikhoan
-    JOIN bill ON taikhoan.id_taikhoan = bill.id_taikhoan
-    JOIN bill_chitiet ON bill.id_bill = bill_chitiet.id_bill";
+    $sql = "SELECT tk.avatar AS avatar, tk.user AS user, 
+    COUNT(bct.id_sanpham) AS soluong, 
+    SUM(b.price_tong) AS price_tong FROM taikhoan tk 
+    JOIN bill b ON tk.id_taikhoan = b.id_taikhoan 
+    JOIN bill_chitiet bct ON b.id_bill = bct.id_bill 
+    GROUP BY tk.user";
 
     return pdo_query($sql);
 }
+
+// function thongke_taikhoan_donhang()
+// {
+//     $sql = "SELECT taikhoan.*, bill.*, bill_chitiet.*
+//     FROM taikhoan
+//     JOIN bill ON taikhoan.id_taikhoan = bill.id_taikhoan
+//     JOIN bill_chitiet ON bill.id_bill = bill_chitiet.id_bill";
+
+//     return pdo_query($sql);
+// }
 function sanpham_yeuthich()
 {
-    $sql = "SELECT *FROM sanpham WHERE luotban>=10 ORDER BY luotban DESC limit 0,10";
+    $sql = "SELECT *FROM sanpham WHERE luotban>=1 ORDER BY luotban DESC limit 0,10";
     return pdo_query($sql);
 }
 ?>

@@ -3,7 +3,7 @@
 
 function binhluan_selectall()
 {
-    $sql = "SELECT * FROM binhluan bl ORDER BY ngaybinhluan ASC";
+    $sql = "SELECT * FROM binhluan bl ORDER BY ngaybinhluan DESC";
     pdo_query($sql);
     return pdo_query($sql);
 }

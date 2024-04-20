@@ -313,7 +313,6 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
                 } else {
                     $id_taikhoan = 0;
                 }
-
                 $hoten = $_POST['hoten'];
                 $email = $_POST['email'];
                 $tel = $_POST['tel'];
@@ -340,8 +339,10 @@ if (isset($_GET['act']) && ($_GET['act']) && ($_GET['act'] != "")) {
                 
 
             }
+        
             include "view/giohang/billconfirm.php";
             break;
+        
         case 'donhang':
             $listbill = loadall_bill($_SESSION['user']['id_taikhoan']);
             include "view/giohang/donhang.php";
